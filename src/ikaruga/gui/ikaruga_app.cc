@@ -11,22 +11,20 @@ IkarugaApp::IkarugaApp() {
 }
 
 void IkarugaApp::draw() {
-  AppBase::draw();
 }
 
 void IkarugaApp::mouseDown(ci::app::MouseEvent event) {
-  AppBase::mouseDown(event);
 }
 
 void IkarugaApp::mouseDrag(ci::app::MouseEvent event) {
-  AppBase::mouseDrag(event);
 }
 
 void IkarugaApp::keyDown(ci::app::KeyEvent event) {
-  AppBase::keyDown(event);
 }
 
 void IkarugaApp::setup() {
-  AppBase::setup();
+}
+
+void IkarugaApp::update() {
 }
 }
