@@ -5,7 +5,11 @@
 #include "game_engine/game_object.h"
 
 namespace game_engine {
-bool GameObject::Collides(const game_engine::GameObject &other) {
-  return this->collider_.IsCollision(other.collider_);
+void GameObject::UpdatePosition() {
+  position_+=velocity_;
+}
+
+bool GameObject::Collides(const GameObject &other) {
+  return collider_.IsCollision(other.collider_);
 }
 }
