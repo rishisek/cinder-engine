@@ -7,9 +7,13 @@
 namespace ikaruga {
 void FlyerCharacter::Update() {
   UpdatePosition();
+  for (ProjectileType &projectile_type: projectile_types_) {
+    projectile_type.DecrementCurrentCooldown();
+  }
 }
 
 Projectile FlyerCharacter::Shoot() {
+  projectile_types_[current_projectile_type_index_].StartCooldown();
   return Projectile(projectile_types_[current_projectile_type_index_],
                     position_,
                     glm::vec2(cos(shoot_angle_radians_), sin(shoot_angle_radians_)));

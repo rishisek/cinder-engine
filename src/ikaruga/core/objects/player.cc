@@ -25,4 +25,9 @@ void Player::TiltAimRight() {
     shoot_angle_radians_ = kNormalAngle + view_angle_radians_ / 2;
   }
 }
+
+bool Player::InCooldown() {
+  return projectile_types_[current_projectile_type_index_].GetCurrentCooldown()
+      != 0;
+}
 }

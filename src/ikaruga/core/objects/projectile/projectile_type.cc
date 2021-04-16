@@ -5,8 +5,10 @@
 #include "ikaruga/core/objects/projectile/projectile_type.h"
 
 namespace ikaruga {
-ProjectileType::ProjectileType(float radius, const cinder::ColorT<float> &color)
-    : radius_(radius), color_(color) {}
+ProjectileType::ProjectileType(float radius,
+                               const cinder::ColorT<float> &color,
+                               int cooldown)
+    : radius_(radius), color_(color), kCooldown(cooldown) {}
 
 float ProjectileType::GetRadius() const {
   return radius_;
@@ -14,5 +16,20 @@ float ProjectileType::GetRadius() const {
 
 const cinder::ColorT<float> &ProjectileType::GetColor() const {
   return color_;
+}
+
+int ProjectileType::GetCurrentCooldown() const {
+  return current_cooldown_;
+}
+
+void ProjectileType::DecrementCurrentCooldown() {
+  current_cooldown_--;
+  if (current_cooldown_ <= 0) {
+    current_cooldown_ = 0;
+  }
+}
+
+void ProjectileType::StartCooldown() {
+  current_cooldown_ = kCooldown;
 }
 }
