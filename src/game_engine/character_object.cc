@@ -5,7 +5,4 @@
 #include "game_engine/character_object.h"
 
 namespace game_engine {
-void CharacterObject::Update() {
-  UpdatePosition();
-}
 }

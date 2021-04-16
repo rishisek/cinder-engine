@@ -7,6 +7,7 @@
 
 namespace ikaruga {
 class Player : public game_engine::CharacterObject {
- 
+ public:
+  void Update() override;
 };
 }

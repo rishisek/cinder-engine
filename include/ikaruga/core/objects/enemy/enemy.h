@@ -4,10 +4,12 @@
 #pragma once
 
 #include <game_engine/character_object.h>
+#include "enemy_type.h"
 
 namespace ikaruga {
 class Enemy : public game_engine::CharacterObject {
  public:
+  void Update() override;
  private:
 };
 }

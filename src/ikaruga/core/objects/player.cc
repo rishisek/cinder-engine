@@ -5,4 +5,7 @@
 #include "ikaruga/core/objects/player.h"
 
 namespace ikaruga {
+void Player::Update() {
+  UpdatePosition();
+}
 }

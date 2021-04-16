@@ -8,9 +8,8 @@
 namespace game_engine {
 class CharacterObject : public GameObject {
  public:
-  void Update() override;
- private:
-  int max_health_;
-  int health_;
+ protected:
+  float max_health_;
+  float health_;
 };
 }
