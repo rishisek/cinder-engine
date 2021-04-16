@@ -2,7 +2,7 @@
 // Created by rishi on 15-04-2021.
 //
 
-#include "ikaruga/ikaruga_app.h"
+#include "ikaruga/gui/ikaruga_app.h"
 
 namespace ikaruga {
 
@@ -24,5 +24,9 @@ void IkarugaApp::mouseDrag(ci::app::MouseEvent event) {
 
 void IkarugaApp::keyDown(ci::app::KeyEvent event) {
   AppBase::keyDown(event);
+}
+
+void IkarugaApp::setup() {
+  AppBase::setup();
 }
 }

@@ -1,4 +1,4 @@
-#include <ikaruga/ikaruga_app.h>
+#include <ikaruga/gui/ikaruga_app.h>
 
 using ikaruga::IkarugaApp;
 

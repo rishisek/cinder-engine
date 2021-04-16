@@ -49,12 +49,13 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-list(APPEND CORE_SOURCE_FILES
-        src/ikaruga/ikaruga_app.cc
-        )
+file(GLOB_RECURSE ENGINE_SOURCE_FILES src/game_engine/*.cc)
 
-list(APPEND SOURCE_FILES ${CORE_SOURCE_FILES}
-        )
+file(GLOB_RECURSE CORE_SOURCE_FILES src/ikaruga/core/*.cc)
+
+file(GLOB_RECURSE GUI_SOURCE_FILES src/ikaruga/gui/*.cc)
+
+list(APPEND SOURCE_FILES ${ENGINE_SOURCE_FILES} ${CORE_SOURCE_FILES} ${GUI_SOURCE_FILES})
 
 list(APPEND TEST_FILES tests/test_ikaruga.cc)
 

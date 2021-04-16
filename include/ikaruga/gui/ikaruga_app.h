@@ -3,15 +3,19 @@
 //
 
 #pragma once
+
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+
+#include <ikaruga/gui/ikaruga_app.h>
 
 namespace ikaruga {
 class IkarugaApp : public ci::app::App {
  public:
   IkarugaApp();
 
+  void setup() override;
   void draw() override;
   void mouseDown(ci::app::MouseEvent event) override;
   void mouseDrag(ci::app::MouseEvent event) override;
