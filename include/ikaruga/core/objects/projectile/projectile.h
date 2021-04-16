@@ -9,6 +9,11 @@
 namespace ikaruga {
 class Projectile : public game_engine::GameObject {
  public:
+  Projectile(ProjectileType type,
+             glm::vec2 position,
+             glm::vec2 velocity);
+  
+  void Update() override;
  private:
   ProjectileType type_;
 };

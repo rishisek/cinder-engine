@@ -5,5 +5,12 @@
 #include "ikaruga/core/objects/projectile/projectile.h"
 
 namespace ikaruga {
+Projectile::Projectile(ProjectileType type,
+                       glm::vec2 position,
+                       glm::vec2 velocity)
+    : type_(type), GameObject(position, velocity) {}
 
+void Projectile::Update() {
+  UpdatePosition();
+}
 }
