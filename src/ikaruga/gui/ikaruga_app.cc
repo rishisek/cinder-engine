@@ -11,6 +11,8 @@ IkarugaApp::IkarugaApp() {
 }
 
 void IkarugaApp::draw() {
+  ci::Color background_color("black");
+  ci::gl::clear(background_color);
 }
 
 void IkarugaApp::mouseDown(ci::app::MouseEvent event) {
