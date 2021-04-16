@@ -3,6 +3,7 @@
 //
 
 #include "ikaruga/core/objects/player/player.h"
+#include <game_engine/input_component.h>
 
 namespace ikaruga {
 
@@ -33,8 +34,9 @@ bool Player::InCooldown() {
       != 0;
 }
 
-void Player::Update() {
-  GameObject::Update();
+void Player::Update(game_engine::GameObject &world) {
+  GameObject::Update(world);
   UpdateCooldowns();
+  input_component_->Update(*this, dynamic_cast<World &>(world));
 }
 }

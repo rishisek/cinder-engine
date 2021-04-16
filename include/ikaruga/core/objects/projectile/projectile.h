@@ -12,7 +12,7 @@ class Projectile : public game_engine::GameObject {
   Projectile(ProjectileType type,
              game_engine::PhysicsComponent *physics_component);
   
-  void Update() override;
+  void Update(game_engine::GameObject &world) override;
 
   const ProjectileType &GetType() const;
  private:

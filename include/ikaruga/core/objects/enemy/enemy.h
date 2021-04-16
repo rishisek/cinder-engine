@@ -11,7 +11,7 @@ class Enemy : public ProjectileShooter, public game_engine::CharacterObject {
  public:
   Enemy(game_engine::PhysicsComponent *physics_component,
         const std::vector<ProjectileType> &projectile_types);
-  void Update() override;
+  void Update(game_engine::GameObject &world) override;
  private:
 };
 }

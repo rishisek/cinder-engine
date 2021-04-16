@@ -15,7 +15,7 @@ class Player
          game_engine::InputComponent *input_component,
          const std::vector<ProjectileType> &projectile_types,
          double view_angle_radians = M_PI / 3.0);
-  void Update() override;
+  void Update(game_engine::GameObject &world) override;
   void TiltAimLeft();
   void TiltAimRight();
   bool InCooldown();

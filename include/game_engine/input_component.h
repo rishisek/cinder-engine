@@ -3,6 +3,7 @@
 //
 #pragma once
 
+#include <ikaruga/core/objects/world/world.h>
 #include "game_object.h"
 
 namespace game_engine {
@@ -10,6 +11,7 @@ class InputComponent {
  public:
   virtual ~InputComponent() {}
 
-  virtual void Update(GameObject &game_object) = 0;
+  virtual void Update(game_engine::GameObject &game_object,
+                      ikaruga::World &world) = 0;
 };
 }

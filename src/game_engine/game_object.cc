@@ -13,7 +13,7 @@ PhysicsComponent *GameObject::GetPhysicsComponent() const {
   return physics_component_;
 }
 
-void GameObject::Update() {
+void GameObject::Update(game_engine::GameObject &world) {
   physics_component_->Update();
 }
 }

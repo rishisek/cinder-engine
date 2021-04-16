@@ -12,9 +12,8 @@ class InputComponent;
 
 class GameObject {
  public:
-
   GameObject(PhysicsComponent *physics_component);
-  virtual void Update(); 
+  virtual void Update(game_engine::GameObject &world); 
   
   PhysicsComponent *GetPhysicsComponent() const;
  protected:
