@@ -3,11 +3,11 @@
 //
 #pragma once
 
-#include <game_engine/character_object.h>
+#include <ikaruga/core/objects/flyer_character.h>
 #include "enemy_type.h"
 
 namespace ikaruga {
-class Enemy : public game_engine::CharacterObject {
+class Enemy : public FlyerCharacter {
  public:
   Enemy(EnemyType const& enemy_type);
   void Update() override;

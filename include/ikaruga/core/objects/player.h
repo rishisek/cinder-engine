@@ -3,11 +3,10 @@
 //
 #pragma once
 
-#include <game_engine/character_object.h>
+#include "flyer_character.h"
 
 namespace ikaruga {
-class Player : public game_engine::CharacterObject {
- public:
-  void Update() override;
+class Player : public FlyerCharacter {
+ 
 };
 }
