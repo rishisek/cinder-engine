@@ -15,6 +15,7 @@ class IkarugaApp : public ci::app::App {
 
   void setup() override;
   void draw() override;
+  void update() override;
   void mouseDown(ci::app::MouseEvent event) override;
   void mouseDrag(ci::app::MouseEvent event) override;
   void keyDown(ci::app::KeyEvent event) override;
