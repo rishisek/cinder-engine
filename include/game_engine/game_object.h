@@ -13,6 +13,10 @@ class GameObject {
   bool Collides(GameObject const &other);
   virtual void Update() = 0;
 
+  const glm::vec2 &GetPosition() const;
+  void SetPosition(const glm::vec2 &position);
+  const glm::vec2 &GetVelocity() const;
+  void SetVelocity(const glm::vec2 &velocity);
  protected:
   Collider collider_;
   glm::vec2 position_;
