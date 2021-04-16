@@ -8,8 +8,6 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 
-#include <ikaruga/gui/ikaruga_app.h>
-
 namespace ikaruga {
 class IkarugaApp : public ci::app::App {
  public:
