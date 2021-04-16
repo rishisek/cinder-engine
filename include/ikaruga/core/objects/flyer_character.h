@@ -16,9 +16,11 @@ class FlyerCharacter : public game_engine::CharacterObject {
   void Update() override;
   Projectile Shoot();
   void ToggleProjectileType();
- private:
+ protected:
+  const double kNormalAngle = -M_PI / 2.0;
+
   std::vector<ProjectileType> projectile_types_;
-  double shoot_angle_radians_ = - M_PI / 2.0;
+  double shoot_angle_radians_ = kNormalAngle;
   size_t current_projectile_type_index_ = 0;
 };
 }

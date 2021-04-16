@@ -8,8 +8,14 @@
 namespace ikaruga {
 class Player : public FlyerCharacter {
  public:
-  Player(const std::vector<ProjectileType> &projectile_types,
-         const glm::vec2 &position,
-         const glm::vec2 &velocity);
+  Player(const glm::vec2 &position,
+         const glm::vec2 &velocity,
+         const std::vector<ProjectileType> &projectile_types,
+         double view_angle_radians = M_PI / 3.0);
+  void TiltAimLeft();
+  void TiltAimRight();
+ private:
+  const double kAimStep = 0.1;
+  double view_angle_radians_;
 };
 }
