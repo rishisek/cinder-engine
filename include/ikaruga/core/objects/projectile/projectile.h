@@ -7,7 +7,7 @@
 #include "projectile_type.h"
 
 namespace ikaruga {
-class Projectile : game_engine::GameObject {
+class Projectile : public game_engine::GameObject {
  public:
  private:
   ProjectileType type_;
