@@ -18,7 +18,7 @@ class FlyerCharacter : public game_engine::CharacterObject {
   void ToggleProjectileType();
  private:
   std::vector<ProjectileType> projectile_types_;
-  double shoot_angle_radians_;
+  double shoot_angle_radians_ = - M_PI / 2.0;
   size_t current_projectile_type_index_ = 0;
 };
 }

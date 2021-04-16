@@ -12,7 +12,7 @@ void FlyerCharacter::Update() {
 Projectile FlyerCharacter::Shoot() {
   return Projectile(projectile_types_[current_projectile_type_index_],
                     position_,
-                    glm::vec2(0, 1));
+                    glm::vec2(cos(shoot_angle_radians_), sin(shoot_angle_radians_)));
 }
 
 void FlyerCharacter::ToggleProjectileType() {
