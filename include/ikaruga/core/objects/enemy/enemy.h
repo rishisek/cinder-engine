@@ -9,6 +9,7 @@
 namespace ikaruga {
 class Enemy : public game_engine::CharacterObject {
  public:
+  Enemy(EnemyType const& enemy_type);
   void Update() override;
  private:
 };
