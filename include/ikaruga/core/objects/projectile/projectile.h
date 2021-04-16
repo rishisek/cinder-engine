@@ -14,6 +14,8 @@ class Projectile : public game_engine::GameObject {
              glm::vec2 velocity);
   
   void Update() override;
+
+  const ProjectileType &GetType() const;
  private:
   ProjectileType type_;
 };

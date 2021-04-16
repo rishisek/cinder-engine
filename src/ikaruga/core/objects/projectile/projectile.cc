@@ -13,4 +13,8 @@ Projectile::Projectile(ProjectileType type,
 void Projectile::Update() {
   UpdatePosition();
 }
+
+const ProjectileType &Projectile::GetType() const {
+  return type_;
+}
 }
