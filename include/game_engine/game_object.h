@@ -10,6 +10,7 @@
 namespace game_engine {
 class GameObject {
  public:
+  GameObject(const glm::vec2 &position, const glm::vec2 &velocity);
   bool Collides(GameObject const &other);
   virtual void Update() = 0;
 

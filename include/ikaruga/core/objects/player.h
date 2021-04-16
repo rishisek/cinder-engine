@@ -7,6 +7,9 @@
 
 namespace ikaruga {
 class Player : public FlyerCharacter {
- 
+ public:
+  Player(const std::vector<ProjectileType> &projectile_types,
+         const glm::vec2 &position,
+         const glm::vec2 &velocity);
 };
 }

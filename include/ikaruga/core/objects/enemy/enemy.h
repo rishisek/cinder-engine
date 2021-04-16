@@ -9,7 +9,10 @@
 namespace ikaruga {
 class Enemy : public FlyerCharacter {
  public:
-  Enemy(EnemyType const& enemy_type);
+  Enemy(const EnemyType &enemy_type,
+        const std::vector<ProjectileType> &projectile_types,
+        const glm::vec2 &position,
+        const glm::vec2 &velocity);
   void Update() override;
  private:
 };

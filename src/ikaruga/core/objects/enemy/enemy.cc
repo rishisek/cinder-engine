@@ -6,7 +6,11 @@
 #include "ikaruga/core/objects/enemy/enemy_type.h"
 
 namespace ikaruga {
-Enemy::Enemy(const EnemyType &enemy_type) {
+Enemy::Enemy(const EnemyType &enemy_type,
+             const std::vector<ProjectileType> &projectile_types,
+             const glm::vec2 &position,
+             const glm::vec2 &velocity) 
+             : FlyerCharacter(projectile_types, position, velocity){
   max_health_ = enemy_type.GetMaxHealth();
 }
 

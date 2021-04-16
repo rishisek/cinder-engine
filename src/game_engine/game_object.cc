@@ -6,7 +6,7 @@
 
 namespace game_engine {
 void GameObject::UpdatePosition() {
-  position_+=velocity_;
+  position_ += velocity_;
 }
 
 bool GameObject::Collides(const GameObject &other) {
@@ -28,4 +28,7 @@ const glm::vec2 &GameObject::GetVelocity() const {
 void GameObject::SetVelocity(const glm::vec2 &velocity) {
   velocity_ = velocity;
 }
+
+GameObject::GameObject(const glm::vec2 &position, const glm::vec2 &velocity)
+    : position_(position), velocity_(velocity) {}
 }
