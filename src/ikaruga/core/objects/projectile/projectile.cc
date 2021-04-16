@@ -6,12 +6,11 @@
 
 namespace ikaruga {
 Projectile::Projectile(ProjectileType type,
-                       glm::vec2 position,
-                       glm::vec2 velocity)
-    : type_(type), GameObject(position, velocity) {}
+                       game_engine::PhysicsComponent *physics_component)
+    : type_(type), GameObject(physics_component) {}
 
 void Projectile::Update() {
-  UpdatePosition();
+  GameObject::Update();
 }
 
 const ProjectileType &Projectile::GetType() const {

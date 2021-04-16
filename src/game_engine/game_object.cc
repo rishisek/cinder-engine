@@ -3,32 +3,17 @@
 //
 
 #include "game_engine/game_object.h"
+#include "game_engine/physics_component.h"
 
 namespace game_engine {
-void GameObject::UpdatePosition() {
-  position_ += velocity_;
+GameObject::GameObject(PhysicsComponent *physics_component)
+    : physics_component_(physics_component) {}
+
+PhysicsComponent *GameObject::GetPhysicsComponent() const {
+  return physics_component_;
 }
 
-bool GameObject::Collides(const GameObject &other) {
-  return collider_.IsCollision(other.collider_);
+void GameObject::Update() {
+  physics_component_->Update();
 }
-
-const glm::vec2 &GameObject::GetPosition() const {
-  return position_;
-}
-
-void GameObject::SetPosition(const glm::vec2 &position) {
-  position_ = position;
-}
-
-const glm::vec2 &GameObject::GetVelocity() const {
-  return velocity_;
-}
-
-void GameObject::SetVelocity(const glm::vec2 &velocity) {
-  velocity_ = velocity;
-}
-
-GameObject::GameObject(const glm::vec2 &position, const glm::vec2 &velocity)
-    : position_(position), velocity_(velocity) {}
 }

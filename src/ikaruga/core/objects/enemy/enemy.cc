@@ -3,18 +3,16 @@
 //
 
 #include "ikaruga/core/objects/enemy/enemy.h"
-#include "ikaruga/core/objects/enemy/enemy_type.h"
+#include <game_engine/physics_component.h>
 
 namespace ikaruga {
-Enemy::Enemy(const EnemyType &enemy_type,
-             const std::vector<ProjectileType> &projectile_types,
-             const glm::vec2 &position,
-             const glm::vec2 &velocity) 
-             : FlyerCharacter(projectile_types, position, velocity){
-  max_health_ = enemy_type.GetMaxHealth();
-}
+
+Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
+             const std::vector<ProjectileType> &projectile_types)
+    : ProjectileShooter(projectile_types),
+      game_engine::CharacterObject(physics_component) {}
 
 void Enemy::Update() {
-  UpdatePosition();
+  physics_component_->Update();
 }
 }

@@ -5,24 +5,19 @@
 #pragma once
 
 #include <glm/vec2.hpp>
-#include "collider.h"
 
 namespace game_engine {
+class PhysicsComponent;
+class InputComponent;
+
 class GameObject {
  public:
-  GameObject(const glm::vec2 &position, const glm::vec2 &velocity);
-  bool Collides(GameObject const &other);
-  virtual void Update() = 0;
 
-  const glm::vec2 &GetPosition() const;
-  void SetPosition(const glm::vec2 &position);
-  const glm::vec2 &GetVelocity() const;
-  void SetVelocity(const glm::vec2 &velocity);
+  GameObject(PhysicsComponent *physics_component);
+  virtual void Update(); 
+  
+  PhysicsComponent *GetPhysicsComponent() const;
  protected:
-  Collider collider_;
-  glm::vec2 position_;
-  glm::vec2 velocity_;
-
-  void UpdatePosition();
+  PhysicsComponent* physics_component_;
 };
 }

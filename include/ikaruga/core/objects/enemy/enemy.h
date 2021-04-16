@@ -3,16 +3,14 @@
 //
 #pragma once
 
-#include <ikaruga/core/objects/flyer_character.h>
+#include <ikaruga/core/objects/projectile/projectile_shooter.h>
 #include "enemy_type.h"
 
 namespace ikaruga {
-class Enemy : public FlyerCharacter {
+class Enemy : public ProjectileShooter, public game_engine::CharacterObject {
  public:
-  Enemy(const EnemyType &enemy_type,
-        const std::vector<ProjectileType> &projectile_types,
-        const glm::vec2 &position,
-        const glm::vec2 &velocity);
+  Enemy(game_engine::PhysicsComponent *physics_component,
+        const std::vector<ProjectileType> &projectile_types);
   void Update() override;
  private:
 };

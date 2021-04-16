@@ -5,7 +5,7 @@
 #include "game_engine/character_object.h"
 
 namespace game_engine {
-CharacterObject::CharacterObject(const glm::vec2 &position,
-                                 const glm::vec2 &velocity)
-    : GameObject(position, velocity) {}
+
+CharacterObject::CharacterObject(PhysicsComponent *physics_component)
+    : GameObject(physics_component) {}
 }

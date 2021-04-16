@@ -9,8 +9,7 @@ namespace game_engine {
 class CharacterObject : public GameObject {
  public:
  protected:
-  CharacterObject(const glm::vec2 &position,
-                  const glm::vec2 &velocity);
+  CharacterObject(PhysicsComponent *physics_component);
   float max_health_;
   float health_;
 };

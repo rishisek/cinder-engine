@@ -8,13 +8,11 @@
 #include <ikaruga/core/objects/projectile/projectile.h>
 
 namespace ikaruga {
-class FlyerCharacter : public game_engine::CharacterObject {
+class ProjectileShooter {
  public:
-  FlyerCharacter(const std::vector<ProjectileType> &projectile_types,
-                 const glm::vec2 &position,
-                 const glm::vec2 &velocity);
-  void Update() override;
-  Projectile Shoot();
+  ProjectileShooter(const std::vector<ProjectileType> &projectile_types);
+  void UpdateCooldowns();
+  Projectile Shoot(game_engine::GameObject const &game_object);
   void ToggleProjectileType();
  protected:
   const double kNormalAngle = -M_PI / 2.0;

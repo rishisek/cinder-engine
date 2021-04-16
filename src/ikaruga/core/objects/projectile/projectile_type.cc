@@ -8,7 +8,11 @@ namespace ikaruga {
 ProjectileType::ProjectileType(float radius,
                                const cinder::ColorT<float> &color,
                                int cooldown)
-    : radius_(radius), color_(color), kCooldown(cooldown) {}
+    : radius_(radius),
+      color_(color),
+      kCooldown(cooldown),
+      current_cooldown_(0) {
+}
 
 float ProjectileType::GetRadius() const {
   return radius_;
