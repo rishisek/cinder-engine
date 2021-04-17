@@ -14,7 +14,7 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
   for (auto const&[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
     if (is_pressed) {
       switch (key) {
-        case ci::app::KeyEvent::KEY_RSHIFT:
+        case ci::app::KeyEvent::KEY_t:
           player->ToggleProjectileType();
           break;
         case ci::app::KeyEvent::KEY_RETURN: {
@@ -49,4 +49,5 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
 void PlayerInputComponent::receive(int message) {
 
 }
+
 }
