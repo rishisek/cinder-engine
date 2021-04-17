@@ -6,6 +6,8 @@
 #include "game_object.h"
 
 namespace game_engine {
+class InputComponent;
+
 template<typename T>
 class ControllableObject : public T {
  public:

@@ -8,7 +8,6 @@
 
 namespace game_engine {
 class PhysicsComponent;
-class InputComponent;
 
 class GameObject {
  public:
