@@ -3,7 +3,7 @@
 //
 
 #include "ikaruga/core/objects/enemy/enemy.h"
-#include <game_engine/physics_component.h>
+#include <game_engine/components/physics_component.h>
 
 namespace ikaruga {
 

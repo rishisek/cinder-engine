@@ -2,7 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include "game_engine/physics_component.h"
+#include "game_engine/components/physics_component.h"
 
 namespace game_engine {
 void PhysicsComponent::UpdatePosition() {

@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include <game_engine/physics_component.h>
+#include <game_engine/components/physics_component.h>
 
 namespace ikaruga {
 class PlayerPhysicsComponent : public game_engine::PhysicsComponent {

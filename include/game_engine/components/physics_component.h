@@ -3,8 +3,8 @@
 //
 #pragma once
 
-#include "game_object.h"
-#include "collider.h"
+#include "game_engine/objects/game_object.h"
+#include "game_engine/collision/collider_mesh.h"
 
 namespace game_engine {
 class PhysicsComponent {
@@ -17,7 +17,7 @@ class PhysicsComponent {
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
  protected:
-  Collider collider_;
+  ColliderMesh collider_;
   glm::vec2 position_;
   glm::vec2 velocity_;
 

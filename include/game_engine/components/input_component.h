@@ -4,7 +4,7 @@
 #pragma once
 
 #include <ikaruga/core/objects/world/world.h>
-#include "game_object.h"
+#include "game_engine/objects/game_object.h"
 
 namespace game_engine {
 class InputComponent {

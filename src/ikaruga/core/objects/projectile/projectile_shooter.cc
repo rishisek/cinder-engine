@@ -4,7 +4,7 @@
 
 #include <ikaruga/core/objects/projectile/projectile_physics_component.h>
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
-#include "game_engine/physics_component.h"
+#include "game_engine/components/physics_component.h"
 
 namespace ikaruga {
 void ProjectileShooter::UpdateCooldowns() {

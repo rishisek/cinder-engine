@@ -3,7 +3,7 @@
 //
 
 #include "ikaruga/core/objects/player/player.h"
-#include <game_engine/input_component.h>
+#include <game_engine/components/input_component.h>
 
 namespace ikaruga {
 

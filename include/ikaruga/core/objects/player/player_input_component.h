@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include <game_engine/input_component.h>
+#include <game_engine/components/input_component.h>
 
 namespace ikaruga {
 class PlayerInputComponent : public game_engine::InputComponent {

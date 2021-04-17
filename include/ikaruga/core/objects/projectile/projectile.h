@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include <game_engine/game_object.h>
+#include <game_engine/objects/game_object.h>
 #include "projectile_type.h"
 
 namespace ikaruga {

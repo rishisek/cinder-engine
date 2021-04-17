@@ -5,8 +5,8 @@
 #pragma once
 
 namespace game_engine {
-class Collider {
+class ColliderMesh {
  public:
-  bool IsCollision(Collider const &other);
+  bool IsCollision(ColliderMesh const &other);
 };
 }

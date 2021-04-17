@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include <game_engine/controllable_object.h>
+#include <game_engine/objects/controllable_object.h>
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
 
 namespace ikaruga {
