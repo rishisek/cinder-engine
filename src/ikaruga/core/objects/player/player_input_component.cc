@@ -32,4 +32,8 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
   }
   gui::Keyboard::ClearPressedKeys();
 }
+
+void PlayerInputComponent::receive(int message) {
+
+}
 }

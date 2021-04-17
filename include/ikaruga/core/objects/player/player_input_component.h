@@ -10,5 +10,6 @@ class PlayerInputComponent : public game_engine::InputComponent {
  public:
   void Update(game_engine::GameObject &game_object,
               ikaruga::World &world) override;
+  void receive(int message) override;
 };
 }

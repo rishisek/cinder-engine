@@ -7,4 +7,8 @@
 namespace ikaruga{
 void WorldPhysicsComponent::Update() {
 }
+
+void WorldPhysicsComponent::receive(int message) {
+
+}
 }

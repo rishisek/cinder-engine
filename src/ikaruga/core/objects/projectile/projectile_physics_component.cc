@@ -8,4 +8,8 @@ namespace ikaruga{
 void ProjectilePhysicsComponent::Update() {
   UpdatePosition();
 }
+
+void ProjectilePhysicsComponent::receive(int message) {
+
+}
 }

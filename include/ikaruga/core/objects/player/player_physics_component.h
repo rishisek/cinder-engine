@@ -9,5 +9,7 @@ namespace ikaruga {
 class PlayerPhysicsComponent : public game_engine::PhysicsComponent {
  public:
   void Update() override;
+
+  void receive(int message) override;
 };
 }

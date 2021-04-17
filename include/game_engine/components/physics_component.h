@@ -5,9 +5,10 @@
 
 #include "game_engine/objects/game_object.h"
 #include "game_engine/collision/collider_mesh.h"
+#include "component.h"
 
 namespace game_engine {
-class PhysicsComponent {
+class PhysicsComponent : public Component {
  public:
   bool Collides(GameObject const &other);
   virtual void Update() = 0;
