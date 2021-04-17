@@ -11,7 +11,7 @@ namespace ikaruga {
 void PlayerInputComponent::Update(game_engine::GameObject &game_object,
                                   ikaruga::World &world) {
   Player *player = dynamic_cast<Player *>(&game_object);
-  for (auto &[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
+  for (auto const&[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
     if (is_pressed) {
       switch (key) {
         case ci::app::KeyEvent::KEY_RSHIFT:
