@@ -4,12 +4,12 @@
 
 #include "ikaruga/core/objects/player/player_physics_component.h"
 
-namespace ikaruga{
+namespace ikaruga {
 void PlayerPhysicsComponent::Update() {
   UpdatePosition();
 }
 
 void PlayerPhysicsComponent::receive(int message) {
-
+  
 }
 }
