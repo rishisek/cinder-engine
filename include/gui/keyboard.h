@@ -16,6 +16,6 @@ class Keyboard {
   static void Press(int key);
   static void Release(int key);
  private:
-  static std::map<int, bool> pressed_keys_;
+  static std::map<int, bool> keys_;
 };
 }
