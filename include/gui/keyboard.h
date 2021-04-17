@@ -4,14 +4,18 @@
 #pragma once
 
 #include <vector>
+#include <map>
 
 namespace gui {
 class Keyboard {
  public:
-  static const std::vector<int> &GetPressedKeys();
-  static void AddPressedKey(int key);
-  static void ClearPressedKeys();
+  static const std::map<int, bool> &GetPressedKeys();
+  static bool IsPressed(int key);
+  static bool IsReleased(int key);
+  
+  static void Press(int key);
+  static void Release(int key);
  private:
-  static std::vector<int> pressed_keys_;
+  static std::map<int, bool> pressed_keys_;
 };
 }

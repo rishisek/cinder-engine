@@ -19,8 +19,12 @@ class Player
   void TiltAimLeft();
   void TiltAimRight();
   bool InCooldown();
+  
+  friend class PlayerInputComponent;
+  friend class PlayerPhysicsComponent;
  private:
   const double kAimStep = 0.1;
   double view_angle_radians_;
+  void send(int message);
 };
 }

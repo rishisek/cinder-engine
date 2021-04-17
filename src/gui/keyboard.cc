@@ -5,17 +5,25 @@
 #include <gui/keyboard.h>
 
 namespace gui {
-std::vector<int> Keyboard::pressed_keys_;
+std::map<int, bool> Keyboard::pressed_keys_;
 
-const std::vector<int> &Keyboard::GetPressedKeys() {
+bool Keyboard::IsPressed(int key) {
+  return pressed_keys_.at(key);
+}
+
+bool Keyboard::IsReleased(int key) {
+  return !IsPressed(key);
+}
+
+void Keyboard::Press(int key) {
+  pressed_keys_[key] = true;
+}
+
+void Keyboard::Release(int key) {
+  pressed_keys_[key] = false;
+}
+
+const std::map<int, bool> &Keyboard::GetPressedKeys() {
   return pressed_keys_;
-}
-
-void Keyboard::AddPressedKey(int key) {
-  pressed_keys_.push_back(key);
-}
-
-void Keyboard::ClearPressedKeys() {
-  pressed_keys_.clear();
 }
 }

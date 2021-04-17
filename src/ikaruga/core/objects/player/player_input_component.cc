@@ -10,27 +10,40 @@
 namespace ikaruga {
 void PlayerInputComponent::Update(game_engine::GameObject &game_object,
                                   ikaruga::World &world) {
-  Player* player = dynamic_cast<Player*>(&game_object);
-  for (int key: gui::Keyboard::GetPressedKeys()) {
-    switch (key) {
-      case ci::app::KeyEvent::KEY_RSHIFT:
-        player->ToggleProjectileType();
-        break;
-      case ci::app::KeyEvent::KEY_RETURN: {
-        if (!player->InCooldown()) {
-          world.AddProjectile(player->Shoot(*player));
+  Player *player = dynamic_cast<Player *>(&game_object);
+  for (auto &[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
+    if (is_pressed) {
+      switch (key) {
+        case ci::app::KeyEvent::KEY_RSHIFT:
+          player->ToggleProjectileType();
+          break;
+        case ci::app::KeyEvent::KEY_RETURN: {
+          if (!player->InCooldown()) {
+            world.AddProjectile(player->Shoot(*player));
+          }
+          break;
         }
-        break;
+        case ci::app::KeyEvent::KEY_LEFT:
+          player->TiltAimLeft();
+          break;
+        case ci::app::KeyEvent::KEY_RIGHT:
+          player->TiltAimRight();
+          break;
+        case ci::app::KeyEvent::KEY_w:
+          player->send(1);
+          break;
+        case ci::app::KeyEvent::KEY_a:
+          player->send(2);
+          break;
+        case ci::app::KeyEvent::KEY_s:
+          player->send(3);
+          break;
+        case ci::app::KeyEvent::KEY_d:
+          player->send(4);
+          break;
       }
-      case ci::app::KeyEvent::KEY_LEFT:
-        player->TiltAimLeft();
-        break;
-      case ci::app::KeyEvent::KEY_RIGHT:
-        player->TiltAimRight();
-        break;
     }
   }
-  gui::Keyboard::ClearPressedKeys();
 }
 
 void PlayerInputComponent::receive(int message) {

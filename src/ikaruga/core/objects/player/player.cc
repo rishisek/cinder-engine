@@ -3,6 +3,7 @@
 //
 
 #include "ikaruga/core/objects/player/player.h"
+#include <game_engine/components/physics_component.h>
 #include <game_engine/components/input_component.h>
 
 namespace ikaruga {
@@ -38,5 +39,9 @@ void Player::Update(game_engine::GameObject &world) {
   GameObject::Update(world);
   UpdateCooldowns();
   input_component_->Update(*this, dynamic_cast<World &>(world));
+}
+
+void Player::send(int message) {
+  physics_component_->receive(message);
 }
 }
