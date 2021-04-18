@@ -2,7 +2,7 @@
 
 using ikaruga::IkarugaApp;
 
-void prepareSettings(IkarugaApp::Settings* settings) {
+void prepareSettings(IkarugaApp::Settings *settings) {
   settings->setResizable(false);
 }
 

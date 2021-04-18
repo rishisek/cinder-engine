@@ -19,7 +19,7 @@ class Player
   void TiltAimLeft();
   void TiltAimRight();
   bool InCooldown();
-  
+
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
  private:

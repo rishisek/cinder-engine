@@ -12,7 +12,7 @@ class Keyboard {
   static const std::map<int, bool> &GetPressedKeys();
   static bool IsPressed(int key);
   static bool IsReleased(int key);
-  
+
   static void Press(int key);
   static void Release(int key);
  private:

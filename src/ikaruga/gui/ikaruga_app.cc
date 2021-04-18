@@ -6,9 +6,14 @@
 
 namespace ikaruga {
 
-IkarugaApp::IkarugaApp() {
-
-}
+IkarugaApp::IkarugaApp()
+    : player_(
+    new PlayerPhysicsComponent(glm::vec2(300, 300), glm::vec2(0, 0)),
+    new PlayerInputComponent(),
+    std::vector<ProjectileType>{
+        ProjectileType(5, ci::Color(0, 1, 0), 50),
+        ProjectileType(5, ci::Color(1, 0, 0), 25)
+    }), world_(new WorldPhysicsComponent()) {}
 
 void IkarugaApp::draw() {
   ci::Color background_color("black");

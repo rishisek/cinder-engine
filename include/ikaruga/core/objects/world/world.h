@@ -8,7 +8,7 @@
 namespace ikaruga {
 class World : public game_engine::GameObject {
  public:
-  World(game_engine::PhysicsComponent* physics_component);
+  World(game_engine::PhysicsComponent *physics_component);
   const std::vector<Projectile> &GetProjectiles() const;
   void Update(game_engine::GameObject &world) override;
   void AddProjectile(const Projectile &projectile);

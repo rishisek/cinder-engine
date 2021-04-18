@@ -4,7 +4,7 @@
 
 #include "ikaruga/core/objects/world/world_physics_component.h"
 
-namespace ikaruga{
+namespace ikaruga {
 void WorldPhysicsComponent::Update() {
 }
 

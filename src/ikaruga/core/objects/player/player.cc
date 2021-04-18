@@ -14,7 +14,9 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
                double view_angle_radians)
     : view_angle_radians_(view_angle_radians),
       ProjectileShooter(projectile_types),
-      game_engine::ControllableObject<game_engine::CharacterObject>(physics_component, input_component) {}
+      game_engine::ControllableObject<game_engine::CharacterObject>(
+          physics_component,
+          input_component) {}
 
 void Player::TiltAimLeft() {
   shoot_angle_radians_ -= kAimStep;
