@@ -17,7 +17,7 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
         case ci::app::KeyEvent::KEY_t: {
           player->ToggleProjectileType();
 
-          // TODO: find a better fix for this.
+          // TODO: move this to app update as gui::Keyboard::ReleaseAll()
           gui::Keyboard::Release(ci::app::KeyEvent::KEY_t);
           break;
         }
