@@ -14,9 +14,13 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
   for (auto const&[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
     if (is_pressed) {
       switch (key) {
-        case ci::app::KeyEvent::KEY_t:
+        case ci::app::KeyEvent::KEY_t: {
           player->ToggleProjectileType();
+
+          // TODO: find a better fix for this.
+          gui::Keyboard::Release(ci::app::KeyEvent::KEY_t);
           break;
+        }
         case ci::app::KeyEvent::KEY_RETURN: {
           if (!player->InCooldown()) {
             world.AddProjectile(player->Shoot(*player));
