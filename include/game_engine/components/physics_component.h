@@ -10,6 +10,8 @@
 namespace game_engine {
 class PhysicsComponent : public Component {
  public:
+  PhysicsComponent(const glm::vec2 &position = glm::vec2(),
+                   const glm::vec2 &velocity = glm::vec2());
   bool Collides(GameObject const &other);
   virtual void Update() = 0;
 
@@ -17,8 +19,9 @@ class PhysicsComponent : public Component {
   void SetPosition(const glm::vec2 &position);
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
+
  protected:
-  ColliderMesh collider_;
+  ColliderMesh collider_mesh_;
   glm::vec2 position_;
   glm::vec2 velocity_;
 

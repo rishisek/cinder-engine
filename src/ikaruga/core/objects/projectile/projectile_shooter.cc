@@ -15,10 +15,11 @@ void ProjectileShooter::UpdateCooldowns() {
 Projectile ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
   projectile_types_[current_projectile_type_index_].StartCooldown();
   game_engine::PhysicsComponent
-      *projectile_physics_component = new ProjectilePhysicsComponent();
-  projectile_physics_component->SetPosition(game_object.GetPhysicsComponent()->GetPosition());
-  projectile_physics_component->SetVelocity(glm::vec2(cos(shoot_angle_radians_),
-                                                      sin(shoot_angle_radians_)));
+      *projectile_physics_component =
+      new ProjectilePhysicsComponent(game_object.GetPhysicsComponent()->GetPosition(),
+                                     glm::vec2(cos(shoot_angle_radians_),
+                                               sin(shoot_angle_radians_)),
+                                     projectile_types_[current_projectile_type_index_].GetRadius());
   return Projectile(projectile_types_[current_projectile_type_index_],
                     projectile_physics_component);
 }

@@ -2,6 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 
+#include <game_engine/collision/circle_collider.h>
 #include "ikaruga/core/objects/player/player_physics_component.h"
 
 namespace ikaruga {
@@ -24,5 +25,11 @@ void PlayerPhysicsComponent::receive(int message) {
       position_ += glm::vec2(1, 0);
       break;
   }
+}
+
+PlayerPhysicsComponent::PlayerPhysicsComponent(const glm::vec2 &position,
+                                               const glm::vec2 &velocity)
+    : PhysicsComponent(position, velocity) {
+
 }
 }

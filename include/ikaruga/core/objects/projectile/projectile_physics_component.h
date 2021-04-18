@@ -10,5 +10,10 @@ class ProjectilePhysicsComponent : public game_engine::PhysicsComponent {
  public:
   void Update() override;
   void receive(int message) override;
+  ProjectilePhysicsComponent(const glm::vec2 &position,
+                             const glm::vec2 &velocity,
+                             double radius);
+ private:
+  double radius_;
 };
 }
