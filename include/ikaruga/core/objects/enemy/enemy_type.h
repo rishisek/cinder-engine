@@ -3,7 +3,7 @@
 //
 #pragma once
 
-namespace ikaruga {
+namespace ikaruga::objects::enemy {
 class EnemyType {
  public:
   float GetMaxHealth() const;

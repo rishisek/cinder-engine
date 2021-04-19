@@ -2,9 +2,9 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include <gui/keyboard.h>
+#include <interface/keyboard.h>
 
-namespace gui {
+namespace interface {
 std::map<int, bool> Keyboard::keys_;
 std::vector<int> Keyboard::toggles_;
 

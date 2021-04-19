@@ -5,7 +5,7 @@
 
 #include "cinder/Color.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 class ProjectileType {
  public:
   ProjectileType(float radius,

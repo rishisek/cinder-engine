@@ -2,10 +2,9 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include "ikaruga/core/objects/world/world.h"
+#include "ikaruga/core/world/world.h"
 
-namespace ikaruga {
-
+namespace ikaruga::world {
 const std::vector<Projectile> &World::GetProjectiles() const {
   return projectiles_;
 }

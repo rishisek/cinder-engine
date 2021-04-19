@@ -3,7 +3,7 @@
 //
 #pragma once
 
-#include <ikaruga/core/objects/world/world.h>
+#include <ikaruga/core/world/world.h>
 #include "game_engine/objects/game_object.h"
 #include "component.h"
 
@@ -13,7 +13,7 @@ class InputComponent : public Component {
   virtual ~InputComponent() = 0;
 
   virtual void Update(game_engine::GameObject &game_object,
-                      ikaruga::World &world) = 0;
+                      game_engine::GameWorld &game_world) = 0;
 
  protected:
   InputComponent() = default;

@@ -5,8 +5,7 @@
 #include "ikaruga/core/objects/enemy/enemy.h"
 #include <game_engine/components/physics_component.h>
 
-namespace ikaruga {
-
+namespace ikaruga::objects::enemy {
 Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
              const std::vector<ProjectileType> &projectile_types)
     : ProjectileShooter(projectile_types),

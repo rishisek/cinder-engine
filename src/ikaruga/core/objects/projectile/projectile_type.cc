@@ -4,7 +4,7 @@
 
 #include "ikaruga/core/objects/projectile/projectile_type.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 ProjectileType::ProjectileType(float radius,
                                const cinder::ColorT<float> &color,
                                int cooldown)

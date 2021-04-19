@@ -2,18 +2,11 @@
 // Created by rishi on 15-04-2021.
 //
 
-#include "ikaruga/gui/ikaruga_app.h"
+#include "ikaruga/app/ikaruga_app.h"
 
 namespace ikaruga {
 
-IkarugaApp::IkarugaApp()
-    : player_(
-    new PlayerPhysicsComponent(glm::vec2(300, 300), glm::vec2(0, 0)),
-    new PlayerInputComponent(),
-    std::vector<ProjectileType>{
-        ProjectileType(5, ci::Color(0, 1, 0), 50),
-        ProjectileType(5, ci::Color(1, 0, 0), 25)
-    }), world_(new WorldPhysicsComponent()) {}
+IkarugaApp::IkarugaApp() {}
 
 void IkarugaApp::draw() {
   ci::Color background_color("black");

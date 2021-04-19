@@ -5,7 +5,7 @@
 #include <game_engine/collision/circle_collider.h>
 #include "ikaruga/core/objects/player/player_physics_component.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::player {
 void PlayerPhysicsComponent::Update() {
   PhysicsComponent::Update();
 }

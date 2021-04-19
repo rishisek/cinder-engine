@@ -6,7 +6,8 @@
 #include <ikaruga/core/objects/projectile/projectile.h>
 #include <game_engine/game_world.h>
 
-namespace ikaruga {
+namespace ikaruga::world {
+using objects::projectile::Projectile;
 class World : public game_engine::GameWorld {
  public:
   World(game_engine::PhysicsComponent *physics_component);

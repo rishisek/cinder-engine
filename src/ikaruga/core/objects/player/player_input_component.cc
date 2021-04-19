@@ -4,24 +4,25 @@
 
 #include <ikaruga/core/objects/player/player.h>
 #include "ikaruga/core/objects/player/player_input_component.h"
-#include <gui/keyboard.h>
+#include <interface/keyboard.h>
 #include <cinder/app/KeyEvent.h>
 
-namespace ikaruga {
+namespace ikaruga::objects::player {
 void PlayerInputComponent::Update(game_engine::GameObject &game_object,
-                                  ikaruga::World &world) {
+                                  game_engine::GameWorld &game_world) {
   Player *player = dynamic_cast<Player *>(&game_object);
-  for (auto const&[key, is_pressed]: gui::Keyboard::GetPressedKeys()) {
+  world::World *world = dynamic_cast<world::World *>(&game_world);
+  for (auto const&[key, is_pressed]: interface::Keyboard::GetPressedKeys()) {
     if (is_pressed) {
       switch (key) {
         case ci::app::KeyEvent::KEY_RSHIFT: {
           player->ToggleProjectileType();
-          gui::Keyboard::RegisterToggle(ci::app::KeyEvent::KEY_RSHIFT);
+          interface::Keyboard::RegisterToggle(ci::app::KeyEvent::KEY_RSHIFT);
           break;
         }
         case ci::app::KeyEvent::KEY_RETURN: {
           if (!player->InCooldown()) {
-            world.AddProjectile(player->Shoot(*player));
+            world->AddProjectile(player->Shoot(*player));
           }
           break;
         }

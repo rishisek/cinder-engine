@@ -5,7 +5,7 @@
 
 #include <game_engine/components/physics_component.h>
 
-namespace ikaruga {
+namespace ikaruga::objects::player {
 class PlayerPhysicsComponent : public game_engine::PhysicsComponent {
  public:
   PlayerPhysicsComponent(const glm::vec2 &position,

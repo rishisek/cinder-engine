@@ -3,10 +3,10 @@
 //
 
 #include <catch2/catch.hpp>
-#include <gui/keyboard.h>
+#include <interface/keyboard.h>
 
-namespace gui {
-TEST_CASE("Keyboard", "[gui][keyboard]") {
+namespace interface {
+TEST_CASE("Keyboard", "[interface][keyboard]") {
   SECTION("Key press") {
     Keyboard::Press(1);
     REQUIRE(Keyboard::IsPressed(1));

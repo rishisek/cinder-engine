@@ -6,8 +6,7 @@
 #include <game_engine/components/physics_component.h>
 #include <game_engine/components/input_component.h>
 
-namespace ikaruga {
-
+namespace ikaruga::objects::player {
 Player::Player(game_engine::PhysicsComponent *physics_component,
                game_engine::InputComponent *input_component,
                const std::vector<ProjectileType> &projectile_types,
@@ -40,7 +39,7 @@ bool Player::InCooldown() {
 void Player::Update(game_engine::GameWorld &world) {
   GameObject::Update(world);
   UpdateCooldowns();
-  input_component_->Update(*this, dynamic_cast<World &>(world));
+  input_component_->Update(*this, dynamic_cast<world::World &>(world));
 }
 
 void Player::send(int message) {

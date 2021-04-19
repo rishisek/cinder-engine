@@ -6,7 +6,11 @@
 #include <game_engine/objects/controllable_object.h>
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::player {
+
+using projectile::ProjectileShooter;
+using projectile::ProjectileType;
+
 class Player
     : public ProjectileShooter,
       public game_engine::ControllableObject<game_engine::CharacterObject> {

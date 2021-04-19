@@ -7,7 +7,7 @@
 #include <ikaruga/core/objects/projectile/projectile_type.h>
 #include <ikaruga/core/objects/projectile/projectile.h>
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 class ProjectileShooter {
  public:
   ProjectileShooter(const std::vector<ProjectileType> &projectile_types);

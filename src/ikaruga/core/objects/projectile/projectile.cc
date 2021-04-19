@@ -4,7 +4,7 @@
 
 #include "ikaruga/core/objects/projectile/projectile.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 Projectile::Projectile(ProjectileType type,
                        game_engine::PhysicsComponent *physics_component)
     : type_(type), GameObject(physics_component) {}

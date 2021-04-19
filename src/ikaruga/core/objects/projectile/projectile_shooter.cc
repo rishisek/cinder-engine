@@ -5,7 +5,7 @@
 #include <ikaruga/core/objects/projectile/projectile_physics_component.h>
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 void ProjectileShooter::UpdateCooldowns() {
   for (ProjectileType &projectile_type: projectile_types_) {
     projectile_type.DecrementCurrentCooldown();

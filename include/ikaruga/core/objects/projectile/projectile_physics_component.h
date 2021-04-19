@@ -5,7 +5,7 @@
 
 #include <game_engine/components/physics_component.h>
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 class ProjectilePhysicsComponent : public game_engine::PhysicsComponent {
  public:
   void Update() override;

@@ -6,7 +6,7 @@
 #include <fstream>
 #include <sstream>
 
-namespace gui {
+namespace interface {
 class Logger {
  public:
   static void Log(std::string message);

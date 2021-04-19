@@ -51,11 +51,11 @@ include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 file(GLOB_RECURSE GAME_ENGINE_SOURCE_FILES src/game_engine/*.cc)
 
-file(GLOB_RECURSE GUI_SOURCE_FILES src/gui/*.cc)
+file(GLOB_RECURSE GUI_SOURCE_FILES src/interface/*.cc)
 
 file(GLOB_RECURSE IKARUGA_CORE_SOURCE_FILES src/ikaruga/core/*.cc)
 
-file(GLOB_RECURSE IKARUGA_GUI_SOURCE_FILES src/ikaruga/gui/*.cc)
+file(GLOB_RECURSE IKARUGA_GUI_SOURCE_FILES src/ikaruga/app/*.cc)
 
 list(APPEND SOURCE_FILES ${GAME_ENGINE_SOURCE_FILES} ${GUI_SOURCE_FILES} ${IKARUGA_CORE_SOURCE_FILES} ${IKARUGA_GUI_SOURCE_FILES})
 

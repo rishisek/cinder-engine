@@ -4,7 +4,7 @@
 
 #include "ikaruga/core/objects/enemy/enemy_type.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::enemy {
 float EnemyType::GetMaxHealth() const {
   return max_health_;
 }

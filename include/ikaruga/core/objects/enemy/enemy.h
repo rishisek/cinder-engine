@@ -7,7 +7,11 @@
 #include <game_engine/game_world.h>
 #include "enemy_type.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::enemy {
+
+using projectile::ProjectileShooter;
+using projectile::ProjectileType;
+
 class Enemy : public ProjectileShooter, public game_engine::CharacterObject {
  public:
   Enemy(game_engine::PhysicsComponent *physics_component,

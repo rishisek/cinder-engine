@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 
-namespace gui {
+namespace interface {
 class Keyboard {
  public:
   static const std::map<int, bool> &GetPressedKeys();

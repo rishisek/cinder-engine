@@ -7,7 +7,7 @@
 #include <game_engine/game_world.h>
 #include "projectile_type.h"
 
-namespace ikaruga {
+namespace ikaruga::objects::projectile {
 class Projectile : public game_engine::GameObject {
  public:
   Projectile(ProjectileType type,
