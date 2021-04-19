@@ -8,6 +8,7 @@
 namespace game_engine {
 class CharacterObject : public GameObject {
  public:
+  
  protected:
   CharacterObject(PhysicsComponent *physics_component);
   float max_health_;

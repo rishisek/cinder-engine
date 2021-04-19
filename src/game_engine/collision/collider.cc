@@ -5,4 +5,7 @@
 #include "game_engine/collision/collider.h"
 
 namespace game_engine {
+Collider::~Collider() {
+
+}
 }

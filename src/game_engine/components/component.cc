@@ -3,3 +3,9 @@
 //
 
 #include "game_engine/components/component.h"
+
+namespace game_engine {
+Component::~Component() {
+
+}
+}

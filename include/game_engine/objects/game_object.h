@@ -12,6 +12,8 @@ class PhysicsComponent;
 class GameObject {
  public:
   GameObject(PhysicsComponent *physics_component);
+  virtual ~GameObject();
+
   virtual void Update(game_engine::GameObject &world);
 
   PhysicsComponent *GetPhysicsComponent() const;

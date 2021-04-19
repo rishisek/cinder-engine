@@ -14,6 +14,7 @@ class PhysicsComponent : public Component {
                    const glm::vec2 &velocity = glm::vec2());
   bool Collides(GameObject const &other);
   virtual void Update() = 0;
+  virtual ~PhysicsComponent();
 
   const glm::vec2 &GetPosition() const;
   void SetPosition(const glm::vec2 &position);
