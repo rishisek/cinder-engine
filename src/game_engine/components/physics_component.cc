@@ -36,4 +36,8 @@ PhysicsComponent::PhysicsComponent(const glm::vec2 &position,
 PhysicsComponent::~PhysicsComponent() {
 
 }
+
+void PhysicsComponent::Update() {
+  UpdatePosition();
+}
 }
