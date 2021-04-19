@@ -19,7 +19,7 @@ class ProjectileType {
  private:
   float radius_;
   cinder::ColorT<float> color_;
-  const int kCooldown;
+  int cooldown_;
   int current_cooldown_;
 };
 }

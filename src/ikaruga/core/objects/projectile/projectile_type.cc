@@ -10,7 +10,7 @@ ProjectileType::ProjectileType(float radius,
                                int cooldown)
     : radius_(radius),
       color_(color),
-      kCooldown(cooldown),
+      cooldown_(cooldown),
       current_cooldown_(0) {
 }
 
@@ -34,6 +34,6 @@ void ProjectileType::DecrementCurrentCooldown() {
 }
 
 void ProjectileType::StartCooldown() {
-  current_cooldown_ = kCooldown;
+  current_cooldown_ = cooldown_;
 }
 }
