@@ -4,9 +4,17 @@
 
 #pragma once
 
+#include <vector>
+#include "collider.h"
+
 namespace game_engine {
 class ColliderMesh {
  public:
   bool IsCollision(ColliderMesh const &other);
+  void AddCollider(game_engine::Collider *collider);
+  const std::vector<Collider *> &GetColliders() const;
+  virtual ~ColliderMesh();
+ private:
+  std::vector<Collider *> colliders_;
 };
 }
