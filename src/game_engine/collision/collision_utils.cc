@@ -8,6 +8,7 @@
 namespace game_engine {
 bool CollisionUtils::IsCollision(game_engine::CircleCollider const *circle,
                                  game_engine::BoxCollider const *box) {
+//  Referenced from Jeffery Thompson's guide: https://bit.ly/3x0dCjs
   glm::vec2 closest_box_vertex = circle->position_;
 
   if (circle->position_.x < box->position_.x) {
@@ -35,5 +36,10 @@ bool CollisionUtils::IsCollision(const CircleCollider *circle1,
                                  const CircleCollider *circle2) {
   return glm::distance(circle1->position_, circle2->position_)
       <= circle1->radius_ + circle2->radius_;
+}
+
+bool CollisionUtils::IsCollision(const BoxCollider *box,
+                                 const CircleCollider *circle) {
+  return IsCollision(circle, box);
 }
 }

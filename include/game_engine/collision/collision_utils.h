@@ -9,6 +9,7 @@ namespace game_engine {
 class CollisionUtils {
  public:
   static bool IsCollision(CircleCollider const *circle, BoxCollider const *box);
+  static bool IsCollision(BoxCollider const *box, CircleCollider const *circle);
   static bool IsCollision(CircleCollider const *circle1,
                           CircleCollider const *circle2);
 };

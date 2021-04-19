@@ -4,6 +4,7 @@
 
 #include <catch2/catch.hpp>
 #include <game_engine/collision/circle_collider.h>
+#include <game_engine/collision/box_collider.h>
 
 namespace game_engine {
 TEST_CASE("Collision", "[game_engine][collision][physics]") {
@@ -37,6 +38,47 @@ TEST_CASE("Collision", "[game_engine][collision][physics]") {
       REQUIRE_FALSE(circle2->IsCollision(*circle1));
       delete circle1;
       delete circle2;
+    }
+  }
+
+  SECTION("Circle and Box") {
+    Collider *circle;
+    Collider *box;
+
+    SECTION("Circle and box overlap") {
+      circle = new CircleCollider(glm::vec2(0, 0), 5);
+      box = new BoxCollider(glm::vec2(2, 2), 5, 5);
+      REQUIRE(circle->IsCollision(*box));
+      REQUIRE(box->IsCollision(*circle));
+      delete circle;
+      delete box;
+    }
+
+    SECTION("Box edge touches circle at circumference") {
+      circle = new CircleCollider(glm::vec2(0, 0), 5);
+      box = new BoxCollider(glm::vec2(5, -2), 5, 5);
+      REQUIRE(circle->IsCollision(*box));
+      REQUIRE(box->IsCollision(*circle));
+      delete circle;
+      delete box;
+    }
+
+    SECTION("Box corner touches circle at circumference") {
+      circle = new CircleCollider(glm::vec2(0, 0), 5);
+      box = new BoxCollider(glm::vec2(5, 0), 5, 5);
+      REQUIRE(circle->IsCollision(*box));
+      REQUIRE(box->IsCollision(*circle));
+      delete circle;
+      delete box;
+    }
+
+    SECTION("Circle and box are not in contact") {
+      circle = new CircleCollider(glm::vec2(0, 0), 5);
+      box = new BoxCollider(glm::vec2(20, 20), 5, 5);
+      REQUIRE_FALSE(circle->IsCollision(*box));
+      REQUIRE_FALSE(box->IsCollision(*circle));
+      delete circle;
+      delete box;
     }
   }
 }
