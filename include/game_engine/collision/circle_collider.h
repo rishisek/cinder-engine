@@ -11,6 +11,8 @@ class CircleCollider : public Collider {
  public:
   CircleCollider(const glm::vec2 &position, double radius);
   bool IsCollision(const Collider &other) override;
+
+  friend class CollisionUtils;
  private:
   glm::vec2 position_;
   glm::vec2 velocity_;
