@@ -6,8 +6,10 @@
 namespace game_engine {
 class Component {
  public:
-  virtual ~Component();
+  virtual ~Component() = 0;
   // TODO: messaging without magic numbers
   virtual void receive(int message) = 0;
+ protected:
+  Component() = default;
 };
 }

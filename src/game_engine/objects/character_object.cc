@@ -8,4 +8,8 @@ namespace game_engine {
 
 CharacterObject::CharacterObject(PhysicsComponent *physics_component)
     : GameObject(physics_component) {}
+
+CharacterObject::~CharacterObject() {
+
+}
 }

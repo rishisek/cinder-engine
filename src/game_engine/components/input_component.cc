@@ -3,3 +3,7 @@
 //
 
 #include "game_engine/components/input_component.h"
+
+namespace game_engine {
+InputComponent::~InputComponent() {}
+}

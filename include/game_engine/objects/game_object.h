@@ -11,13 +11,13 @@ class PhysicsComponent;
 
 class GameObject {
  public:
-  GameObject(PhysicsComponent *physics_component);
   virtual ~GameObject() = 0;
 
   virtual void Update(game_engine::GameObject &world);
 
   PhysicsComponent *GetPhysicsComponent() const;
  protected:
+  GameObject(PhysicsComponent *physics_component);
   PhysicsComponent *physics_component_;
 };
 }

@@ -10,9 +10,12 @@
 namespace game_engine {
 class InputComponent : public Component {
  public:
-  virtual ~InputComponent() {}
+  virtual ~InputComponent() = 0;
 
   virtual void Update(game_engine::GameObject &game_object,
                       ikaruga::World &world) = 0;
+
+ protected:
+  InputComponent() = default;
 };
 }

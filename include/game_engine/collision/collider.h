@@ -6,9 +6,10 @@
 namespace game_engine {
 class Collider {
  public:
-  virtual ~Collider();
+  virtual ~Collider() = 0;
 
   virtual bool IsCollision(Collider const &other) = 0;
- private:
+ protected:
+  Collider() = default;
 };
 }

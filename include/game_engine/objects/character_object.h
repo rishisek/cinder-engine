@@ -8,7 +8,7 @@
 namespace game_engine {
 class CharacterObject : public GameObject {
  public:
-  
+  virtual ~CharacterObject() = 0;
  protected:
   CharacterObject(PhysicsComponent *physics_component);
   float max_health_;
