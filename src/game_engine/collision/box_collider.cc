@@ -34,6 +34,6 @@ double BoxCollider::GetHeight() const {
 }
 
 BoxCollider::BoxCollider(const glm::vec2 &position, double width, double height)
-    : position_(position), width_(width), height_(height) {}
+    : Collider(position), width_(width), height_(height) {}
 
 }

@@ -18,7 +18,6 @@ class BoxCollider : public Collider {
 
   friend class CollisionUtils;
  private:
-  glm::vec2 position_;
   double width_;
   double height_;
 };

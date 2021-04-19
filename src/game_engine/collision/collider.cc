@@ -8,4 +8,10 @@ namespace game_engine {
 Collider::~Collider() {
 
 }
+
+void Collider::SetPosition(const glm::vec2 &position) {
+  position_ = position;
+}
+
+Collider::Collider(glm::vec2 position) : position_(position) {}
 }

@@ -14,8 +14,6 @@ class CircleCollider : public Collider {
 
   friend class CollisionUtils;
  private:
-  glm::vec2 position_;
-  glm::vec2 velocity_;
   double radius_;
 };
 }

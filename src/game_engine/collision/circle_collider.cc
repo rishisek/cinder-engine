@@ -21,6 +21,6 @@ bool CircleCollider::IsCollision(const game_engine::Collider &other) {
 }
 
 CircleCollider::CircleCollider(const glm::vec2 &position, double radius)
-    : position_(position), radius_(radius) {}
+    : Collider(position), radius_(radius) {}
 
 }
