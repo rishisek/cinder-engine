@@ -14,7 +14,8 @@ class PhysicsComponent : public Component {
 
   virtual void Update();
 
-  bool Collides(GameObject const &other);
+  bool Collides(GameObject *const other);
+  void AddCollider(Collider *collider);
 
   const glm::vec2 &GetPosition() const;
   void SetPosition(const glm::vec2 &position);

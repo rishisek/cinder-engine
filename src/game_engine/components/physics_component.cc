@@ -9,8 +9,8 @@ void PhysicsComponent::UpdatePosition() {
   position_ += velocity_;
 }
 
-bool PhysicsComponent::Collides(const GameObject &other) {
-  return collider_mesh_.IsCollision(other.GetPhysicsComponent()->collider_mesh_);
+bool PhysicsComponent::Collides(GameObject *const other) {
+  return collider_mesh_.IsCollision(other->GetPhysicsComponent()->collider_mesh_);
 }
 
 const glm::vec2 &PhysicsComponent::GetPosition() const {
@@ -39,5 +39,9 @@ PhysicsComponent::~PhysicsComponent() {
 
 void PhysicsComponent::Update() {
   UpdatePosition();
+}
+
+void PhysicsComponent::AddCollider(Collider *collider) {
+  collider_mesh_.AddCollider(collider);
 }
 }
