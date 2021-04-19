@@ -12,15 +12,16 @@ class PhysicsComponent : public Component {
  public:
   PhysicsComponent(const glm::vec2 &position = glm::vec2(),
                    const glm::vec2 &velocity = glm::vec2());
-  bool Collides(GameObject const &other);
+  virtual ~PhysicsComponent() = 0;
+
   virtual void Update();
-  virtual ~PhysicsComponent();
+
+  bool Collides(GameObject const &other);
 
   const glm::vec2 &GetPosition() const;
   void SetPosition(const glm::vec2 &position);
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
-
  protected:
   ColliderMesh collider_mesh_;
   glm::vec2 position_;
