@@ -23,7 +23,7 @@ class Player
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
  private:
-  const double kAimStep = 0.1;
+  const double kAimStep = 0.01;
   double view_angle_radians_;
   void send(int message);
 };
