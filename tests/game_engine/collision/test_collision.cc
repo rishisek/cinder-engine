@@ -81,5 +81,46 @@ TEST_CASE("Collision", "[game_engine][collision][physics]") {
       delete box;
     }
   }
+
+  SECTION("Box and Box") {
+    Collider *box1;
+    Collider *box2;
+
+    SECTION("Boxess overlap") {
+      box1 = new BoxCollider(glm::vec2(0, 0), 5, 5);
+      box2 = new BoxCollider(glm::vec2(1, 1), 5, 5);
+      REQUIRE(box1->IsCollision(*box2));
+      REQUIRE(box2->IsCollision(*box1));
+      delete box1;
+      delete box2;
+    }
+
+    SECTION("Boxes touch at edges") {
+      box1 = new BoxCollider(glm::vec2(0, 0), 5, 5);
+      box2 = new BoxCollider(glm::vec2(5, 2), 5, 5);
+      REQUIRE(box1->IsCollision(*box2));
+      REQUIRE(box2->IsCollision(*box1));
+      delete box1;
+      delete box2;
+    }
+
+    SECTION("Boxes touch at corners") {
+      box1 = new BoxCollider(glm::vec2(0, 0), 5, 5);
+      box2 = new BoxCollider(glm::vec2(5, 5), 5, 5);
+      REQUIRE(box1->IsCollision(*box2));
+      REQUIRE(box2->IsCollision(*box1));
+      delete box1;
+      delete box2;
+    }
+
+    SECTION("Boxes are not in contact") {
+      box1 = new BoxCollider(glm::vec2(0, 0), 5, 5);
+      box2 = new BoxCollider(glm::vec2(20, 20), 5, 5);
+      REQUIRE_FALSE(box1->IsCollision(*box2));
+      REQUIRE_FALSE(box2->IsCollision(*box1));
+      delete box1;
+      delete box2;
+    }
+  }
 }
 }

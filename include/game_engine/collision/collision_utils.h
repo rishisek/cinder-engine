@@ -12,5 +12,6 @@ class CollisionUtils {
   static bool IsCollision(BoxCollider const *box, CircleCollider const *circle);
   static bool IsCollision(CircleCollider const *circle1,
                           CircleCollider const *circle2);
+  static bool IsCollision(BoxCollider const *box1, BoxCollider const *box2);
 };
 }

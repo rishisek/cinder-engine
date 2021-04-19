@@ -42,4 +42,15 @@ bool CollisionUtils::IsCollision(const BoxCollider *box,
                                  const CircleCollider *circle) {
   return IsCollision(circle, box);
 }
+
+bool CollisionUtils::IsCollision(const BoxCollider *box1,
+                                 const BoxCollider *box2) {
+  if (box1->position_.x + box1->width_ >= box2->position_.x &&
+      box1->position_.x <= box2->position_.x + box2->width_ &&
+      box1->position_.y + box1->height_ >= box2->position_.y &&
+      box1->position_.y <= box2->position_.y + box2->height_) {
+    return true;
+  }
+  return false;
+}
 }

@@ -13,6 +13,10 @@ bool BoxCollider::IsCollision(const Collider &other) {
       *circle_collider = dynamic_cast<const CircleCollider *>(&other)) {
     // safely casted
     return CollisionUtils::IsCollision(this, circle_collider);
+  } else if (const BoxCollider
+      *box_collider = dynamic_cast<const BoxCollider *>(&other)) {
+    // safely casted
+    return CollisionUtils::IsCollision(this, box_collider);
   }
   return false;
 }
