@@ -12,7 +12,7 @@ class PhysicsComponent;
 class GameObject {
  public:
   GameObject(PhysicsComponent *physics_component);
-  virtual ~GameObject();
+  virtual ~GameObject() = 0;
 
   virtual void Update(game_engine::GameObject &world);
 
