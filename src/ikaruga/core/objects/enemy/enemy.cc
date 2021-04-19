@@ -12,7 +12,7 @@ Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
     : ProjectileShooter(projectile_types),
       game_engine::CharacterObject(physics_component) {}
 
-void Enemy::Update(game_engine::GameObject &world) {
+void Enemy::Update(game_engine::GameWorld &world) {
   physics_component_->Update();
 }
 }

@@ -4,13 +4,14 @@
 #pragma once
 
 #include <ikaruga/core/objects/projectile/projectile.h>
+#include <game_engine/game_world.h>
 
 namespace ikaruga {
-class World : public game_engine::GameObject {
+class World : public game_engine::GameWorld {
  public:
   World(game_engine::PhysicsComponent *physics_component);
   const std::vector<Projectile> &GetProjectiles() const;
-  void Update(game_engine::GameObject &world) override;
+  void Update() override;
   void AddProjectile(const Projectile &projectile);
  private:
   void UpdateProjectiles();

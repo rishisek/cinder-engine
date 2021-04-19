@@ -16,7 +16,7 @@ void World::UpdateProjectiles() {
   }
 }
 
-void World::Update(game_engine::GameObject &world) {
+void World::Update() {
   UpdateProjectiles();
 }
 
@@ -24,6 +24,5 @@ void World::AddProjectile(const Projectile &projectile) {
   projectiles_.push_back(projectile);
 }
 
-World::World(game_engine::PhysicsComponent *physics_component)
-    : GameObject(physics_component) {}
+World::World(game_engine::PhysicsComponent *physics_component) {}
 }

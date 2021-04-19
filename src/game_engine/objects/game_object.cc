@@ -2,6 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 
+#include <game_engine/game_world.h>
 #include "game_engine/objects/game_object.h"
 #include "game_engine/components/physics_component.h"
 
@@ -13,7 +14,7 @@ PhysicsComponent *GameObject::GetPhysicsComponent() const {
   return physics_component_;
 }
 
-void GameObject::Update(game_engine::GameObject &world) {
+void GameObject::Update(game_engine::GameWorld &world) {
   physics_component_->Update();
 }
 

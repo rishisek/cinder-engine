@@ -37,7 +37,7 @@ bool Player::InCooldown() {
       != 0;
 }
 
-void Player::Update(game_engine::GameObject &world) {
+void Player::Update(game_engine::GameWorld &world) {
   GameObject::Update(world);
   UpdateCooldowns();
   input_component_->Update(*this, dynamic_cast<World &>(world));
