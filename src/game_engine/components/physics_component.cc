@@ -39,6 +39,7 @@ PhysicsComponent::~PhysicsComponent() {
 
 void PhysicsComponent::Update() {
   UpdatePosition();
+  UpdateColliderMesh();
 }
 
 void PhysicsComponent::AddCollider(Collider *collider) {

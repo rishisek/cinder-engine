@@ -10,6 +10,10 @@ void PlayerPhysicsComponent::Update() {
   PhysicsComponent::Update();
 }
 
+void PlayerPhysicsComponent::UpdateColliderMesh() {
+  collider_mesh_.GetColliders()[0]->SetPosition(position_);
+}
+
 void PlayerPhysicsComponent::receive(int message) {
   switch (message) {
     case 1:
@@ -30,6 +34,8 @@ void PlayerPhysicsComponent::receive(int message) {
 PlayerPhysicsComponent::PlayerPhysicsComponent(const glm::vec2 &position,
                                                const glm::vec2 &velocity)
     : PhysicsComponent(position, velocity) {
-
+  game_engine::Collider
+      *circle_collider = new game_engine::CircleCollider(position_, 5.0);
+  collider_mesh_.AddCollider(circle_collider);
 }
 }

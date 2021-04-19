@@ -11,4 +11,8 @@ void WorldPhysicsComponent::Update() {
 void WorldPhysicsComponent::receive(int message) {
 
 }
+
+void WorldPhysicsComponent::UpdateColliderMesh() {
+
+}
 }

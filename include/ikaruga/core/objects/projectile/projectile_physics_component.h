@@ -9,6 +9,9 @@ namespace ikaruga {
 class ProjectilePhysicsComponent : public game_engine::PhysicsComponent {
  public:
   void Update() override;
+ protected:
+  void UpdateColliderMesh() override;
+ public:
   void receive(int message) override;
   ProjectilePhysicsComponent(const glm::vec2 &position,
                              const glm::vec2 &velocity,

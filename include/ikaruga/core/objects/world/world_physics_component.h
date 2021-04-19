@@ -10,5 +10,7 @@ class WorldPhysicsComponent : public game_engine::PhysicsComponent {
  public:
   void Update() override;
   void receive(int message) override;
+ private:
+  void UpdateColliderMesh() override;
 };
 }

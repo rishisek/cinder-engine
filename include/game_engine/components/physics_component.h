@@ -30,5 +30,6 @@ class PhysicsComponent : public Component {
   glm::vec2 velocity_;
 
   void UpdatePosition();
+  virtual void UpdateColliderMesh() = 0;
 };
 }

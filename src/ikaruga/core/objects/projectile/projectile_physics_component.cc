@@ -10,6 +10,10 @@ void ProjectilePhysicsComponent::Update() {
   PhysicsComponent::Update();
 }
 
+void ProjectilePhysicsComponent::UpdateColliderMesh() {
+  collider_mesh_.GetColliders()[0]->SetPosition(position_);
+}
+
 void ProjectilePhysicsComponent::receive(int message) {
 
 }
@@ -17,7 +21,9 @@ void ProjectilePhysicsComponent::receive(int message) {
 ProjectilePhysicsComponent::ProjectilePhysicsComponent(const glm::vec2 &position,
                                                        const glm::vec2 &velocity,
                                                        double radius)
-    : PhysicsComponent(position, velocity) {
-
+    : PhysicsComponent(position, velocity), radius_(radius) {
+  game_engine::Collider
+      *circle_collider = new game_engine::CircleCollider(position_, radius_);
+  collider_mesh_.AddCollider(circle_collider);
 }
 }

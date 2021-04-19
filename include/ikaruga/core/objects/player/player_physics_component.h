@@ -11,6 +11,7 @@ class PlayerPhysicsComponent : public game_engine::PhysicsComponent {
   PlayerPhysicsComponent(const glm::vec2 &position,
                          const glm::vec2 &velocity);
   void Update() override;
+  void UpdateColliderMesh() override;
   void receive(int message) override;
 };
 }
