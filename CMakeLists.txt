@@ -61,7 +61,7 @@ list(APPEND SOURCE_FILES ${GAME_ENGINE_SOURCE_FILES} ${GUI_SOURCE_FILES} ${IKARU
 
 file(GLOB_RECURSE GAME_ENGINE_TEST_FILES tests/game_engine/*.cc)
 
-file(GLOB_RECURSE GUI_TEST_FILES tests/gui/*.cc)
+file(GLOB_RECURSE GUI_TEST_FILES tests/interface/*.cc)
 
 file(GLOB_RECURSE IKARUGA_CORE_TEST_FILES tests/ikaruga/core/*.cc)
 
