@@ -29,6 +29,8 @@ class Player
  private:
   const double kAimStep = 0.01;
   double view_angle_radians_;
+
+  // Sends a message to all member components (Mediator pattern)
   void send(int message);
 };
 }

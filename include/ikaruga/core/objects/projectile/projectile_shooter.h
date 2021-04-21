@@ -11,8 +11,14 @@ namespace ikaruga::objects::projectile {
 class ProjectileShooter {
  public:
   ProjectileShooter(const std::vector<ProjectileType> &projectile_types);
+
+  // Update all projectile type cooldowns
   void UpdateCooldowns();
+
+  // Returns pointer to a new Projectile of the active type
   Projectile *Shoot(game_engine::GameObject const &game_object);
+
+  // Shifts to next projectile type, looping around to start.
   void ToggleProjectileType();
  protected:
   const double kNormalAngle = -M_PI / 2.0;

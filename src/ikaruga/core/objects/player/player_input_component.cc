@@ -12,6 +12,8 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
                                   game_engine::GameWorld &game_world) {
   Player *player = dynamic_cast<Player *>(&game_object);
   world::World *world = dynamic_cast<world::World *>(&game_world);
+
+  // TODO: re-mappable controls
   for (auto const&[key, is_pressed]: interface::Keyboard::GetPressedKeys()) {
     if (is_pressed) {
       switch (key) {
