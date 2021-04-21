@@ -20,6 +20,11 @@ void IkarugaApp::mouseDrag(ci::app::MouseEvent event) {
 }
 
 void IkarugaApp::keyDown(ci::app::KeyEvent event) {
+  interface::Keyboard::Press(event.getCode());
+}
+
+void IkarugaApp::keyUp(ci::app::KeyEvent event) {
+  interface::Keyboard::Release(event.getCode());
 }
 
 void IkarugaApp::setup() {
