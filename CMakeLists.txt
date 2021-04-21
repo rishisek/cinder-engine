@@ -55,9 +55,9 @@ file(GLOB_RECURSE GUI_SOURCE_FILES src/interface/*.cc)
 
 file(GLOB_RECURSE IKARUGA_CORE_SOURCE_FILES src/ikaruga/core/*.cc)
 
-file(GLOB_RECURSE IKARUGA_GUI_SOURCE_FILES src/ikaruga/app/*.cc)
+file(GLOB_RECURSE IKARUGA_APP_SOURCE_FILES src/ikaruga/app/*.cc)
 
-list(APPEND SOURCE_FILES ${GAME_ENGINE_SOURCE_FILES} ${GUI_SOURCE_FILES} ${IKARUGA_CORE_SOURCE_FILES} ${IKARUGA_GUI_SOURCE_FILES})
+list(APPEND SOURCE_FILES ${GAME_ENGINE_SOURCE_FILES} ${GUI_SOURCE_FILES} ${IKARUGA_CORE_SOURCE_FILES} ${IKARUGA_APP_SOURCE_FILES})
 
 file(GLOB_RECURSE GAME_ENGINE_TEST_FILES tests/game_engine/*.cc)
 
@@ -83,6 +83,13 @@ ci_make_app(
         SOURCES tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES include
         LIBRARIES catch2
+)
+
+ci_make_app(
+        APP_NAME sandbox
+        CINDER_PATH ${CINDER_PATH}
+        SOURCES apps/cinder_sandbox_main.cc src/sandbox/sandbox_app.cc ${SOURCE_FILES}
+        INCLUDES include
 )
 
 if (MSVC)
