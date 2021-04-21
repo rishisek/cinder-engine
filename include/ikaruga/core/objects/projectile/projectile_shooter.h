@@ -12,7 +12,7 @@ class ProjectileShooter {
  public:
   ProjectileShooter(const std::vector<ProjectileType> &projectile_types);
   void UpdateCooldowns();
-  Projectile Shoot(game_engine::GameObject const &game_object);
+  Projectile *Shoot(game_engine::GameObject const &game_object);
   void ToggleProjectileType();
  protected:
   const double kNormalAngle = -M_PI / 2.0;

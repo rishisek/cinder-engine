@@ -12,7 +12,7 @@ void ProjectileShooter::UpdateCooldowns() {
   }
 }
 
-Projectile ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
+Projectile *ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
   projectile_types_[current_projectile_type_index_].StartCooldown();
   game_engine::PhysicsComponent
       *projectile_physics_component =
@@ -20,8 +20,10 @@ Projectile ProjectileShooter::Shoot(game_engine::GameObject const &game_object) 
                                      glm::vec2(cos(shoot_angle_radians_),
                                                sin(shoot_angle_radians_)),
                                      projectile_types_[current_projectile_type_index_].GetRadius());
-  return Projectile(projectile_types_[current_projectile_type_index_],
-                    projectile_physics_component);
+  Projectile *projectile =
+      new Projectile(projectile_types_[current_projectile_type_index_],
+                     projectile_physics_component);
+  return projectile;
 }
 
 void ProjectileShooter::ToggleProjectileType() {

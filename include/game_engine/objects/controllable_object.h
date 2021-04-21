@@ -2,12 +2,10 @@
 // Created by rishi on 16-04-2021.
 //
 #pragma once
-
+#include <game_engine/components/physics_component.h>
+#include <game_engine/components/input_component.h>
 
 namespace game_engine {
-class PhysicsComponent;
-class InputComponent;
-
 template<typename T>
 class ControllableObject : public T {
  public:

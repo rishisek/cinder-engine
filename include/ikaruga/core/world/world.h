@@ -11,11 +11,11 @@ using objects::projectile::Projectile;
 class World : public game_engine::GameWorld {
  public:
   World(game_engine::PhysicsComponent *physics_component);
-  const std::vector<Projectile> &GetProjectiles() const;
+  const std::vector<Projectile *> &GetProjectiles() const;
   void Update() override;
-  void AddProjectile(const Projectile &projectile);
+  void AddProjectile(Projectile *const projectile);
  private:
   void UpdateProjectiles();
-  std::vector<Projectile> projectiles_;
+  std::vector<Projectile *> projectiles_;
 };
 }
