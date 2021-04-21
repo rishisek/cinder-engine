@@ -36,4 +36,9 @@ void ProjectileType::DecrementCurrentCooldown() {
 void ProjectileType::StartCooldown() {
   current_cooldown_ = cooldown_;
 }
+
+bool ProjectileType::operator==(const ProjectileType &other) const {
+  return radius_ == other.radius_ && color_ == other.color_
+      && cooldown_ == other.cooldown_;
+}
 }

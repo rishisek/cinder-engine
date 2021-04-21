@@ -16,6 +16,9 @@ class ProjectileType {
   int GetCurrentCooldown() const;
   void DecrementCurrentCooldown();
   void StartCooldown();
+
+  bool operator==(ProjectileType const &other) const;
+
  private:
   float radius_;
   cinder::ColorT<float> color_;
