@@ -12,13 +12,14 @@ class DummyPhysics : public PhysicsComponent {
                const glm::vec2 &velocity = glm::vec2())
       : PhysicsComponent(position, velocity) {}
 
-  void receive(int message) override {
-
-  }
+  void receive(int message) override {}
 
   void Update() override {
     UpdatePosition();
   }
+
+ protected:
+  void UpdateColliderMesh() override {}
 };
 
 TEST_CASE("Physics component", "[game engine][physics]") {
