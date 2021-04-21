@@ -3,9 +3,9 @@
 //
 #pragma once
 
-#include "game_object.h"
 
 namespace game_engine {
+class PhysicsComponent;
 class InputComponent;
 
 template<typename T>
@@ -29,6 +29,6 @@ InputComponent *ControllableObject<T>::GetInputComponent() const {
 
 template<typename T>
 ControllableObject<T>::~ControllableObject() {
-
+  delete input_component_;
 }
 }

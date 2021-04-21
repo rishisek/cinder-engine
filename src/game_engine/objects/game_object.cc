@@ -19,6 +19,6 @@ void GameObject::Update(game_engine::GameWorld &world) {
 }
 
 GameObject::~GameObject() {
-
+  delete physics_component_;
 }
 }
