@@ -6,7 +6,6 @@
 #include <ikaruga/core/objects/player/player_physics_component.h>
 #include <ikaruga/core/objects/player/player_input_component.h>
 #include <interface/keyboard.h>
-#include <ikaruga/core/world/world_physics_component.h>
 
 namespace sandbox {
 
@@ -17,7 +16,7 @@ Sandbox::Sandbox()
     std::vector<ProjectileType>{
         ProjectileType(5, ci::Color(0, 1, 0), 50),
         ProjectileType(5, ci::Color(1, 0, 0), 25)
-    }), world_(new ikaruga::world::WorldPhysicsComponent()) {}
+    }), world_() {}
 
 void Sandbox::draw() {
   ci::Color background_color("black");
