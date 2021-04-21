@@ -9,7 +9,6 @@
 #include "cinder/gl/gl.h"
 
 namespace ikaruga {
-using namespace objects::player;
 class IkarugaApp : public ci::app::App {
  public:
   IkarugaApp();
