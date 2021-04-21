@@ -3,6 +3,7 @@
 //
 
 #include "ikaruga/app/ikaruga_app.h"
+#include <interface/keyboard.h>
 
 namespace ikaruga {
 
