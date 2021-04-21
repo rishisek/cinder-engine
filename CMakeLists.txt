@@ -65,7 +65,7 @@ file(GLOB_RECURSE GUI_TEST_FILES tests/interface/*.cc)
 
 file(GLOB_RECURSE IKARUGA_CORE_TEST_FILES tests/ikaruga/core/*.cc)
 
-list(APPEND TEST_FILES tests/test_ikaruga.cc ${GAME_ENGINE_TEST_FILES} ${GUI_TEST_FILES} ${IKARUGA_CORE_TEST_FILES})
+list(APPEND TEST_FILES ${GAME_ENGINE_TEST_FILES} ${GUI_TEST_FILES} ${IKARUGA_CORE_TEST_FILES})
 
 #add_executable(train-model apps/train_model_main.cc ${CORE_SOURCE_FILES})
 #target_include_directories(train-model PRIVATE include)
