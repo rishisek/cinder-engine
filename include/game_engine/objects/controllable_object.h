@@ -15,7 +15,7 @@ class ControllableObject : public T {
  protected:
   ControllableObject(game_engine::PhysicsComponent *physics_component,
                      game_engine::InputComponent *input_component)
-      : input_component_(input_component), T(physics_component) {}
+      : T(physics_component), input_component_(input_component) {}
 
   InputComponent *input_component_;
 };

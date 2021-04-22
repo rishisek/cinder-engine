@@ -2,8 +2,8 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include <ikaruga/core/objects/projectile/projectile_physics_component.h>
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
+#include <ikaruga/core/objects/projectile/projectile_physics_component.h>
 
 namespace ikaruga::objects::projectile {
 void ProjectileShooter::UpdateCooldowns() {

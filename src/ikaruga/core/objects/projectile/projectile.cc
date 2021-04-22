@@ -7,7 +7,7 @@
 namespace ikaruga::objects::projectile {
 Projectile::Projectile(ProjectileType type,
                        game_engine::PhysicsComponent *physics_component)
-    : type_(type), GameObject(physics_component) {}
+    : GameObject(physics_component), type_(type) {}
 
 void Projectile::Update(game_engine::GameWorld &world) {
   GameObject::Update(world);

@@ -7,4 +7,4 @@ void prepareSettings(IkarugaApp::Settings *settings) {
 }
 
 // This line is a macro that expands into an "int main()" function.
-CINDER_APP(IkarugaApp, ci::app::RendererGl, prepareSettings);
+CINDER_APP(IkarugaApp, ci::app::RendererGl, prepareSettings)
