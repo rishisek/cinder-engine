@@ -12,8 +12,6 @@ class SineLineMovementPhysicsComponent : public game_engine::PhysicsComponent {
                                    const glm::vec2 &velocity = glm::vec2());
   void Update() override;
   void receive(int message) override;
- protected:
-  void UpdateColliderMesh() override;
  private:
   int period_count_ = 5;
   float period_ = 75.0f;

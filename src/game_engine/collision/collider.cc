@@ -9,8 +9,8 @@ Collider::~Collider() {
 
 }
 
-void Collider::SetPosition(const glm::vec2 &position) {
-  position_ = position;
+void Collider::UpdatePosition(const glm::vec2 &velocity) {
+  position_ += velocity;
 }
 
 Collider::Collider(glm::vec2 position) : position_(position) {}

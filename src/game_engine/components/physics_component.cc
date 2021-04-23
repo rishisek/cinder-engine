@@ -45,4 +45,10 @@ void PhysicsComponent::Update() {
 void PhysicsComponent::AddCollider(Collider *collider) {
   collider_mesh_.AddCollider(collider);
 }
+
+void PhysicsComponent::UpdateColliderMesh() {
+  for (auto collider:collider_mesh_.GetColliders()) {
+    collider->UpdatePosition(velocity_);
+  }
+}
 }

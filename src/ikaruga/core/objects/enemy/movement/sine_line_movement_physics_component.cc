@@ -10,10 +10,6 @@ void SineLineMovementPhysicsComponent::Update() {
   PhysicsComponent::Update();
 }
 
-void SineLineMovementPhysicsComponent::UpdateColliderMesh() {
-
-}
-
 void SineLineMovementPhysicsComponent::receive(int message) {
 
 }

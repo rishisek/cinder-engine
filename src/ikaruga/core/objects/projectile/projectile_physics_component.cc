@@ -10,10 +10,6 @@ void ProjectilePhysicsComponent::Update() {
   PhysicsComponent::Update();
 }
 
-void ProjectilePhysicsComponent::UpdateColliderMesh() {
-  collider_mesh_.GetColliders()[0]->SetPosition(position_);
-}
-
 void ProjectilePhysicsComponent::receive(int message) {
 
 }

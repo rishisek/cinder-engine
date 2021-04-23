@@ -16,7 +16,6 @@ class SineLoopMovementPhysicsComponent : public game_engine::PhysicsComponent {
   float current_sine_y_degree_ = 90.0f;
   float current_sine_x_degree_ = 90.0f;
   float current_line_point_ = 0.0f;
-  void UpdateColliderMesh() override;
   void UpdateVelocity();
 };
 }

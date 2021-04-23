@@ -17,9 +17,6 @@ class DummyPhysics : public PhysicsComponent {
   void Update() override {
     UpdatePosition();
   }
-
- protected:
-  void UpdateColliderMesh() override {}
 };
 
 TEST_CASE("Physics component", "[game engine][physics]") {
