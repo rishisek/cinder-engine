@@ -15,6 +15,7 @@ class GameObject {
   virtual ~GameObject() = 0;
 
   virtual void Update(game_engine::GameWorld &world);
+  bool Collides(GameObject *const other) const;
 
   PhysicsComponent *GetPhysicsComponent() const;
  protected:

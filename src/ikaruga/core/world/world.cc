@@ -27,8 +27,7 @@ void World::UpdateEnemies() {
     enemies_.erase(std::remove_if(enemies_.begin(),
                                   enemies_.end(),
                                   [&](std::unique_ptr<Enemy> &obj) {
-                                    return obj->GetPhysicsComponent()->Collides(
-                                        projectile);
+                                    return obj->Collides(projectile);
                                   }),
                    enemies_.end());
   }

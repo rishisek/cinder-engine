@@ -21,4 +21,8 @@ void GameObject::Update(game_engine::GameWorld &world) {
 GameObject::~GameObject() {
   delete physics_component_;
 }
+
+bool GameObject::Collides(GameObject *const other) const {
+  return physics_component_->Collides(other->physics_component_);
+}
 }
