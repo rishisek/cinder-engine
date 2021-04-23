@@ -25,6 +25,6 @@ class ProjectileType {
   float radius_;
   cinder::ColorT<float> color_;
   int cooldown_;
-  int current_cooldown_;
+  int current_cooldown_ = 0;
 };
 }

@@ -10,9 +10,7 @@ ProjectileType::ProjectileType(float radius,
                                int cooldown)
     : radius_(radius),
       color_(color),
-      cooldown_(cooldown),
-      current_cooldown_(0) {
-}
+      cooldown_(cooldown) {}
 
 float ProjectileType::GetRadius() const {
   return radius_;
