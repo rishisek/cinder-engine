@@ -9,6 +9,7 @@
 #include "cinder/gl/gl.h"
 #include <ikaruga/core/objects/player/player.h>
 #include <ikaruga/core/world/world.h>
+#include <ikaruga/game/game_instance.h>
 
 namespace sandbox {
 using namespace ikaruga::objects::player;
@@ -25,8 +26,7 @@ class Sandbox : public ci::app::App {
   void keyUp(ci::app::KeyEvent event) override;
 
  private:
-  const double kWindowSize = 875;
-  Player player_;
-  ikaruga::world::World world_;
+  const int kWindowSize = 875;
+  ikaruga::game::GameInstance game_instance_;
 };
 }

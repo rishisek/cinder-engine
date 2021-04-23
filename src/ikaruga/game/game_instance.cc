@@ -31,7 +31,7 @@ void GameInstance::Draw() {
   for (std::unique_ptr<enemy::Enemy> const &enemy: world_.GetEnemies()) {
     ci::gl::color(enemy->GetType().GetColor());
     ci::gl::drawSolidCircle(enemy->GetPhysicsComponent()->GetPosition(),
-                            10);
+                            30);
   }
 }
 
@@ -71,7 +71,7 @@ void GameInstance::SetupEnemies() {
                                                             glm::vec2(1, 0));
   physics_component->AddCollider(new game_engine::CircleCollider(glm::vec2(300,
                                                                            100),
-                                                                 10));
+                                                                 30));
   world_.AddEnemy(std::make_unique<enemy::Enemy>(physics_component,
                                                  enemy_type));
 }
