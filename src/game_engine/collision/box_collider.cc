@@ -8,7 +8,7 @@
 
 namespace game_engine {
 
-bool BoxCollider::IsCollision(const Collider &other) {
+bool BoxCollider::IsCollision(const Collider &other) const {
   if (const CircleCollider
       *circle_collider = dynamic_cast<const CircleCollider *>(&other)) {
     // safely casted

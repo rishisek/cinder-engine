@@ -8,7 +8,7 @@ namespace game_engine {
 class Collider {
  public:
   virtual ~Collider() = 0;
-  virtual bool IsCollision(Collider const &other) = 0;
+  virtual bool IsCollision(Collider const &other) const = 0;
   void UpdatePosition(const glm::vec2 &velocity);
  protected:
   Collider(glm::vec2 position);

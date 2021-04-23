@@ -7,7 +7,7 @@
 #include <game_engine/collision/collision_utils.h>
 
 namespace game_engine {
-bool CircleCollider::IsCollision(const game_engine::Collider &other) {
+bool CircleCollider::IsCollision(const game_engine::Collider &other) const {
   if (const CircleCollider
       *circle_collider = dynamic_cast<const CircleCollider *>(&other)) {
     // safely casted

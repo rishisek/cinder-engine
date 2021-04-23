@@ -9,7 +9,7 @@ void PhysicsComponent::UpdatePosition() {
   position_ += velocity_;
 }
 
-bool PhysicsComponent::Collides(GameObject *const other) {
+bool PhysicsComponent::Collides(GameObject *const other) const {
   return collider_mesh_.IsCollision(other->GetPhysicsComponent()->collider_mesh_);
 }
 

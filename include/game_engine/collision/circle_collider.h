@@ -10,7 +10,7 @@ namespace game_engine {
 class CircleCollider : public Collider {
  public:
   CircleCollider(const glm::vec2 &position, double radius);
-  bool IsCollision(const Collider &other) override;
+  bool IsCollision(const Collider &other) const override;
 
   friend class CollisionUtils;
  private:

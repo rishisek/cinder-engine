@@ -11,7 +11,7 @@ class BoxCollider : public Collider {
  public:
   BoxCollider(const glm::vec2 &position, double width, double height);
 
-  bool IsCollision(const Collider &other) override;
+  bool IsCollision(const Collider &other) const override;
   const glm::vec2 &GetPosition() const;
   double GetHeight() const;
   double GetWidth() const;
