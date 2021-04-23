@@ -15,7 +15,7 @@ class World : public game_engine::GameWorld {
   const std::vector<std::unique_ptr<ikaruga::objects::enemy::Enemy>> &GetEnemies() const;
   void Update() override;
   void AddProjectile(objects::projectile::Projectile *const projectile);
-  void World::AddEnemy(std::unique_ptr<ikaruga::objects::enemy::Enemy> &&enemy);
+  void AddEnemy(std::unique_ptr<ikaruga::objects::enemy::Enemy> &&enemy);
   virtual ~World();
  private:
   std::vector<objects::projectile::Projectile *> projectiles_;
