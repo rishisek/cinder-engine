@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-set(CMAKE_CXX_STANDARD 11)
-project(naive-bayes)
+set(CMAKE_CXX_STANDARD 17)
+project(ikaruga)
 
 # This tells the compiler to not aggressively optimize and
 # to include debugging information so that the debugger
@@ -49,15 +49,23 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-file(GLOB_RECURSE ENGINE_SOURCE_FILES src/game_engine/*.cc)
+file(GLOB_RECURSE GAME_ENGINE_SOURCE_FILES src/game_engine/*.cc)
 
-file(GLOB_RECURSE CORE_SOURCE_FILES src/ikaruga/core/*.cc)
+file(GLOB_RECURSE GUI_SOURCE_FILES src/interface/*.cc)
 
-file(GLOB_RECURSE GUI_SOURCE_FILES src/ikaruga/gui/*.cc)
+file(GLOB_RECURSE IKARUGA_CORE_SOURCE_FILES src/ikaruga/core/*.cc)
 
-list(APPEND SOURCE_FILES ${ENGINE_SOURCE_FILES} ${CORE_SOURCE_FILES} ${GUI_SOURCE_FILES})
+file(GLOB_RECURSE IKARUGA_APP_SOURCE_FILES src/ikaruga/app/*.cc)
 
-list(APPEND TEST_FILES tests/test_ikaruga.cc)
+list(APPEND SOURCE_FILES ${GAME_ENGINE_SOURCE_FILES} ${GUI_SOURCE_FILES} ${IKARUGA_CORE_SOURCE_FILES} ${IKARUGA_APP_SOURCE_FILES})
+
+file(GLOB_RECURSE GAME_ENGINE_TEST_FILES tests/game_engine/*.cc)
+
+file(GLOB_RECURSE GUI_TEST_FILES tests/interface/*.cc)
+
+file(GLOB_RECURSE IKARUGA_CORE_TEST_FILES tests/ikaruga/core/*.cc)
+
+list(APPEND TEST_FILES ${GAME_ENGINE_TEST_FILES} ${GUI_TEST_FILES} ${IKARUGA_CORE_TEST_FILES})
 
 #add_executable(train-model apps/train_model_main.cc ${CORE_SOURCE_FILES})
 #target_include_directories(train-model PRIVATE include)
@@ -75,6 +83,13 @@ ci_make_app(
         SOURCES tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES include
         LIBRARIES catch2
+)
+
+ci_make_app(
+        APP_NAME sandbox
+        CINDER_PATH ${CINDER_PATH}
+        SOURCES apps/cinder_sandbox_main.cc src/sandbox/sandbox_app.cc ${SOURCE_FILES}
+        INCLUDES include
 )
 
 if (MSVC)
