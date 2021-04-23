@@ -15,8 +15,10 @@ using projectile::ProjectileType;
 class Enemy : public ProjectileShooter, public game_engine::CharacterObject {
  public:
   Enemy(game_engine::PhysicsComponent *physics_component,
-        const std::vector<ProjectileType> &projectile_types);
+        const EnemyType &type);
   void Update(game_engine::GameWorld &world) override;
+  const EnemyType &GetType() const;
  private:
+  EnemyType type_;
 };
 }

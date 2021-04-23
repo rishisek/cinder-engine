@@ -7,11 +7,16 @@
 
 namespace ikaruga::objects::enemy {
 Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
-             const std::vector<ProjectileType> &projectile_types)
-    : ProjectileShooter(projectile_types),
-      game_engine::CharacterObject(physics_component) {}
+             const EnemyType &type)
+    : ProjectileShooter(type.GetProjectileTypes()),
+      game_engine::CharacterObject(physics_component),
+      type_(type) {}
 
 void Enemy::Update(game_engine::GameWorld &world) {
   physics_component_->Update();
+}
+
+const EnemyType &Enemy::GetType() const {
+  return type_;
 }
 }
