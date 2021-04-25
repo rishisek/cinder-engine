@@ -5,6 +5,7 @@
 #include <catch2/catch.hpp>
 #include <game_engine/components/physics_component.h>
 #include <game_engine/vec2_json.h>
+#include <game_engine/collision/circle_collider.h>
 
 namespace game_engine {
 class DummyPhysics : public PhysicsComponent {
@@ -55,6 +56,15 @@ TEST_CASE("Physics component behavior", "[game engine][physics]") {
   }
 
   SECTION("Collision checking") {
+    PhysicsComponent
+        *component1 = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
+    PhysicsComponent
+        *component2 = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
+    component1->AddCollider(new CircleCollider(glm::vec2(1, 1), 5));
+    component2->AddCollider(new CircleCollider(glm::vec2(7, 1), 5));
+    REQUIRE(component1->Collides(component2));
+    delete component1;
+    delete component2;
   }
 }
 
