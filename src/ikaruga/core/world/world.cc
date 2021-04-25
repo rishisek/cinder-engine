@@ -23,19 +23,12 @@ void World::UpdateEnemies() {
   for (std::unique_ptr<Enemy> &enemy: enemies_) {
     enemy->Update(*this);
   }
-  for (std::unique_ptr<Projectile> &projectile: projectiles_) {
-    enemies_.erase(std::remove_if(enemies_.begin(),
-                                  enemies_.end(),
-                                  [&](std::unique_ptr<Enemy> &obj) {
-                                    return obj->Collides(projectile.get());
-                                  }),
-                   enemies_.end());
-  }
 }
 
 void World::Update() {
   UpdateProjectiles();
   UpdateEnemies();
+  ResolveProjectileEnemyCollisions();
 }
 
 void World::AddProjectile(std::unique_ptr<Projectile> &&projectile) {
@@ -60,5 +53,22 @@ void World::AddProjectile(Projectile *const projectile) {
   ptr.reset(projectile);
   // std::move required for R-value form of argument. 
   AddProjectile(std::move(ptr));
+}
+
+void World::ResolveProjectileEnemyCollisions() {
+  for (auto itr = projectiles_.begin(); itr != projectiles_.end(); ++itr) {
+    auto iterator = std::remove_if(enemies_.begin(),
+                                   enemies_.end(),
+                                   [&](std::unique_ptr<Enemy> &obj) {
+                                     return obj->Collides((*itr).get());
+                                   });
+    if (iterator != enemies_.end()) {
+      enemies_.erase(iterator, enemies_.end());
+      itr = projectiles_.erase(itr);
+      if (itr == projectiles_.end()) {
+        break;
+      }
+    }
+  }
 }
 }

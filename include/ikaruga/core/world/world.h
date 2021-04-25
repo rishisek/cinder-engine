@@ -24,5 +24,6 @@ class World : public game_engine::GameWorld {
 
   void UpdateProjectiles();
   void UpdateEnemies();
+  void ResolveProjectileEnemyCollisions();
 };
 }
