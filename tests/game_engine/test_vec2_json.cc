@@ -6,7 +6,7 @@
 #include <glm/vec2.hpp>
 #include <game_engine/vec2_json.h>
 
-TEST_CASE("glm::vec2 to nlohmann::json conversion", "[serialization]") {
+TEST_CASE("glm::vec2 serialization", "[serialization]") {
   SECTION("Serialization") {
     glm::vec2 vec(1, 2);
     nlohmann::json json = vec;

@@ -1,6 +1,7 @@
 //
 // Created by rishi on 25-04-2021.
 //
+#pragma once
 #include <nlohmann/json.hpp>
 #include <glm/vec2.hpp>
 
