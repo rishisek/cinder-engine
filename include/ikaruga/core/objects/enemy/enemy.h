@@ -8,17 +8,15 @@
 #include "enemy_type.h"
 
 namespace ikaruga::objects::enemy {
-
-using projectile::ProjectileShooter;
-using projectile::ProjectileType;
-
-class Enemy : public ProjectileShooter, public game_engine::CharacterObject {
- public:
-  Enemy(game_engine::PhysicsComponent *physics_component,
-        const EnemyType &type);
-  void Update(game_engine::GameWorld &world) override;
-  const EnemyType &GetType() const;
- private:
-  EnemyType type_;
-};
+ class Enemy
+     : public projectile::ProjectileShooter,
+       public game_engine::CharacterObject {
+  public:
+   Enemy(game_engine::PhysicsComponent *physics_component,
+         const EnemyType &type);
+   void Update(game_engine::GameWorld &world) override;
+   const EnemyType &GetType() const;
+  private:
+   EnemyType type_;
+ };
 }

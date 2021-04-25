@@ -7,17 +7,13 @@
 #include "ikaruga/core/objects/projectile/projectile_shooter.h"
 
 namespace ikaruga::objects::player {
-
-using projectile::ProjectileShooter;
-using projectile::ProjectileType;
-
 class Player
-    : public ProjectileShooter,
+    : public projectile::ProjectileShooter,
       public game_engine::ControllableObject<game_engine::CharacterObject> {
  public:
   Player(game_engine::PhysicsComponent *physics_component,
          game_engine::InputComponent *input_component,
-         const std::vector<ProjectileType> &projectile_types,
+         const std::vector<projectile::ProjectileType> &projectile_types,
          double view_angle_radians = M_PI / 3.0);
   void Update(game_engine::GameWorld &world) override;
   void TiltAimLeft();

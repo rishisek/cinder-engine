@@ -7,6 +7,9 @@
 #include <game_engine/components/input_component.h>
 
 namespace ikaruga::objects::player {
+using projectile::ProjectileShooter;
+using projectile::ProjectileType;
+
 Player::Player(game_engine::PhysicsComponent *physics_component,
                game_engine::InputComponent *input_component,
                const std::vector<ProjectileType> &projectile_types,

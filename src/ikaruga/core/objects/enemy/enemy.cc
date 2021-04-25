@@ -6,6 +6,9 @@
 #include <game_engine/components/physics_component.h>
 
 namespace ikaruga::objects::enemy {
+using projectile::ProjectileShooter;
+using projectile::ProjectileType;
+
 Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
              const EnemyType &type)
     : ProjectileShooter(type.GetProjectileTypes()),
