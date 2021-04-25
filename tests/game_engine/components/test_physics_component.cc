@@ -4,6 +4,7 @@
 
 #include <catch2/catch.hpp>
 #include <game_engine/components/physics_component.h>
+#include <game_engine/vec2_json.h>
 
 namespace game_engine {
 class DummyPhysics : public PhysicsComponent {
@@ -19,31 +20,31 @@ class DummyPhysics : public PhysicsComponent {
   }
 };
 
-TEST_CASE("Physics component", "[game engine][physics]") {
-  SECTION("Constructors") {
-    SECTION("Default") {
-      PhysicsComponent *component = new DummyPhysics();
-      REQUIRE(component->GetPosition() == glm::vec2());
-      REQUIRE(component->GetVelocity() == glm::vec2());
-      delete component;
-    }
-
-    SECTION("Position parameter") {
-      PhysicsComponent *component = new DummyPhysics(glm::vec2(1, 1));
-      REQUIRE(component->GetPosition() == glm::vec2(1, 1));
-      REQUIRE(component->GetVelocity() == glm::vec2());
-      delete component;
-    }
-
-    SECTION("Position and velocity parameters") {
-      PhysicsComponent
-          *component = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
-      REQUIRE(component->GetPosition() == glm::vec2(1, 1));
-      REQUIRE(component->GetVelocity() == glm::vec2(1, 1));
-      delete component;
-    }
+TEST_CASE("Physics component constructors", "[game engine][physics]") {
+  SECTION("Default") {
+    PhysicsComponent *component = new DummyPhysics();
+    REQUIRE(component->GetPosition() == glm::vec2());
+    REQUIRE(component->GetVelocity() == glm::vec2());
+    delete component;
   }
 
+  SECTION("Position parameter") {
+    PhysicsComponent *component = new DummyPhysics(glm::vec2(1, 1));
+    REQUIRE(component->GetPosition() == glm::vec2(1, 1));
+    REQUIRE(component->GetVelocity() == glm::vec2());
+    delete component;
+  }
+
+  SECTION("Position and velocity parameters") {
+    PhysicsComponent
+        *component = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
+    REQUIRE(component->GetPosition() == glm::vec2(1, 1));
+    REQUIRE(component->GetVelocity() == glm::vec2(1, 1));
+    delete component;
+  }
+}
+
+TEST_CASE("Physics component constructors", "[game engine][physics]") {
   SECTION("Position updating") {
     PhysicsComponent
         *component = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
@@ -55,5 +56,13 @@ TEST_CASE("Physics component", "[game engine][physics]") {
 
   SECTION("Collision checking") {
   }
+}
+
+TEST_CASE("Physics component serialization", "[serialization][game_engine]") {
+  PhysicsComponent
+      *component = new DummyPhysics(glm::vec2(1, 2), glm::vec2(3, 4));
+  nlohmann::json json = *component;
+  REQUIRE(json.at("position") == glm::vec2(1, 2));
+  REQUIRE(json.at("velocity") == glm::vec2(3, 4));
 }
 }

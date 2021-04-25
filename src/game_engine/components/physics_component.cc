@@ -2,7 +2,8 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include "game_engine/components/physics_component.h"
+#include <game_engine/components/physics_component.h>
+#include <game_engine/vec2_json.h>
 
 namespace game_engine {
 void PhysicsComponent::UpdatePosition() {
@@ -50,5 +51,25 @@ void PhysicsComponent::UpdateColliderMesh() {
   for (auto collider:collider_mesh_.GetColliders()) {
     collider->UpdatePosition(velocity_);
   }
+}
+
+void PhysicsComponent::Serialize(nlohmann::json &json) const {
+  collider_mesh_.Serialize(json);
+  json["position"] = position_;
+  json["velocity"] = velocity_;
+}
+
+void PhysicsComponent::Deserialize(const nlohmann::json &json) {
+  collider_mesh_.Deserialize(json);
+  position_ = json["position"];
+  velocity_ = json["velocity"];
+}
+
+void to_json(nlohmann::json &json, const PhysicsComponent &component) {
+  component.Serialize(json);
+}
+
+void from_json(const nlohmann::json &json, PhysicsComponent &component) {
+  component.Deserialize(json);
 }
 }
