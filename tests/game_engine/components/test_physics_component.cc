@@ -64,5 +64,6 @@ TEST_CASE("Physics component serialization", "[serialization][game_engine]") {
   nlohmann::json json = *component;
   REQUIRE(json.at("position") == glm::vec2(1, 2));
   REQUIRE(json.at("velocity") == glm::vec2(3, 4));
+  delete component;
 }
 }
