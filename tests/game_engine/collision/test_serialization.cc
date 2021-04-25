@@ -40,4 +40,25 @@ TEST_CASE("BoxCollider serialization", "[serialization]") {
     REQUIRE(collider1 == collider2);
   }
 }
+
+TEST_CASE("ColliderMesh serialization", "[serialization]") {
+  SECTION("Serialization") {
+    ColliderMesh mesh;
+    CircleCollider collider1(glm::vec2(1, 2), 3.0);
+    mesh.AddCollider(new CircleCollider(glm::vec2(1, 2), 3.0));
+    nlohmann::json json = mesh;
+    REQUIRE(json[0] == collider1);
+  }
+
+  SECTION("Deserialization") {
+    ColliderMesh mesh;
+    CircleCollider collider1(glm::vec2(1, 2), 3.0);
+    mesh.AddCollider(new CircleCollider(glm::vec2(1, 2), 3.0));
+    nlohmann::json json = mesh;
+
+    ColliderMesh mesh2(json);
+    REQUIRE(collider1
+                == *dynamic_cast<const CircleCollider *>(mesh2.GetColliders()[0]));
+  }
+}
 }
