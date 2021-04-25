@@ -15,6 +15,7 @@ class ProjectileShooter {
   // Update all projectile type cooldowns
   void UpdateCooldowns();
 
+  // TODO: Figure out unique_ptr logic for return
   // Returns pointer to a new Projectile of the active type
   Projectile *Shoot(game_engine::GameObject const &game_object);
 

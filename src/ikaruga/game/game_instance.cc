@@ -22,8 +22,8 @@ void GameInstance::Setup() {
 void GameInstance::Draw() {
   ci::gl::color(0, 0, 1);
   ci::gl::drawSolidCircle(player_->GetPhysicsComponent()->GetPosition(), 10);
-  for (const ikaruga::objects::projectile::Projectile
-        *projectile: world_.GetProjectiles()) {
+  for (const std::unique_ptr<ikaruga::objects::projectile::Projectile>
+        &projectile: world_.GetProjectiles()) {
     ci::gl::color(projectile->GetType().GetColor());
     ci::gl::drawSolidCircle(projectile->GetPhysicsComponent()->GetPosition(),
                             projectile->GetType().GetRadius());
