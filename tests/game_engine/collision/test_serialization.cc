@@ -7,7 +7,8 @@
 #include <game_engine/collision/collider_mesh.h>
 
 namespace game_engine {
-TEST_CASE("CircleCollider serialization", "[serialization]") {
+TEST_CASE("Circle collider serialization",
+          "[serialization][collision][game_engine]") {
   SECTION("Serialization") {
     CircleCollider collider(glm::vec2(1, 2), 3);
     nlohmann::json json = collider;
@@ -24,7 +25,8 @@ TEST_CASE("CircleCollider serialization", "[serialization]") {
   }
 }
 
-TEST_CASE("BoxCollider serialization", "[serialization]") {
+TEST_CASE("Box collider serialization",
+          "[serialization][collision][game_engine]") {
   SECTION("Serialization") {
     BoxCollider collider(glm::vec2(1, 2), 3, 4);
     nlohmann::json json = collider;
@@ -41,7 +43,8 @@ TEST_CASE("BoxCollider serialization", "[serialization]") {
   }
 }
 
-TEST_CASE("ColliderMesh serialization", "[serialization]") {
+TEST_CASE("Collider mesh serialization",
+          "[serialization][collision][game_engine]") {
   SECTION("Serialization") {
     ColliderMesh mesh;
     CircleCollider collider1(glm::vec2(1, 2), 3.0);
