@@ -44,7 +44,7 @@ TEST_CASE("Physics component constructors", "[game engine][physics]") {
   }
 }
 
-TEST_CASE("Physics component constructors", "[game engine][physics]") {
+TEST_CASE("Physics component behavior", "[game engine][physics]") {
   SECTION("Position updating") {
     PhysicsComponent
         *component = new DummyPhysics(glm::vec2(1, 1), glm::vec2(1, 1));
