@@ -15,6 +15,11 @@ void SineLineMovementPhysicsComponent::receive(int message) {
 }
 
 SineLineMovementPhysicsComponent::SineLineMovementPhysicsComponent(const glm::vec2 &position,
+                                                                   const glm::vec2 &velocity,
+                                                                   game_engine::ColliderMesh &&collider_mesh)
+    : PhysicsComponent(position, velocity, std::move(collider_mesh)) {}
+
+SineLineMovementPhysicsComponent::SineLineMovementPhysicsComponent(const glm::vec2 &position,
                                                                    const glm::vec2 &velocity)
     : PhysicsComponent(position, velocity) {}
 

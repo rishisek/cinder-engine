@@ -8,6 +8,9 @@
 namespace ikaruga::objects::enemy::movement {
 class SineLineMovementPhysicsComponent : public game_engine::PhysicsComponent {
  public:
+  SineLineMovementPhysicsComponent(const glm::vec2 &position,
+                                   const glm::vec2 &velocity,
+                                   game_engine::ColliderMesh &&collider_mesh);
   SineLineMovementPhysicsComponent(const glm::vec2 &position = glm::vec2(),
                                    const glm::vec2 &velocity = glm::vec2());
   void Update() override;
