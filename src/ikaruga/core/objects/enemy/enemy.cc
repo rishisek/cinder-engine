@@ -25,11 +25,11 @@ const EnemyType &Enemy::GetType() const {
 
 void Enemy::Serialize(nlohmann::json &json) const {
   CharacterObject::Serialize(json);
-  json["type"] = type_;
+  json["enemy_type"] = type_;
 }
 
 void Enemy::Deserialize(const nlohmann::json &json) {
   CharacterObject::Deserialize(json);
-  type_.Deserialize(json);
+  type_ = json["enemy_type"];
 }
 }

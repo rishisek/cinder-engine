@@ -23,15 +23,4 @@ struct adl_serializer<ikaruga::objects::enemy::Enemy> {
   // specialized adl_serializer on that type
   static void to_json(json &j, ikaruga::objects::enemy::Enemy t);
 };
-
-ikaruga::objects::enemy::Enemy adl_serializer<ikaruga::objects::enemy::Enemy>::from_json(
-    const json &j) {
-  return {ikaruga::objects::enemy::EnemyFactory::MakeEnemyPhysicsComponent(j),
-          j.at("type")};
-}
-
-void adl_serializer<ikaruga::objects::enemy::Enemy>::to_json(json &j,
-                                                             ikaruga::objects::enemy::Enemy t) {
-  t.Serialize(j);
-}
 }

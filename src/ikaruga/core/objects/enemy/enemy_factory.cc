@@ -12,13 +12,32 @@ game_engine::PhysicsComponent *EnemyFactory::MakeEnemyPhysicsComponent(const nlo
   glm::vec2 position = json.at("physics_component").at("position");
   glm::vec2 velocity = json.at("physics_component").at("velocity");
 
-  switch (json.at("type").at("pattern").get<Pattern>()) {
+  switch (json.at("enemy_type").at("pattern").get<Pattern>()) {
     case kSineLine:
-      return new SineLineMovementPhysicsComponent(position, velocity);
+      return new SineLineMovementPhysicsComponent(position,
+                                                  velocity,
+                                                  json.at("physics_component").at(
+                                                      "collider_mesh"));
     case kSineLoop:
-      return new SineLoopMovementPhysicsComponent(position, velocity);
+      return new SineLoopMovementPhysicsComponent(position,
+                                                  velocity,
+                                                  json.at("physics_component").at(
+                                                      "collider_mesh"));
     default:
       return nullptr;
   }
+}
+}
+
+namespace nlohmann {
+ikaruga::objects::enemy::Enemy adl_serializer<ikaruga::objects::enemy::Enemy>::from_json(
+    const json &j) {
+  return {ikaruga::objects::enemy::EnemyFactory::MakeEnemyPhysicsComponent(j),
+          j.at("enemy_type")};
+}
+
+void adl_serializer<ikaruga::objects::enemy::Enemy>::to_json(json &j,
+                                                             ikaruga::objects::enemy::Enemy t) {
+  t.Serialize(j);
 }
 }
