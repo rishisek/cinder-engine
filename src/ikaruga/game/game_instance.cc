@@ -60,7 +60,9 @@ void GameInstance::SetupEnemies() {
   std::ifstream ifstream(ci::app::loadAsset("enemy.json")->getFilePath());
   nlohmann::json json;
   ifstream >> json;
-  world_.AddEnemy(std::make_unique<enemy::Enemy>(json));
+  for (const nlohmann::json &enemy_json: json) {
+    world_.AddEnemy(std::make_unique<enemy::Enemy>(enemy_json));
+  }
 }
 
 double GameInstance::GetWidth() const {
