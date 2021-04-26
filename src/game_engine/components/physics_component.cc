@@ -3,7 +3,7 @@
 //
 
 #include <game_engine/components/physics_component.h>
-#include <game_engine/vec2_json.h>
+#include <serialization_utils/vec2_json.h>
 
 namespace game_engine {
 void PhysicsComponent::UpdatePosition() {

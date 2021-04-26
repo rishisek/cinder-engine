@@ -4,7 +4,7 @@
 #include <catch2/catch.hpp>
 #include <nlohmann/json.hpp>
 #include <glm/vec2.hpp>
-#include <game_engine/vec2_json.h>
+#include <serialization_utils/vec2_json.h>
 
 TEST_CASE("glm::vec2 serialization", "[serialization]") {
   SECTION("Serialization") {

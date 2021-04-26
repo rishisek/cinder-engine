@@ -4,7 +4,7 @@
 
 #include <catch2/catch.hpp>
 #include <game_engine/components/physics_component.h>
-#include <game_engine/vec2_json.h>
+#include <serialization_utils/vec2_json.h>
 #include <game_engine/collision/circle_collider.h>
 
 namespace game_engine {

@@ -1,7 +1,7 @@
 //
 // Created by rishi on 25-04-2021.
 //
-#include <game_engine/vec2_json.h>
+#include <serialization_utils/vec2_json.h>
 
 namespace glm {
 void to_json(nlohmann::json &j, const glm::vec2 &vec) {

@@ -2,7 +2,7 @@
 // Created by rishi on 17-04-2021.
 //
 #pragma once
-#include <game_engine/vec2_json.h>
+#include <serialization_utils/vec2_json.h>
 #include <game_engine/collision/collider.h>
 
 namespace game_engine {
