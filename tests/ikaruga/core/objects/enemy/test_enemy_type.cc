@@ -9,7 +9,7 @@ namespace ikaruga::objects::enemy {
 TEST_CASE("Enemy type serialization", "[serialization]") {
   SECTION("Serialization") {
     std::vector<projectile::ProjectileType> projectile_types = {
-        projectile::ProjectileType(5, ci::Color("blue"), 7);
+        projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type
         (10, movement::Pattern::kSineLine, projectile_types, ci::Color("red"));
@@ -22,7 +22,7 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
 
   SECTION("Deserialization") {
     std::vector<projectile::ProjectileType> projectile_types = {
-        projectile::ProjectileType(5, ci::Color("blue"), 7);
+        projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type1
         (10, movement::Pattern::kSineLine, projectile_types, ci::Color("red"));
