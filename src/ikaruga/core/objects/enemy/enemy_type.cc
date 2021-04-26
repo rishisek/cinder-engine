@@ -29,10 +29,17 @@ const ci::ColorT<float> &EnemyType::GetColor() const {
 
 void EnemyType::Serialize(nlohmann::json &json) const {
   json["max_health"] = max_health_;
+  json["pattern"] = pattern_;
+  json["projectile_types"] = projectile_types_;
+  json["color"] = color_;
 }
 
 void EnemyType::Deserialize(const nlohmann::json &json) {
   max_health_ = json["max_health"];
+  pattern_ = json["pattern"];
+  projectile_types_ =
+      json["projectile_types"].get<std::vector<projectile::ProjectileType>>();
+  color_ = json["color"];
 }
 
 bool EnemyType::operator==(const EnemyType &rhs) const {
