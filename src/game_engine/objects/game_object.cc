@@ -25,4 +25,12 @@ GameObject::~GameObject() {
 bool GameObject::Collides(GameObject *const other) const {
   return physics_component_->Collides(other->physics_component_);
 }
+
+void to_json(nlohmann::json &json, const GameObject &game_object) {
+  game_object.Serialize(json);
+}
+
+void from_json(const nlohmann::json &json, GameObject &game_object) {
+  game_object.Deserialize(json);
+}
 }

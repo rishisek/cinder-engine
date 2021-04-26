@@ -2,7 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 #pragma once
-
+#include <game_engine/objects/character_object.h>
 #include <ikaruga/core/objects/projectile/projectile_shooter.h>
 #include <game_engine/game_world.h>
 #include "enemy_type.h"

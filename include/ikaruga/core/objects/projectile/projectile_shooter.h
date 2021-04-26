@@ -3,7 +3,6 @@
 //
 #pragma once
 
-#include <game_engine/objects/character_object.h>
 #include <ikaruga/core/objects/projectile/projectile_type.h>
 #include <ikaruga/core/objects/projectile/projectile.h>
 
