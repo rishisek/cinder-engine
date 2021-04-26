@@ -51,7 +51,7 @@ void GameInstance::SetupPlayer() {
       projectile::ProjectileType(5, ci::Color(1, 0, 0), 25)
   };
   player_ = new player::Player(
-      new player::PlayerPhysicsComponent(glm::vec2(300, 300), glm::vec2(0, 0)),
+      new player::PlayerPhysicsComponent(glm::vec2(300, 450), glm::vec2(0, 0)),
       new player::PlayerInputComponent(),
       player_projectile_types);
 }
