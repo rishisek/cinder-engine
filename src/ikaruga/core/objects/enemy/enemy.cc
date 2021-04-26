@@ -2,7 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include "ikaruga/core/objects/enemy/enemy.h"
+#include <ikaruga/core/objects/enemy/enemy.h>
 #include <game_engine/components/physics_component.h>
 
 namespace ikaruga::objects::enemy {
@@ -21,5 +21,15 @@ void Enemy::Update(game_engine::GameWorld &world) {
 
 const EnemyType &Enemy::GetType() const {
   return type_;
+}
+
+void Enemy::Serialize(nlohmann::json &json) const {
+  CharacterObject::Serialize(json);
+  json["type"] = type_;
+}
+
+void Enemy::Deserialize(const nlohmann::json &json) {
+  CharacterObject::Deserialize(json);
+  type_.Deserialize(json);
 }
 }
