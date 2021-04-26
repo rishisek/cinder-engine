@@ -26,4 +26,36 @@ EnemyType::EnemyType(float max_health,
 const ci::ColorT<float> &EnemyType::GetColor() const {
   return color_;
 }
+
+void EnemyType::Serialize(nlohmann::json &json) const {
+  json["max_health"] = max_health_;
+}
+
+void EnemyType::Deserialize(const nlohmann::json &json) {
+  max_health_ = json["max_health"];
+}
+
+bool EnemyType::operator==(const EnemyType &rhs) const {
+  return max_health_ == rhs.max_health_ &&
+      pattern_ == rhs.pattern_ &&
+      projectile_types_ == rhs.projectile_types_ &&
+      color_ == rhs.color_;
+}
+
+bool EnemyType::operator!=(const EnemyType &rhs) const {
+  return !(rhs == *this);
+}
+}
+
+namespace nlohmann {
+ikaruga::objects::enemy::EnemyType adl_serializer<ikaruga::objects::enemy::EnemyType>::from_json(
+    const json &j) {
+  return {j.at("max_health"), j.at("pattern"), j.at("projectile_types"),
+          j.at("color")};
+}
+
+void adl_serializer<ikaruga::objects::enemy::EnemyType>::to_json(json &j,
+                                                                 ikaruga::objects::enemy::EnemyType t) {
+  t.Serialize(j);
+}
 }
