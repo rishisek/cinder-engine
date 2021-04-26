@@ -24,6 +24,9 @@ class PhysicsComponent : public Component, public JsonSerializable {
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
  protected:
+  PhysicsComponent(const glm::vec2 &position,
+                   const glm::vec2 &velocity,
+                   game_engine::ColliderMesh &&collider_mesh);
   PhysicsComponent(const glm::vec2 &position = glm::vec2(),
                    const glm::vec2 &velocity = glm::vec2());
 

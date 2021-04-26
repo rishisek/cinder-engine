@@ -31,6 +31,13 @@ void PhysicsComponent::SetVelocity(const glm::vec2 &velocity) {
 }
 
 PhysicsComponent::PhysicsComponent(const glm::vec2 &position,
+                                   const glm::vec2 &velocity,
+                                   ColliderMesh &&collider_mesh)
+    : position_(position),
+      velocity_(velocity),
+      collider_mesh_(std::move(collider_mesh)) {}
+
+PhysicsComponent::PhysicsComponent(const glm::vec2 &position,
                                    const glm::vec2 &velocity)
     : position_(position), velocity_(velocity) {}
 
@@ -54,7 +61,7 @@ void PhysicsComponent::UpdateColliderMesh() {
 }
 
 void PhysicsComponent::Serialize(nlohmann::json &json) const {
-  collider_mesh_.Serialize(json);
+  json["collider_mesh"] = collider_mesh_;
   json["position"] = position_;
   json["velocity"] = velocity_;
 }
