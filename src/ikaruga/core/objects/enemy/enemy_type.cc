@@ -6,7 +6,7 @@
 #include "ikaruga/core/objects/enemy/enemy_type.h"
 
 namespace ikaruga::objects::enemy {
-float EnemyType::GetMaxHealth() const {
+int EnemyType::GetMaxHealth() const {
   return max_health_;
 }
 
@@ -14,7 +14,7 @@ const std::vector<projectile::ProjectileType> &EnemyType::GetProjectileTypes() c
   return projectile_types_;
 }
 
-EnemyType::EnemyType(float max_health,
+EnemyType::EnemyType(int max_health,
                      ikaruga::objects::enemy::movement::Pattern pattern,
                      const std::vector<projectile::ProjectileType> &projectile_types,
                      const ci::Color &color)

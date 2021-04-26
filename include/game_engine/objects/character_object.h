@@ -12,7 +12,7 @@ class CharacterObject : public GameObject {
   void Deserialize(const nlohmann::json &json) override;
  protected:
   CharacterObject(PhysicsComponent *physics_component);
-  float max_health_ = 1;
+  int max_health_ = 1;
   float health_ = 0;
 };
 
