@@ -32,4 +32,21 @@ TEST_CASE("ProjectileType cooldown cycle") {
     REQUIRE(type.GetCurrentCooldown() == 0);
   }
 }
+
+TEST_CASE("Projectile type serialization", "[serialization]") {
+  SECTION("Serialization") {
+    ProjectileType type(5.0, cinder::Color("red"), 5);
+    nlohmann::json json = type;
+    REQUIRE(json["radius"] == Approx(5.0));
+    REQUIRE(json["color"] == cinder::Color("red"));
+    REQUIRE(json["cooldown"] == 5);
+  }
+
+  SECTION("Deserialization") {
+    ProjectileType type1(5.0, cinder::Color("red"), 5);
+    nlohmann::json json = type1;
+    ProjectileType type2 = json;
+    REQUIRE(type1 == type2);
+  }
+}
 }
