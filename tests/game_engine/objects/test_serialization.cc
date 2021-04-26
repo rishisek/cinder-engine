@@ -29,5 +29,6 @@ TEST_CASE("CharacterObject serialization") {
   nlohmann::json json = *character;
   REQUIRE(json.at("max_health") == 1);
   REQUIRE(json.at("health") == 0);
+  delete character;
 }
 }
