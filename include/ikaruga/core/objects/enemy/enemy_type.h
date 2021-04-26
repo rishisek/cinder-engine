@@ -12,6 +12,7 @@ namespace ikaruga::objects::enemy {
 class EnemyType : public game_engine::JsonSerializable {
  public:
   EnemyType(int max_health,
+            int kill_score,
             ikaruga::objects::enemy::movement::Pattern pattern,
             const std::vector<projectile::ProjectileType> &projectile_types,
             const ci::Color &color);
@@ -27,6 +28,7 @@ class EnemyType : public game_engine::JsonSerializable {
   const ci::ColorT<float> &GetColor() const;
  private:
   int max_health_;
+  int kill_score_;
   movement::Pattern pattern_;
   std::vector<projectile::ProjectileType> projectile_types_;
   ci::ColorT<float> color_;

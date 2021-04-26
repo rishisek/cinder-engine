@@ -12,9 +12,14 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
         projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type
-        (10, movement::Pattern::kSineLine, projectile_types, ci::Color("red"));
+        (10,
+         2,
+         movement::Pattern::kSineLine,
+         projectile_types,
+         ci::Color("red"));
     nlohmann::json json = enemy_type;
     REQUIRE(json["max_health"] == 10);
+    REQUIRE(json["kill_score"] == 2);
     REQUIRE(json["pattern"] == movement::Pattern::kSineLine);
     REQUIRE(json["projectile_types"] == projectile_types);
     REQUIRE(json["color"] == ci::Color("red"));
@@ -25,7 +30,11 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
         projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type1
-        (10, movement::Pattern::kSineLine, projectile_types, ci::Color("red"));
+        (10,
+         2,
+         movement::Pattern::kSineLine,
+         projectile_types,
+         ci::Color("red"));
     nlohmann::json json = enemy_type1;
     EnemyType enemy_type2 = json;
     REQUIRE(enemy_type1 == enemy_type2);
