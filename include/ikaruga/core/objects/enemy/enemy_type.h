@@ -24,6 +24,7 @@ class EnemyType : public game_engine::JsonSerializable {
   void Deserialize(const nlohmann::json &json) override;
 
   int GetMaxHealth() const;
+  int GetKillScore() const;
   const std::vector<projectile::ProjectileType> &GetProjectileTypes() const;
   const ci::ColorT<float> &GetColor() const;
  private:

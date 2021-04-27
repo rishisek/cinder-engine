@@ -57,6 +57,10 @@ bool EnemyType::operator==(const EnemyType &rhs) const {
 bool EnemyType::operator!=(const EnemyType &rhs) const {
   return !(rhs == *this);
 }
+
+int EnemyType::GetKillScore() const {
+  return kill_score_;
+}
 }
 
 namespace nlohmann {
