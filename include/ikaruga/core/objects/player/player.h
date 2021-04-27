@@ -19,12 +19,16 @@ class Player
   void TiltAimLeft();
   void TiltAimRight();
   bool InCooldown();
+  void IncrementScore(int score_increment);
+
+  int GetScore() const;
 
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
  private:
   const double kAimStep = 0.01;
   double view_angle_radians_;
+  int score_ = 0;
 
   // Sends a message to all member components (Mediator pattern)
   void send(int message);

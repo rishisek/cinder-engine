@@ -2,7 +2,7 @@
 // Created by rishi on 16-04-2021.
 //
 
-#include "ikaruga/core/objects/player/player.h"
+#include <ikaruga/core/objects/player/player.h>
 #include <game_engine/components/physics_component.h>
 #include <game_engine/components/input_component.h>
 
@@ -47,5 +47,13 @@ void Player::Update(game_engine::GameWorld &world) {
 
 void Player::send(int message) {
   physics_component_->receive(message);
+}
+
+void Player::IncrementScore(int score) {
+  score_ += score;
+}
+
+int Player::GetScore() const {
+  return score_;
 }
 }
