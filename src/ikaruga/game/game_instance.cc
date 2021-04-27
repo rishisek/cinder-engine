@@ -12,7 +12,7 @@
 namespace ikaruga::game {
 using namespace ikaruga::objects;
 
-GameInstance::GameInstance() {}
+GameInstance::GameInstance() : world_() {}
 
 void GameInstance::Setup() {
   SetupPlayer();
@@ -20,6 +20,8 @@ void GameInstance::Setup() {
 }
 
 void GameInstance::Draw() {
+  ci::gl::color(0, 0, 0);
+  ci::gl::drawString(std::to_string(player_->GetScore()), glm::vec2(200, 200));
   ci::gl::color(0, 0, 1);
   ci::gl::drawSolidCircle(player_->GetPhysicsComponent()->GetPosition(), 10);
   for (const std::unique_ptr<ikaruga::objects::projectile::Projectile>
@@ -54,6 +56,7 @@ void GameInstance::SetupPlayer() {
       new player::PlayerPhysicsComponent(glm::vec2(300, 450), glm::vec2(0, 0)),
       new player::PlayerInputComponent(),
       player_projectile_types);
+  world_.Setup(player_);
 }
 
 void GameInstance::SetupEnemies() {

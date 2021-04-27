@@ -3,6 +3,7 @@
 //
 
 #include <ikaruga/core/world/world.h>
+#include <ikaruga/core/objects/player/player.h>
 #include <game_engine/components/physics_component.h>
 
 namespace ikaruga::world {
@@ -63,6 +64,10 @@ void World::ResolveProjectileEnemyCollisions() {
                                      return obj->Collides((*itr).get());
                                    });
     if (iterator != enemies_.end()) {
+      for (auto enemy_itr = iterator; enemy_itr != enemies_.end();
+           ++enemy_itr) {
+        player_ref_->IncrementScore((*enemy_itr)->GetType().GetKillScore());
+      }
       enemies_.erase(iterator, enemies_.end());
       itr = projectiles_.erase(itr);
       if (itr == projectiles_.end()) {
@@ -70,5 +75,9 @@ void World::ResolveProjectileEnemyCollisions() {
       }
     }
   }
+}
+
+void World::Setup(ikaruga::objects::player::Player *player) {
+  player_ref_ = player;
 }
 }

@@ -19,8 +19,8 @@ class GameInstance {
  private:
   double height_ = 800;
   double width_ = 600;
-  ikaruga::world::World world_;
   ikaruga::objects::player::Player *player_;
+  ikaruga::world::World world_;
 
   void SetupPlayer();
   void SetupEnemies();
