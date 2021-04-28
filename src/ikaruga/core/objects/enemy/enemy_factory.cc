@@ -2,17 +2,21 @@
 // Created by rishi on 26-04-2021.
 //
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
+#include <ikaruga/core/objects/enemy/enemy.h>
+#include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <serialization_utils/vec2_json.h>
 #include <ikaruga/core/objects/enemy/movement/sine_line_movement_physics_component.h>
 #include <ikaruga/core/objects/enemy/movement/sine_loop_movement_physics_component.h>
 
 namespace ikaruga::objects::enemy {
+std::vector<EnemyType *> EnemyFactory::enemy_types_;
+
 game_engine::PhysicsComponent *EnemyFactory::MakeEnemyPhysicsComponent(const nlohmann::json &json) {
   using namespace movement;
   glm::vec2 position = json.at("physics_component").at("position");
   glm::vec2 velocity = json.at("physics_component").at("velocity");
 
-  switch (json.at("enemy_type").at("pattern").get<Pattern>()) {
+  switch (GetTypeByName(json.at("enemy_type"))->GetPattern()) {
     case kSineLine:
       return new SineLineMovementPhysicsComponent(position,
                                                   velocity,
@@ -27,17 +31,17 @@ game_engine::PhysicsComponent *EnemyFactory::MakeEnemyPhysicsComponent(const nlo
       return nullptr;
   }
 }
+
+void EnemyFactory::AddEnemyType(EnemyType *enemy_type) {
+  enemy_types_.push_back(enemy_type);
 }
 
-namespace nlohmann {
-ikaruga::objects::enemy::Enemy adl_serializer<ikaruga::objects::enemy::Enemy>::from_json(
-    const json &j) {
-  return {ikaruga::objects::enemy::EnemyFactory::MakeEnemyPhysicsComponent(j),
-          j.at("enemy_type")};
-}
-
-void adl_serializer<ikaruga::objects::enemy::Enemy>::to_json(json &j,
-                                                             ikaruga::objects::enemy::Enemy t) {
-  t.Serialize(j);
+EnemyType *EnemyFactory::GetTypeByName(const std::string &enemy_type_id) {
+  auto it = find_if(enemy_types_.begin(),
+                    enemy_types_.end(),
+                    [&](const EnemyType *const &enemy_type) {
+                      return enemy_type->GetId() == enemy_type_id;
+                    });
+  return *it;
 }
 }

@@ -6,6 +6,7 @@
 #include <ikaruga/core/objects/player/player_physics_component.h>
 #include <ikaruga/core/objects/player/player_input_component.h>
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
+#include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <cinder/gl/gl.h>
 #include <cinder/app/AppBase.h>
 
@@ -31,7 +32,7 @@ void GameInstance::Draw() {
                             projectile->GetType().GetRadius());
   }
   for (std::unique_ptr<enemy::Enemy> const &enemy: world_.GetEnemies()) {
-    ci::gl::color(enemy->GetType().GetColor());
+    ci::gl::color(enemy->GetType()->GetColor());
     ci::gl::drawSolidCircle(enemy->GetPhysicsComponent()->GetPosition(),
                             30);
   }
@@ -63,7 +64,10 @@ void GameInstance::SetupEnemies() {
   std::ifstream ifstream(ci::app::loadAsset("enemy.json")->getFilePath());
   nlohmann::json json;
   ifstream >> json;
-  for (const nlohmann::json &enemy_json: json) {
+  for (const nlohmann::json &enemy_type_json: json["enemy_types"]) {
+    enemy::EnemyFactory::AddEnemyType(new enemy::EnemyType(enemy_type_json));
+  }
+  for (const nlohmann::json &enemy_json: json["enemies"]) {
     world_.AddEnemy(std::make_unique<enemy::Enemy>(enemy_json));
   }
 }

@@ -11,7 +11,8 @@
 namespace ikaruga::objects::enemy {
 class EnemyType : public game_engine::JsonSerializable {
  public:
-  EnemyType(int max_health,
+  EnemyType(const std::string &id,
+            int max_health,
             int kill_score,
             ikaruga::objects::enemy::movement::Pattern pattern,
             const std::vector<projectile::ProjectileType> &projectile_types,
@@ -23,11 +24,14 @@ class EnemyType : public game_engine::JsonSerializable {
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
 
+  const std::string &GetId() const;
   int GetMaxHealth() const;
   int GetKillScore() const;
+  movement::Pattern GetPattern() const;
   const std::vector<projectile::ProjectileType> &GetProjectileTypes() const;
   const ci::ColorT<float> &GetColor() const;
  private:
+  std::string id_;
   int max_health_;
   int kill_score_;
   movement::Pattern pattern_;

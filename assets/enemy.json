@@ -1,6 +1,7 @@
-[
-  {
-    "enemy_type": {
+{
+  "enemy_types": [
+    {
+      "id": "type1",
       "max_health": 10,
       "kill_score": 10,
       "pattern": "sine-line",
@@ -29,76 +30,52 @@
         "g": 0.5,
         "b": 0
       }
-    },
-    "physics_component": {
-      "collider_mesh": [
-        {
-          "position": {
-            "x": 300,
-            "y": 100
-          },
-          "radius": 30
-        }
-      ],
-      "position": {
-        "x": 300,
-        "y": 100
-      },
-      "velocity": {
-        "x": 1,
-        "y": 0
-      }
     }
-  },
-  {
-    "enemy_type": {
-      "max_health": 10,
-      "kill_score": 10,
-      "pattern": "sine-line",
-      "projectile_types": [
-        {
-          "radius": 5,
-          "color": {
-            "r": 0,
-            "g": 1,
-            "b": 0
-          },
-          "cooldown": 50
+  ],
+  "enemies": [
+    {
+      "enemy_type": "type1",
+      "physics_component": {
+        "collider_mesh": [
+          {
+            "position": {
+              "x": 300,
+              "y": 100
+            },
+            "radius": 30
+          }
+        ],
+        "position": {
+          "x": 300,
+          "y": 100
         },
-        {
-          "radius": 5,
-          "color": {
-            "r": 1,
-            "g": 0,
-            "b": 0
-          },
-          "cooldown": 25
+        "velocity": {
+          "x": 1,
+          "y": 0
         }
-      ],
-      "color": {
-        "r": 0.5,
-        "g": 0.5,
-        "b": 0
       }
     },
-    "physics_component": {
-      "collider_mesh": [
-        {
-          "position": {
-            "x": 300,
-            "y": 300
-          },
-          "radius": 30
+    {
+      "enemy_type": "type1",
+      "physics_component": {
+        "collider_mesh": [
+          {
+            "position": {
+              "x": 300,
+              "y": 300
+            },
+            "radius": 30
+          }
+        ],
+        "position": {
+          "x": 300,
+          "y": 300
+        },
+        "velocity": {
+          "x": -1,
+          "y": 0
         }
-      ],
-      "position": {
-        "x": 300,
-        "y": 300
-      },
-      "velocity": {
-        "x": -1,
-        "y": 0
       }
     }
-  }
-]
+  ]
+}

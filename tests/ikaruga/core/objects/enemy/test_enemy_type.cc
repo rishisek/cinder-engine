@@ -12,7 +12,7 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
         projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type
-        (10,
+        ("id", 10,
          2,
          movement::Pattern::kSineLine,
          projectile_types,
@@ -30,7 +30,7 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
         projectile::ProjectileType(5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type1
-        (10,
+        (<#initializer#>, 10,
          2,
          movement::Pattern::kSineLine,
          projectile_types,

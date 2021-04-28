@@ -4,6 +4,7 @@
 
 #include <ikaruga/core/world/world.h>
 #include <ikaruga/core/objects/player/player.h>
+#include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <game_engine/components/physics_component.h>
 
 namespace ikaruga::world {
@@ -62,7 +63,7 @@ void World::ResolveProjectileEnemyCollisions() {
                                    enemies_.end(),
                                    [&](std::unique_ptr<Enemy> &obj) {
                                      if (obj->Collides((*itr).get())) {
-                                       player_ref_->IncrementScore(obj->GetType().GetKillScore());
+                                       player_ref_->IncrementScore(obj->GetType()->GetKillScore());
                                        return true;
                                      }
                                      return false;

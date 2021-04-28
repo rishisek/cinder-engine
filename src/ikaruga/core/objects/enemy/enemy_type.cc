@@ -14,12 +14,13 @@ const std::vector<projectile::ProjectileType> &EnemyType::GetProjectileTypes() c
   return projectile_types_;
 }
 
-EnemyType::EnemyType(int max_health,
+EnemyType::EnemyType(const std::string &id,
+                     int max_health,
                      int kill_score,
                      ikaruga::objects::enemy::movement::Pattern pattern,
                      const std::vector<projectile::ProjectileType> &projectile_types,
                      const ci::Color &color)
-    : max_health_(max_health),
+    : id_(id), max_health_(max_health),
       kill_score_(kill_score),
       pattern_(pattern),
       projectile_types_(projectile_types),
@@ -30,6 +31,7 @@ const ci::ColorT<float> &EnemyType::GetColor() const {
 }
 
 void EnemyType::Serialize(nlohmann::json &json) const {
+  json["id"] = id_;
   json["max_health"] = max_health_;
   json["kill_score"] = kill_score_;
   json["pattern"] = pattern_;
@@ -38,6 +40,7 @@ void EnemyType::Serialize(nlohmann::json &json) const {
 }
 
 void EnemyType::Deserialize(const nlohmann::json &json) {
+  id_ = json["id"];
   max_health_ = json["max_health"];
   kill_score_ = json["kill_score"];
   pattern_ = json["pattern"];
@@ -47,11 +50,7 @@ void EnemyType::Deserialize(const nlohmann::json &json) {
 }
 
 bool EnemyType::operator==(const EnemyType &rhs) const {
-  return max_health_ == rhs.max_health_ &&
-      kill_score_ == rhs.kill_score_ &&
-      pattern_ == rhs.pattern_ &&
-      projectile_types_ == rhs.projectile_types_ &&
-      color_ == rhs.color_;
+  return id_ == rhs.id_;
 }
 
 bool EnemyType::operator!=(const EnemyType &rhs) const {
@@ -61,12 +60,20 @@ bool EnemyType::operator!=(const EnemyType &rhs) const {
 int EnemyType::GetKillScore() const {
   return kill_score_;
 }
+
+const std::string &EnemyType::GetId() const {
+  return id_;
+}
+
+movement::Pattern EnemyType::GetPattern() const {
+  return pattern_;
+}
 }
 
 namespace nlohmann {
 ikaruga::objects::enemy::EnemyType adl_serializer<ikaruga::objects::enemy::EnemyType>::from_json(
     const json &j) {
-  return {j.at("max_health"), j.at("kill_score"), j.at("pattern"),
+  return {j.at("id"), j.at("max_health"), j.at("kill_score"), j.at("pattern"),
           j.at("projectile_types"), j.at("color")};
 }
 
