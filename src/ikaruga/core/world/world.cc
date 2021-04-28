@@ -61,13 +61,13 @@ void World::ResolveProjectileEnemyCollisions() {
     auto iterator = std::remove_if(enemies_.begin(),
                                    enemies_.end(),
                                    [&](std::unique_ptr<Enemy> &obj) {
-                                     return obj->Collides((*itr).get());
+                                     if (obj->Collides((*itr).get())) {
+                                       player_ref_->IncrementScore(obj->GetType().GetKillScore());
+                                       return true;
+                                     }
+                                     return false;
                                    });
     if (iterator != enemies_.end()) {
-      for (auto enemy_itr = iterator; enemy_itr != enemies_.end();
-           ++enemy_itr) {
-        player_ref_->IncrementScore((*enemy_itr)->GetType().GetKillScore());
-      }
       enemies_.erase(iterator, enemies_.end());
       itr = projectiles_.erase(itr);
       if (itr == projectiles_.end()) {
