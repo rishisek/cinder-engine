@@ -3,9 +3,9 @@
 //
 #pragma once
 
-#include "game_engine/objects/game_object.h"
-#include "game_engine/collision/collider_mesh.h"
-#include "component.h"
+#include <game_engine/objects/game_object.h>
+#include <game_engine/collision/collider_mesh.h>
+#include <game_engine/components/component.h>
 
 namespace game_engine {
 class PhysicsComponent : public Component, public JsonSerializable {
@@ -23,6 +23,7 @@ class PhysicsComponent : public Component, public JsonSerializable {
   void SetPosition(const glm::vec2 &position);
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
+  const ColliderMesh &GetColliderMesh() const;
  protected:
   PhysicsComponent(const glm::vec2 &position,
                    const glm::vec2 &velocity,

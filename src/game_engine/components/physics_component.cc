@@ -72,6 +72,10 @@ void PhysicsComponent::Deserialize(const nlohmann::json &json) {
   velocity_ = json["velocity"];
 }
 
+const ColliderMesh &PhysicsComponent::GetColliderMesh() const {
+  return collider_mesh_;
+}
+
 void to_json(nlohmann::json &json, const PhysicsComponent &component) {
   component.Serialize(json);
 }
