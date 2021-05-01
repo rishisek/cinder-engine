@@ -4,7 +4,8 @@
 #pragma once
 
 #include <game_engine/objects/controllable_object.h>
-#include "ikaruga/core/objects/projectile/projectile_shooter.h"
+#include <ikaruga/core/objects/projectile/projectile_shooter.h>
+#include <ikaruga/core/objects/player/player_graphics_component.h>
 
 namespace ikaruga::objects::player {
 class Player
@@ -22,10 +23,13 @@ class Player
   void IncrementScore(int score_increment);
 
   int GetScore() const;
+  const PlayerGraphicsComponent &GetGraphicsComponent() const;
 
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
+  friend class PlayerGraphicsComponent;
  private:
+  PlayerGraphicsComponent graphics_component_;
   const double kAimStep = 0.01;
   double view_angle_radians_;
   int score_ = 0;

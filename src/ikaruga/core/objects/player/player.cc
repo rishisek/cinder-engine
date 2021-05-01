@@ -18,6 +18,7 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
       game_engine::ControllableObject<game_engine::CharacterObject>(
           physics_component,
           input_component),
+      graphics_component_(physics_component_->GetPosition()),
       view_angle_radians_(view_angle_radians) {}
 
 void Player::TiltAimLeft() {
@@ -43,6 +44,7 @@ void Player::Update(game_engine::GameWorld &world) {
   GameObject::Update(world);
   UpdateCooldowns();
   input_component_->Update(*this, dynamic_cast<world::World &>(world));
+  graphics_component_.Update(physics_component_->GetPosition());
 }
 
 void Player::send(int message) {
@@ -55,5 +57,9 @@ void Player::IncrementScore(int score) {
 
 int Player::GetScore() const {
   return score_;
+}
+
+const PlayerGraphicsComponent &Player::GetGraphicsComponent() const {
+  return graphics_component_;
 }
 }

@@ -32,8 +32,15 @@ void PlayerPhysicsComponent::receive(int message) {
 PlayerPhysicsComponent::PlayerPhysicsComponent(const glm::vec2 &position,
                                                const glm::vec2 &velocity)
     : PhysicsComponent(position, velocity) {
-  game_engine::Collider
-      *circle_collider = new game_engine::CircleCollider(position_, 5.0);
-  collider_mesh_.AddCollider(circle_collider);
+  collider_mesh_.AddCollider(new game_engine::CircleCollider(
+      position_ + glm::vec2(38, 24), 8.0));
+  collider_mesh_.AddCollider(new game_engine::CircleCollider(
+      position_ + glm::vec2(28, 35), 7.0));
+  collider_mesh_.AddCollider(new game_engine::CircleCollider(
+      position_ + glm::vec2(48, 35), 7.0));
+  collider_mesh_.AddCollider(new game_engine::BoxCollider(
+      position_ + glm::vec2(9, 15), 7.0, 20.0));
+  collider_mesh_.AddCollider(new game_engine::BoxCollider(
+      position_ + glm::vec2(60, 15), 7.0, 20.0));
 }
 }
