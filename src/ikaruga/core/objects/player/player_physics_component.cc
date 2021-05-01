@@ -3,26 +3,28 @@
 //
 
 #include <game_engine/collision/circle_collider.h>
+#include <game_engine/collision/box_collider.h>
 #include "ikaruga/core/objects/player/player_physics_component.h"
 
 namespace ikaruga::objects::player {
 void PlayerPhysicsComponent::Update() {
   PhysicsComponent::Update();
+  velocity_ = glm::vec2(0, 0);
 }
 
 void PlayerPhysicsComponent::receive(int message) {
   switch (message) {
     case 1:
-      position_ += glm::vec2(0, -1);
+      velocity_.y = -1;
       break;
     case 2:
-      position_ += glm::vec2(-1, 0);
+      velocity_.x = -1;
       break;
     case 3:
-      position_ += glm::vec2(0, 1);
+      velocity_.y = 1;
       break;
     case 4:
-      position_ += glm::vec2(1, 0);
+      velocity_.x = 1;
       break;
   }
 }
