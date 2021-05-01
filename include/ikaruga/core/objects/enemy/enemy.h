@@ -10,8 +10,7 @@ namespace ikaruga::objects::enemy {
 class EnemyType;
 class EnemyFactory;
 class Enemy
-    : public projectile::ProjectileShooter,
-      public game_engine::CharacterObject {
+    : public projectile::ProjectileShooter {
  public:
   Enemy(game_engine::PhysicsComponent *physics_component,
         const std::string &type_id);

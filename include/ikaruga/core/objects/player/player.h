@@ -9,8 +9,7 @@
 
 namespace ikaruga::objects::player {
 class Player
-    : public projectile::ProjectileShooter,
-      public game_engine::ControllableObject<game_engine::CharacterObject> {
+    : public game_engine::ControllableObject<projectile::ProjectileShooter> {
  public:
   Player(game_engine::PhysicsComponent *physics_component,
          game_engine::InputComponent *input_component,

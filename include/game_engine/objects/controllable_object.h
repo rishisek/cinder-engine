@@ -13,9 +13,9 @@ class ControllableObject : public T {
 
   InputComponent *GetInputComponent() const;
  protected:
-  ControllableObject(game_engine::PhysicsComponent *physics_component,
+  ControllableObject(T *object,
                      game_engine::InputComponent *input_component)
-      : T(physics_component), input_component_(input_component) {}
+      : T(std::move(*object)), input_component_(input_component) {}
 
   InputComponent *input_component_;
 };

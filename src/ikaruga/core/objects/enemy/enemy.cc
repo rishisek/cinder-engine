@@ -13,8 +13,8 @@ using projectile::ProjectileType;
 
 Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
              const std::string &type_id)
-    : ProjectileShooter(EnemyFactory::GetTypeByName(type_id)->GetProjectileTypes()),
-      game_engine::CharacterObject(physics_component),
+    : ProjectileShooter(physics_component,
+                        EnemyFactory::GetTypeByName(type_id)->GetProjectileTypes()),
       type_(EnemyFactory::GetTypeByName(type_id)) {}
 
 void Enemy::Update(game_engine::GameWorld &world) {

@@ -5,11 +5,13 @@
 
 #include <ikaruga/core/objects/projectile/projectile_type.h>
 #include <ikaruga/core/objects/projectile/projectile.h>
+#include <game_engine/objects/character_object.h>
 
 namespace ikaruga::objects::projectile {
-class ProjectileShooter {
+class ProjectileShooter : public game_engine::CharacterObject {
  public:
-  ProjectileShooter(const std::vector<ProjectileType> &projectile_types);
+  ProjectileShooter(game_engine::PhysicsComponent *physics_component,
+                    const std::vector<ProjectileType> &projectile_types);
 
   // Update all projectile type cooldowns
   void UpdateCooldowns();

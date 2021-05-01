@@ -16,7 +16,7 @@ Projectile *ProjectileShooter::Shoot(game_engine::GameObject const &game_object)
   projectile_types_[current_projectile_type_index_].StartCooldown();
   game_engine::PhysicsComponent
       *projectile_physics_component =
-      new ProjectilePhysicsComponent(game_object.GetPhysicsComponent()->GetPosition(),
+      new ProjectilePhysicsComponent(physics_component_->GetPosition(),
                                      glm::vec2(cos(shoot_angle_radians_),
                                                sin(shoot_angle_radians_)),
                                      projectile_types_[current_projectile_type_index_].GetRadius());
@@ -31,6 +31,7 @@ void ProjectileShooter::ToggleProjectileType() {
   current_projectile_type_index_ %= projectile_types_.size();
 }
 
-ProjectileShooter::ProjectileShooter(const std::vector<ProjectileType> &projectile_types)
-    : projectile_types_(projectile_types) {}
+ProjectileShooter::ProjectileShooter(game_engine::PhysicsComponent *physics_component,
+                                     const std::vector<ProjectileType> &projectile_types)
+    : CharacterObject(physics_component), projectile_types_(projectile_types) {}
 }
