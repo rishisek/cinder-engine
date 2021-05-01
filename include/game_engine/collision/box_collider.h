@@ -17,6 +17,8 @@ class BoxCollider : public Collider {
   double GetHeight() const;
   double GetWidth() const;
 
+  void Draw() const override;
+
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
 

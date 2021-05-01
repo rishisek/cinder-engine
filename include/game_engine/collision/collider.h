@@ -13,6 +13,7 @@ class Collider : public JsonSerializable {
   bool operator==(const Collider &rhs) const;
   bool operator!=(const Collider &rhs) const;
 
+  virtual void Draw() const = 0;
   virtual bool IsCollision(Collider const &other) const = 0;
   void UpdatePosition(const glm::vec2 &velocity);
 

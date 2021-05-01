@@ -45,6 +45,12 @@ void ColliderMesh::Deserialize(const nlohmann::json &json) {
   }
 }
 
+void ColliderMesh::Draw() const {
+  for (Collider *collider: colliders_) {
+    collider->Draw();
+  }
+}
+
 void to_json(nlohmann::json &json, const ColliderMesh &mesh) {
   mesh.Serialize(json);
 }

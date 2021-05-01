@@ -5,6 +5,7 @@
 #include "game_engine/collision/box_collider.h"
 #include <game_engine/collision/circle_collider.h>
 #include <game_engine/collision/collision_utils.h>
+#include <cinder/gl/gl.h>
 
 namespace game_engine {
 
@@ -57,6 +58,12 @@ bool BoxCollider::operator==(const BoxCollider &rhs) const {
 
 bool BoxCollider::operator!=(const BoxCollider &rhs) const {
   return !(rhs == *this);
+}
+
+void BoxCollider::Draw() const {
+  ci::gl::color(1, 0, 0);
+  ci::gl::drawStrokedRect(ci::Rectf(position_,
+                                    position_ + glm::vec2(width_, height_)));
 }
 }
 

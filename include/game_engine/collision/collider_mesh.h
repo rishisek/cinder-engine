@@ -14,6 +14,8 @@ class ColliderMesh : public JsonSerializable {
   ColliderMesh(const ColliderMesh &) = delete;
   ColliderMesh(ColliderMesh &&) = default;
 
+  void Draw() const;
+
   bool IsCollision(ColliderMesh const &other) const;
   void AddCollider(game_engine::Collider *collider);
   const std::vector<Collider *> &GetColliders() const;

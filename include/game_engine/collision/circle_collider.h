@@ -15,6 +15,7 @@ class CircleCollider : public Collider {
   bool operator!=(const CircleCollider &rhs) const;
 
   bool IsCollision(const Collider &other) const override;
+  void Draw() const override;
 
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;

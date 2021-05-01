@@ -2,9 +2,10 @@
 // Created by rishi on 17-04-2021.
 //
 
-#include "game_engine/collision/circle_collider.h"
+#include <game_engine/collision/circle_collider.h>
 #include <game_engine/collision/box_collider.h>
 #include <game_engine/collision/collision_utils.h>
+#include <cinder/gl/gl.h>
 
 namespace game_engine {
 bool CircleCollider::IsCollision(const game_engine::Collider &other) const {
@@ -41,6 +42,11 @@ bool CircleCollider::operator==(const CircleCollider &rhs) const {
 
 bool CircleCollider::operator!=(const CircleCollider &rhs) const {
   return !(rhs == *this);
+}
+
+void CircleCollider::Draw() const {
+  ci::gl::color(1, 0, 0);
+  ci::gl::drawStrokedCircle(position_, (float) radius_);
 }
 }
 
