@@ -2,6 +2,7 @@
 // Created by rishi on 26-04-2021.
 //
 #include <catch2/catch.hpp>
+#include <serialization_utils/vec2_json.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <ikaruga/core/objects/enemy/movement/patterns.h>
 
@@ -16,13 +17,15 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
          2,
          movement::Pattern::kSineLine,
          projectile_types,
-         ci::Color("red"));
+         ci::Color("red"),
+         glm::vec2(1, 2));
     nlohmann::json json = enemy_type;
     REQUIRE(json["max_health"] == 10);
     REQUIRE(json["kill_score"] == 2);
     REQUIRE(json["pattern"] == movement::Pattern::kSineLine);
     REQUIRE(json["projectile_types"] == projectile_types);
     REQUIRE(json["color"] == ci::Color("red"));
+    REQUIRE(json["shoot_offset"] == glm::vec2(1, 2));
   }
 
   SECTION("Deserialization") {
@@ -34,7 +37,8 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
          2,
          movement::Pattern::kSineLine,
          projectile_types,
-         ci::Color("red"));
+         ci::Color("red"),
+         glm::vec2(1, 2));
     nlohmann::json json = enemy_type1;
     EnemyType enemy_type2 = json;
     REQUIRE(enemy_type1 == enemy_type2);

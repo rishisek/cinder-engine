@@ -3,7 +3,8 @@
 //
 
 #include <vector>
-#include "ikaruga/core/objects/enemy/enemy_type.h"
+#include <ikaruga/core/objects/enemy/enemy_type.h>
+#include <serialization_utils/vec2_json.h>
 
 namespace ikaruga::objects::enemy {
 int EnemyType::GetMaxHealth() const {
@@ -19,12 +20,14 @@ EnemyType::EnemyType(const std::string &id,
                      int kill_score,
                      ikaruga::objects::enemy::movement::Pattern pattern,
                      const std::vector<projectile::ProjectileType> &projectile_types,
-                     const ci::Color &color)
+                     const ci::Color &color,
+                     const glm::vec2 &shoot_offset)
     : id_(id), max_health_(max_health),
       kill_score_(kill_score),
       pattern_(pattern),
       projectile_types_(projectile_types),
-      color_(color) {}
+      color_(color),
+      shoot_offset_(shoot_offset) {}
 
 const ci::ColorT<float> &EnemyType::GetColor() const {
   return color_;
@@ -37,6 +40,8 @@ void EnemyType::Serialize(nlohmann::json &json) const {
   json["pattern"] = pattern_;
   json["projectile_types"] = projectile_types_;
   json["color"] = color_;
+  json["shoot_offset"] = shoot_offset_;
+
 }
 
 void EnemyType::Deserialize(const nlohmann::json &json) {
@@ -47,6 +52,7 @@ void EnemyType::Deserialize(const nlohmann::json &json) {
   projectile_types_ =
       json["projectile_types"].get<std::vector<projectile::ProjectileType>>();
   color_ = json["color"];
+  shoot_offset_ = json["shoot_offset"];
 }
 
 bool EnemyType::operator==(const EnemyType &rhs) const {
@@ -68,13 +74,17 @@ const std::string &EnemyType::GetId() const {
 movement::Pattern EnemyType::GetPattern() const {
   return pattern_;
 }
+
+const glm::vec2 &EnemyType::GetShootOffset() {
+  return shoot_offset_;
+}
 }
 
 namespace nlohmann {
 ikaruga::objects::enemy::EnemyType adl_serializer<ikaruga::objects::enemy::EnemyType>::from_json(
     const json &j) {
   return {j.at("id"), j.at("max_health"), j.at("kill_score"), j.at("pattern"),
-          j.at("projectile_types"), j.at("color")};
+          j.at("projectile_types"), j.at("color"), j.at("shoot_offset")};
 }
 
 void adl_serializer<ikaruga::objects::enemy::EnemyType>::to_json(json &j,

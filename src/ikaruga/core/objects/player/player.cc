@@ -15,7 +15,9 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
                const std::vector<ProjectileType> &projectile_types,
                double view_angle_radians)
     : game_engine::ControllableObject<ProjectileShooter>(
-    std::move(new ProjectileShooter(physics_component, projectile_types)),
+    std::move(new ProjectileShooter(physics_component,
+                                    projectile_types,
+                                    glm::vec2(38, 0))),
     input_component),
       graphics_component_(physics_component_->GetPosition()),
       view_angle_radians_(view_angle_radians) {}

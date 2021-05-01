@@ -11,7 +11,8 @@ namespace ikaruga::objects::projectile {
 class ProjectileShooter : public game_engine::CharacterObject {
  public:
   ProjectileShooter(game_engine::PhysicsComponent *physics_component,
-                    const std::vector<ProjectileType> &projectile_types);
+                    const std::vector<ProjectileType> &projectile_types,
+                    const glm::vec2 &projectile_spawn_offset);
 
   // Update all projectile type cooldowns
   void UpdateCooldowns();
@@ -27,6 +28,7 @@ class ProjectileShooter : public game_engine::CharacterObject {
 
   std::vector<ProjectileType> projectile_types_;
   double shoot_angle_radians_ = kNormalAngle;
+  glm::vec2 projectile_spawn_offset_;
   size_t current_projectile_type_index_ = 0;
 };
 }

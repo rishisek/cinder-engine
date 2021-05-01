@@ -14,12 +14,11 @@ void ProjectileShooter::UpdateCooldowns() {
 
 Projectile *ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
   projectile_types_[current_projectile_type_index_].StartCooldown();
-  game_engine::PhysicsComponent
-      *projectile_physics_component =
-      new ProjectilePhysicsComponent(physics_component_->GetPosition(),
-                                     glm::vec2(cos(shoot_angle_radians_),
-                                               sin(shoot_angle_radians_)),
-                                     projectile_types_[current_projectile_type_index_].GetRadius());
+  game_engine::PhysicsComponent *projectile_physics_component =
+      new ProjectilePhysicsComponent(
+          physics_component_->GetPosition() + projectile_spawn_offset_,
+          glm::vec2(cos(shoot_angle_radians_), sin(shoot_angle_radians_)),
+          projectile_types_[current_projectile_type_index_].GetRadius());
   Projectile *projectile =
       new Projectile(projectile_types_[current_projectile_type_index_],
                      projectile_physics_component);
@@ -32,6 +31,9 @@ void ProjectileShooter::ToggleProjectileType() {
 }
 
 ProjectileShooter::ProjectileShooter(game_engine::PhysicsComponent *physics_component,
-                                     const std::vector<ProjectileType> &projectile_types)
-    : CharacterObject(physics_component), projectile_types_(projectile_types) {}
+                                     const std::vector<ProjectileType> &projectile_types,
+                                     const glm::vec2 &projectile_spawn_offset)
+    : CharacterObject(physics_component),
+      projectile_types_(projectile_types),
+      projectile_spawn_offset_(projectile_spawn_offset) {}
 }

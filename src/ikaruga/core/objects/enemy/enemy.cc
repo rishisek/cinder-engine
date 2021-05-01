@@ -14,7 +14,8 @@ using projectile::ProjectileType;
 Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
              const std::string &type_id)
     : ProjectileShooter(physics_component,
-                        EnemyFactory::GetTypeByName(type_id)->GetProjectileTypes()),
+                        EnemyFactory::GetTypeByName(type_id)->GetProjectileTypes(),
+                        EnemyFactory::GetTypeByName(type_id)->GetShootOffset()),
       type_(EnemyFactory::GetTypeByName(type_id)) {}
 
 void Enemy::Update(game_engine::GameWorld &world) {
