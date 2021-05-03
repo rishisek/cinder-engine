@@ -41,13 +41,6 @@
       "enemy_type": "type1",
       "physics_component": {
         "collider_mesh": [
-          {
-            "position": {
-              "x": 300,
-              "y": 100
-            },
-            "radius": 30
-          }
         ],
         "position": {
           "x": 300,
@@ -63,13 +56,6 @@
       "enemy_type": "type1",
       "physics_component": {
         "collider_mesh": [
-          {
-            "position": {
-              "x": 300,
-              "y": 300
-            },
-            "radius": 30
-          }
         ],
         "position": {
           "x": 300,
