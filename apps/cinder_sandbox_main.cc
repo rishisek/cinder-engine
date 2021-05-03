@@ -7,4 +7,4 @@ void prepareSettings(Sandbox::Settings *settings) {
 }
 
 // This line is a macro that expands into an "int main()" function.
-CINDER_APP(Sandbox, ci::app::RendererGl, prepareSettings);
+CINDER_APP(Sandbox, ci::app::RendererGl, prepareSettings)

@@ -8,20 +8,25 @@
 #include "component.h"
 
 namespace game_engine {
-class PhysicsComponent : public Component {
+class PhysicsComponent : public Component, public JsonSerializable {
  public:
   virtual ~PhysicsComponent() = 0;
 
   virtual void Update();
-
-  bool Collides(GameObject *const other);
+  bool Collides(PhysicsComponent *const other) const;
   void AddCollider(Collider *collider);
+
+  virtual void Serialize(nlohmann::json &json) const override;
+  virtual void Deserialize(const nlohmann::json &json) override;
 
   const glm::vec2 &GetPosition() const;
   void SetPosition(const glm::vec2 &position);
   const glm::vec2 &GetVelocity() const;
   void SetVelocity(const glm::vec2 &velocity);
  protected:
+  PhysicsComponent(const glm::vec2 &position,
+                   const glm::vec2 &velocity,
+                   game_engine::ColliderMesh &&collider_mesh);
   PhysicsComponent(const glm::vec2 &position = glm::vec2(),
                    const glm::vec2 &velocity = glm::vec2());
 
@@ -30,6 +35,11 @@ class PhysicsComponent : public Component {
   glm::vec2 velocity_;
 
   void UpdatePosition();
-  virtual void UpdateColliderMesh() = 0;
+  virtual void UpdateColliderMesh();
 };
+
+void to_json(nlohmann::json &json, const PhysicsComponent &component);
+
+void from_json(const nlohmann::json &json, PhysicsComponent &component);
+
 }

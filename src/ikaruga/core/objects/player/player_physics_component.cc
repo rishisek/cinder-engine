@@ -10,10 +10,6 @@ void PlayerPhysicsComponent::Update() {
   PhysicsComponent::Update();
 }
 
-void PlayerPhysicsComponent::UpdateColliderMesh() {
-  collider_mesh_.GetColliders()[0]->SetPosition(position_);
-}
-
 void PlayerPhysicsComponent::receive(int message) {
   switch (message) {
     case 1:

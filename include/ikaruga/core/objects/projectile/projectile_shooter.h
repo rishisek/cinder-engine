@@ -3,7 +3,6 @@
 //
 #pragma once
 
-#include <game_engine/objects/character_object.h>
 #include <ikaruga/core/objects/projectile/projectile_type.h>
 #include <ikaruga/core/objects/projectile/projectile.h>
 
@@ -15,6 +14,7 @@ class ProjectileShooter {
   // Update all projectile type cooldowns
   void UpdateCooldowns();
 
+  // TODO: Figure out unique_ptr logic for return
   // Returns pointer to a new Projectile of the active type
   Projectile *Shoot(game_engine::GameObject const &game_object);
 

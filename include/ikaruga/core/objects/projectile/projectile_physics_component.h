@@ -14,7 +14,6 @@ class ProjectilePhysicsComponent : public game_engine::PhysicsComponent {
                              const glm::vec2 &velocity,
                              double radius);
  private:
-  void UpdateColliderMesh() override;
   double radius_;
 };
 }
