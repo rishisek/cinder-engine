@@ -12,6 +12,7 @@ using projectile::ProjectileType;
 
 Player::Player(game_engine::PhysicsComponent *physics_component,
                game_engine::InputComponent *input_component,
+               game_engine::GraphicsComponent *graphics_component,
                const std::vector<ProjectileType> &projectile_types,
                double view_angle_radians)
     : game_engine::ControllableObject<ProjectileShooter>(
@@ -19,7 +20,7 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
                                     projectile_types,
                                     glm::vec2(38, 0))),
     input_component),
-      graphics_component_(physics_component_->GetPosition()),
+      graphics_component_(graphics_component),
       view_angle_radians_(view_angle_radians) {}
 
 void Player::TiltAimLeft() {
@@ -45,7 +46,8 @@ void Player::Update(game_engine::GameWorld &world) {
   GameObject::Update(world);
   UpdateCooldowns();
   input_component_->Update(*this, dynamic_cast<world::World &>(world));
-  graphics_component_.Update(physics_component_->GetPosition());
+  graphics_component_->Update(
+      graphics_component_->GetPosition() + physics_component_->GetVelocity());
 }
 
 void Player::send(int message) {
@@ -60,7 +62,7 @@ int Player::GetScore() const {
   return score_;
 }
 
-const PlayerGraphicsComponent &Player::GetGraphicsComponent() const {
+game_engine::GraphicsComponent *const &Player::GetGraphicsComponent() const {
   return graphics_component_;
 }
 }

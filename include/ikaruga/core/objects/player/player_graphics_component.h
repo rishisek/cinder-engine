@@ -8,7 +8,7 @@ namespace ikaruga::objects::player {
 class PlayerGraphicsComponent : public game_engine::GraphicsComponent {
  public:
   PlayerGraphicsComponent(const glm::vec2 &position);
-  void Draw() const override;
+  void Render() const override;
   void receive(int message) override;
 };
 }

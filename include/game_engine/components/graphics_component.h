@@ -10,10 +10,12 @@ namespace game_engine {
 class GraphicsComponent : public Component {
  public:
   virtual ~GraphicsComponent() = 0;
-  virtual void Draw() const = 0;
+  void Draw() const;
   virtual void Update(const glm::vec2 &position);
+  const glm::vec2 &GetPosition() const;
  protected:
   GraphicsComponent(const glm::vec2 &position);
+  virtual void Render() const = 0;
   glm::vec2 position_;
 };
 }

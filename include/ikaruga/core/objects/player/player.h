@@ -13,6 +13,7 @@ class Player
  public:
   Player(game_engine::PhysicsComponent *physics_component,
          game_engine::InputComponent *input_component,
+         game_engine::GraphicsComponent *graphics_component,
          const std::vector<projectile::ProjectileType> &projectile_types,
          double view_angle_radians = M_PI / 3.0);
   void Update(game_engine::GameWorld &world) override;
@@ -22,13 +23,13 @@ class Player
   void IncrementScore(int score_increment);
 
   int GetScore() const;
-  const PlayerGraphicsComponent &GetGraphicsComponent() const;
+  game_engine::GraphicsComponent *const &GetGraphicsComponent() const;
 
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
   friend class PlayerGraphicsComponent;
  private:
-  PlayerGraphicsComponent graphics_component_;
+  game_engine::GraphicsComponent *graphics_component_;
   const double kAimStep = 0.01;
   double view_angle_radians_;
   int score_ = 0;

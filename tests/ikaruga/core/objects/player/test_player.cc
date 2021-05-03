@@ -20,8 +20,8 @@ float CrossProduct(const glm::vec2 &v1, const glm::vec2 &v2) {
 TEST_CASE("Player constructs properly") {
   Player *player =
       new Player(new PlayerPhysicsComponent(glm::vec2(5, 5), glm::vec2(2, 2)),
-                 new PlayerInputComponent(),
-                 test_projectile_types);
+                 new PlayerInputComponent(), nullptr,
+                 test_projectile_types, 0);
   REQUIRE(player->GetPhysicsComponent()->GetPosition() == glm::vec2(5, 5));
   REQUIRE(player->GetPhysicsComponent()->GetVelocity() == glm::vec2(2, 2));
   delete player;
@@ -30,8 +30,8 @@ TEST_CASE("Player constructs properly") {
 TEST_CASE("Player shooting mechanics") {
   Player *player =
       new Player(new PlayerPhysicsComponent(glm::vec2(5, 5), glm::vec2(2, 2)),
-                 new PlayerInputComponent(),
-                 test_projectile_types);
+                 new PlayerInputComponent(), nullptr,
+                 test_projectile_types, 0);
 
   SECTION("Basic shooting") {
     projectile::Projectile *projectile = player->Shoot(*player);

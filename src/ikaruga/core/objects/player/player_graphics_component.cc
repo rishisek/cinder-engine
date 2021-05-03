@@ -7,10 +7,11 @@
 #include <cinder/app/AppBase.h>
 
 namespace ikaruga::objects::player {
-void PlayerGraphicsComponent::Draw() const {
+void PlayerGraphicsComponent::Render() const {
   using namespace ci;
+  gl::color(1, 1, 1);
   static gl::Texture2dRef sprite =
-      gl::Texture2d::create(loadImage(app::loadAsset("sprite_doubled.png")));
+      gl::Texture2d::create(loadImage(app::loadAsset("player_sprite.png")));
   gl::draw(sprite, position_);
 }
 
