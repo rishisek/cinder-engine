@@ -7,6 +7,7 @@
 #include <ikaruga/core/objects/enemy/enemy_physics_component.h>
 #include <ikaruga/core/objects/enemy/movement/sine_line_movement_strategy.h>
 #include <ikaruga/core/objects/enemy/movement/sine_loop_movement_strategy.h>
+#include <ikaruga/core/objects/enemy/enemy_graphics_component.h>
 
 namespace ikaruga::objects::enemy {
 std::vector<EnemyType *> EnemyFactory::enemy_types_;
