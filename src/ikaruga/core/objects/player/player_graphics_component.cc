@@ -12,7 +12,7 @@ void PlayerGraphicsComponent::Render() const {
   gl::color(1, 1, 1);
   static gl::Texture2dRef sprite =
       gl::Texture2d::create(loadImage(app::loadAsset("player_sprite.png")));
-  gl::draw(sprite, position_);
+  gl::draw(sprite, glm::vec2());
 }
 
 void PlayerGraphicsComponent::receive(int message) {

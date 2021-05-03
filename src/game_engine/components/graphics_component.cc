@@ -17,6 +17,7 @@ void GraphicsComponent::Update(const glm::vec2 &position) {
 
 void GraphicsComponent::Draw() const {
   ci::gl::pushModelMatrix();
+  ci::gl::translate(position_);
   Render();
   ci::gl::popModelMatrix();
 }

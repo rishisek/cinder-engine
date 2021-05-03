@@ -11,8 +11,8 @@ void EnemyGraphicsComponent::Render() const {
   using namespace ci;
   gl::color(color_);
   static gl::Texture2dRef sprite =
-      gl::Texture2d::create(loadImage(app::loadAsset("player_sprite.png")));
-  gl::draw(sprite, position_);
+      gl::Texture2d::create(loadImage(app::loadAsset("enemy_sprite.png")));
+  gl::draw(sprite, glm::vec2());
 }
 
 void EnemyGraphicsComponent::receive(int message) {
