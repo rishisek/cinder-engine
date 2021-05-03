@@ -2,7 +2,6 @@
 // Created by rishi on 26-04-2021.
 //
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
-#include <ikaruga/core/objects/enemy/enemy.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <serialization_utils/vec2_json.h>
 #include <ikaruga/core/objects/enemy/movement/sine_line_movement_physics_component.h>
@@ -18,15 +17,17 @@ game_engine::PhysicsComponent *EnemyFactory::MakeEnemyPhysicsComponent(const nlo
 
   switch (GetTypeByName(json.at("enemy_type"))->GetPattern()) {
     case kSineLine:
-      return new SineLineMovementPhysicsComponent(position,
-                                                  velocity,
-                                                  json.at("physics_component").at(
-                                                      "collider_mesh"));
+      return new EnemyPhysicsComponent(position,
+                                       velocity,
+                                       json.at("physics_component").at(
+                                           "collider_mesh"),
+                                       new SineLineMovementStrategy());
     case kSineLoop:
-      return new SineLoopMovementPhysicsComponent(position,
-                                                  velocity,
-                                                  json.at("physics_component").at(
-                                                      "collider_mesh"));
+      return new EnemyPhysicsComponent(position,
+                                       velocity,
+                                       json.at("physics_component").at(
+                                           "collider_mesh"),
+                                       new SineLoopMovementStrategy());
     default:
       return nullptr;
   }
