@@ -5,13 +5,13 @@
 #include "ikaruga/app/ikaruga_app.h"
 #include <interface/keyboard.h>
 
-namespace ikaruga {
+namespace ikaruga::app {
 
 IkarugaApp::IkarugaApp() {}
 
 void IkarugaApp::draw() {
-  ci::Color background_color("black");
-  ci::gl::clear(background_color);
+  ci::gl::clear(ci::Color("black"));
+  background_manager_.Draw();
 }
 
 void IkarugaApp::mouseDown(ci::app::MouseEvent event) {
@@ -29,8 +29,11 @@ void IkarugaApp::keyUp(ci::app::KeyEvent event) {
 }
 
 void IkarugaApp::setup() {
+  ci::app::setWindowSize(static_cast<int>(400),
+                         static_cast<int>(600));
 }
 
 void IkarugaApp::update() {
+  background_manager_.Update();
 }
 }

@@ -1,6 +1,6 @@
 #include <ikaruga/app/ikaruga_app.h>
 
-using ikaruga::IkarugaApp;
+using ikaruga::app::IkarugaApp;
 
 void prepareSettings(IkarugaApp::Settings *settings) {
   settings->setResizable(false);
