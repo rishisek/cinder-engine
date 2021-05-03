@@ -34,9 +34,8 @@ void GameInstance::Draw() {
                             projectile->GetType().GetRadius());
   }
   for (std::unique_ptr<enemy::Enemy> const &enemy: world_.GetEnemies()) {
-    ci::gl::color(enemy->GetType()->GetColor());
-    ci::gl::drawSolidCircle(enemy->GetPhysicsComponent()->GetPosition(),
-                            30);
+    enemy->GetGraphicsComponent()->Draw();
+    enemy->GetPhysicsComponent()->GetColliderMesh().Draw();
   }
 }
 

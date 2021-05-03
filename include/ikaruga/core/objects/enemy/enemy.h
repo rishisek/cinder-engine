@@ -5,6 +5,7 @@
 #include <game_engine/objects/character_object.h>
 #include <ikaruga/core/objects/projectile/projectile_shooter.h>
 #include <game_engine/game_world.h>
+#include <game_engine/components/graphics_component.h>
 
 namespace ikaruga::objects::enemy {
 class EnemyType;
@@ -13,12 +14,15 @@ class Enemy
     : public projectile::ProjectileShooter {
  public:
   Enemy(game_engine::PhysicsComponent *physics_component,
+        game_engine::GraphicsComponent *graphics_component,
         const std::string &type_id);
   void Update(game_engine::GameWorld &world) override;
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
   EnemyType *GetType() const;
+  game_engine::GraphicsComponent *GetGraphicsComponent() const;
  private:
+  game_engine::GraphicsComponent *graphics_component_;
   EnemyType *type_;
 };
 }

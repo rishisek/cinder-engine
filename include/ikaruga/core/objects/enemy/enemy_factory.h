@@ -3,6 +3,7 @@
 //
 #pragma once
 #include <game_engine/components/physics_component.h>
+#include <game_engine/components/graphics_component.h>
 
 namespace ikaruga::objects::enemy {
 class Enemy;
@@ -11,6 +12,7 @@ class EnemyType;
 class EnemyFactory {
  public:
   static game_engine::PhysicsComponent *MakeEnemyPhysicsComponent(const nlohmann::json &json);
+  static game_engine::GraphicsComponent *MakeEnemyGraphicsComponent(const nlohmann::json &json);
   static void AddEnemyType(EnemyType *enemy_type);
   static EnemyType *GetTypeByName(const std::string &enemy_type);
  private:

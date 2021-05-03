@@ -4,8 +4,9 @@
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <serialization_utils/vec2_json.h>
-#include <ikaruga/core/objects/enemy/movement/sine_line_movement_physics_component.h>
-#include <ikaruga/core/objects/enemy/movement/sine_loop_movement_physics_component.h>
+#include <ikaruga/core/objects/enemy/enemy_physics_component.h>
+#include <ikaruga/core/objects/enemy/movement/sine_line_movement_strategy.h>
+#include <ikaruga/core/objects/enemy/movement/sine_loop_movement_strategy.h>
 
 namespace ikaruga::objects::enemy {
 std::vector<EnemyType *> EnemyFactory::enemy_types_;
@@ -31,6 +32,13 @@ game_engine::PhysicsComponent *EnemyFactory::MakeEnemyPhysicsComponent(const nlo
     default:
       return nullptr;
   }
+}
+
+game_engine::GraphicsComponent *EnemyFactory::MakeEnemyGraphicsComponent(const nlohmann::json &json) {
+  using namespace movement;
+  glm::vec2 position = json.at("physics_component").at("position");
+  EnemyType *enemy_type = GetTypeByName(json.at("enemy_type"));
+  return new EnemyGraphicsComponent(position, enemy_type->GetColor());
 }
 
 void EnemyFactory::AddEnemyType(EnemyType *enemy_type) {
