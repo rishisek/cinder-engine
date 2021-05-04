@@ -16,9 +16,11 @@ class GameInstance {
   void Update();
   virtual ~GameInstance();
   double GetWidth() const;
+  double GetHeight() const;
+  objects::player::Player *GetPlayer() const;
  private:
-  double height_ = 800;
   double width_ = 600;
+  double height_ = 800;
   ikaruga::objects::player::Player *player_;
   ikaruga::world::World world_;
 

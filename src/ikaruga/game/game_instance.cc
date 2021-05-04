@@ -24,15 +24,17 @@ void GameInstance::Setup() {
 void GameInstance::Draw() {
   ci::gl::color(0, 0, 0);
   ci::gl::drawString(std::to_string(player_->GetScore()), glm::vec2(200, 200));
-  ci::gl::color(0, 0, 1);
   player_->GetGraphicsComponent()->Draw();
-  player_->GetPhysicsComponent()->GetColliderMesh().Draw();
+//  player_->GetPhysicsComponent()->GetColliderMesh().Draw();
   world_.Draw();
 }
 
 void GameInstance::Update() {
   player_->Update(world_);
   world_.Update();
+  if (player_->GetHealth() == 0) {
+    exit(0);
+  }
 }
 
 GameInstance::~GameInstance() {
@@ -41,11 +43,8 @@ GameInstance::~GameInstance() {
 
 void GameInstance::SetupPlayer() {
   std::vector<projectile::ProjectileType *> player_projectile_types{
-      new projectile::ProjectileType("type1",
-                                     5,
-                                     ci::Color(0, 1, 0),
-                                     50),
-      new projectile::ProjectileType("type2", 5, ci::Color(1, 0, 0), 25)
+      new projectile::ProjectileType("type1", 5, ci::Color(0, 1, 0), 50, 4),
+      new projectile::ProjectileType("type2", 5, ci::Color(1, 0, 0), 25, 5)
   };
   player_ = new player::Player(
       new player::PlayerPhysicsComponent(glm::vec2(300, 450), glm::vec2(0, 0)),
@@ -73,6 +72,14 @@ void GameInstance::SetupEnemies() {
 
 double GameInstance::GetWidth() const {
   return width_;
+}
+
+double GameInstance::GetHeight() const {
+  return height_;
+}
+
+player::Player *GameInstance::GetPlayer() const {
+  return player_;
 }
 
 }
