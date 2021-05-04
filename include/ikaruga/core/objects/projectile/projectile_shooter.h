@@ -12,6 +12,7 @@ class ProjectileShooter : public game_engine::CharacterObject {
  public:
   ProjectileShooter(game_engine::PhysicsComponent *physics_component,
                     const std::vector<ProjectileType *> &projectile_types,
+                    int max_health,
                     const glm::vec2 &projectile_spawn_offset);
 
   // Update all projectile type cooldowns

@@ -18,6 +18,7 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
     : game_engine::ControllableObject<ProjectileShooter>(
     std::move(new ProjectileShooter(physics_component,
                                     projectile_types,
+                                    kMaxHealth,
                                     glm::vec2(38, 0))),
     input_component),
       graphics_component_(graphics_component),
@@ -61,5 +62,9 @@ int Player::GetScore() const {
 
 game_engine::GraphicsComponent *const &Player::GetGraphicsComponent() const {
   return graphics_component_;
+}
+
+void Player::TakeDamage() {
+  health_--;
 }
 }

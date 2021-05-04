@@ -27,7 +27,10 @@ class Player
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
   friend class PlayerGraphicsComponent;
+  void TakeDamage();
  private:
+  static constexpr int kMaxHealth = 25;
+
   game_engine::GraphicsComponent *graphics_component_;
   const double kNormalAngle = -M_PI / 2.0;
   const double kAimStep = 0.01;

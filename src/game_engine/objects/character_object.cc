@@ -6,8 +6,11 @@
 
 namespace game_engine {
 
-CharacterObject::CharacterObject(PhysicsComponent *physics_component)
-    : GameObject(physics_component) {}
+CharacterObject::CharacterObject(PhysicsComponent *physics_component,
+                                 int max_health)
+    : GameObject(physics_component),
+      max_health_(max_health),
+      health_(max_health) {}
 
 CharacterObject::~CharacterObject() {
 }
@@ -22,6 +25,14 @@ void CharacterObject::Deserialize(const nlohmann::json &json) {
 //  GameObject::Deserialize(json);
   max_health_ = json["max_health"];
   health_ = json["health"];
+}
+
+int CharacterObject::GetMaxHealth() const {
+  return max_health_;
+}
+
+int CharacterObject::GetHealth() const {
+  return health_;
 }
 
 void to_json(nlohmann::json &json, const CharacterObject &character_object) {

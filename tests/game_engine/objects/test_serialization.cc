@@ -21,7 +21,7 @@ class DummyPhysics : public PhysicsComponent {
 
 class DummyCharacter : public CharacterObject {
  public:
-  DummyCharacter(DummyPhysics *p_physics) : CharacterObject(p_physics) {}
+  DummyCharacter(DummyPhysics *p_physics) : CharacterObject(p_physics, 0) {}
 };
 
 TEST_CASE("CharacterObject serialization") {

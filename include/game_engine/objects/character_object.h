@@ -10,10 +10,13 @@ class CharacterObject : public GameObject {
   virtual ~CharacterObject() = 0;
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
+  int GetMaxHealth() const;
+  int GetHealth() const;
  protected:
-  CharacterObject(PhysicsComponent *physics_component);
+  CharacterObject(PhysicsComponent *physics_component,
+                  int max_health);
   int max_health_ = 1;
-  float health_ = 0;
+  int health_ = 0;
 };
 
 void to_json(nlohmann::json &json, const CharacterObject &character_object);

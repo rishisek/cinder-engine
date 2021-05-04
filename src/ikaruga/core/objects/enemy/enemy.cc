@@ -18,6 +18,7 @@ Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
              const std::string &type_id)
     : ProjectileShooter(physics_component,
                         EnemyFactory::GetTypeByName(type_id)->GetProjectileTypes(),
+                        EnemyFactory::GetTypeByName(type_id)->GetMaxHealth(),
                         EnemyFactory::GetTypeByName(type_id)->GetShootOffset()),
       graphics_component_(graphics_component),
       type_(EnemyFactory::GetTypeByName(type_id)) {}
