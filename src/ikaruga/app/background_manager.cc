@@ -32,6 +32,7 @@ void BackgroundManager::SetInitialState() {
 }
 
 void BackgroundManager::Draw() {
+  ci::gl::color(0.65f, 0.65f, 0.65f);
   ci::gl::draw(GetOddBackground(), background_positions_[0]);
   ci::gl::draw(GetEvenBackground(), background_positions_[1]);
   ci::gl::draw(GetOddBackground(), background_positions_[2]);
