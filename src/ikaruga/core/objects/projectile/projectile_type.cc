@@ -5,10 +5,12 @@
 #include <serialization_utils/cinder_color_json.h>
 
 namespace ikaruga::objects::projectile {
-ProjectileType::ProjectileType(float radius,
+ProjectileType::ProjectileType(std::string const &id,
+                               float radius,
                                const cinder::ColorT<float> &color,
                                int cooldown)
-    : radius_(radius),
+    : id_(id),
+      radius_(radius),
       color_(color),
       cooldown_(cooldown) {}
 
@@ -21,17 +23,18 @@ const cinder::ColorT<float> &ProjectileType::GetColor() const {
 }
 
 bool ProjectileType::operator==(const ProjectileType &other) const {
-  return radius_ == other.radius_ && color_ == other.color_
-      && cooldown_ == other.cooldown_;
+  return id_ == other.id_;
 }
 
 void ProjectileType::Serialize(nlohmann::json &json) const {
+  json["id"] = id_;
   json["radius"] = radius_;
   json["color"] = color_;
   json["cooldown"] = cooldown_;
 }
 
 void ProjectileType::Deserialize(const nlohmann::json &json) {
+  id_ = json["id"];
   radius_ = json["radius"];
   color_ = json["color"];
   cooldown_ = json["cooldown"];
@@ -40,12 +43,16 @@ void ProjectileType::Deserialize(const nlohmann::json &json) {
 int ProjectileType::GetCooldown() const {
   return cooldown_;
 }
+
+const std::string &ProjectileType::GetId() const {
+  return id_;
+}
 }
 
 namespace nlohmann {
 ikaruga::objects::projectile::ProjectileType adl_serializer<ikaruga::objects::projectile::ProjectileType>::from_json(
     const json &j) {
-  return {j.at("radius"), j.at("color"), j.at("cooldown")};
+  return {j.at("id"), j.at("radius"), j.at("color"), j.at("cooldown")};
 }
 
 void adl_serializer<ikaruga::objects::projectile::ProjectileType>::to_json(json &j,

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
+#include <ikaruga/core/objects/projectile/projectile_factory.h>
 #include <serialization_utils/vec2_json.h>
 
 namespace ikaruga::objects::enemy {
@@ -11,7 +12,7 @@ int EnemyType::GetMaxHealth() const {
   return max_health_;
 }
 
-const std::vector<projectile::ProjectileType> &EnemyType::GetProjectileTypes() const {
+const std::vector<projectile::ProjectileType *> &EnemyType::GetProjectileTypes() const {
   return projectile_types_;
 }
 
@@ -19,7 +20,7 @@ EnemyType::EnemyType(const std::string &id,
                      int max_health,
                      int kill_score,
                      ikaruga::objects::enemy::movement::Pattern pattern,
-                     const std::vector<projectile::ProjectileType> &projectile_types,
+                     const std::vector<projectile::ProjectileType *> &projectile_types,
                      const ci::Color &color,
                      const glm::vec2 &shoot_offset)
     : id_(id), max_health_(max_health),
@@ -38,7 +39,9 @@ void EnemyType::Serialize(nlohmann::json &json) const {
   json["max_health"] = max_health_;
   json["kill_score"] = kill_score_;
   json["pattern"] = pattern_;
-  json["projectile_types"] = projectile_types_;
+  for (projectile::ProjectileType *projectile_type: projectile_types_) {
+    json["projectile_types"].push_back(projectile_type->GetId());
+  }
   json["color"] = color_;
   json["shoot_offset"] = shoot_offset_;
 
@@ -50,7 +53,7 @@ void EnemyType::Deserialize(const nlohmann::json &json) {
   kill_score_ = json["kill_score"];
   pattern_ = json["pattern"];
   projectile_types_ =
-      json["projectile_types"].get<std::vector<projectile::ProjectileType>>();
+      projectile::ProjectileFactory::GetTypesById(json["projectile_types"]);
   color_ = json["color"];
   shoot_offset_ = json["shoot_offset"];
 }
@@ -84,7 +87,9 @@ namespace nlohmann {
 ikaruga::objects::enemy::EnemyType adl_serializer<ikaruga::objects::enemy::EnemyType>::from_json(
     const json &j) {
   return {j.at("id"), j.at("max_health"), j.at("kill_score"), j.at("pattern"),
-          j.at("projectile_types"), j.at("color"), j.at("shoot_offset")};
+          ikaruga::objects::projectile::ProjectileFactory::GetTypesById(j.at(
+              "projectile_types")),
+          j.at("color"), j.at("shoot_offset")};
 }
 
 void adl_serializer<ikaruga::objects::enemy::EnemyType>::to_json(json &j,

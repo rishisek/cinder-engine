@@ -14,7 +14,7 @@ class Player
   Player(game_engine::PhysicsComponent *physics_component,
          game_engine::InputComponent *input_component,
          game_engine::GraphicsComponent *graphics_component,
-         const std::vector<projectile::ProjectileType> &projectile_types,
+         const std::vector<projectile::ProjectileType *> &projectile_types,
          double view_angle_radians = M_PI / 3.0);
   void Update(game_engine::GameWorld &world) override;
   void TiltAimLeft();

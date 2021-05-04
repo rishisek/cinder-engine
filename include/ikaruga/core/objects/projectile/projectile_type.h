@@ -10,19 +10,22 @@
 namespace ikaruga::objects::projectile {
 class ProjectileType : public game_engine::JsonSerializable {
  public:
-  ProjectileType(float radius,
+  ProjectileType(std::string const &id,
+                 float radius,
                  const cinder::ColorT<float> &color,
                  int cooldown = 1);
 
   float GetRadius() const;
   const cinder::ColorT<float> &GetColor() const;
   int GetCooldown() const;
+  const std::string &GetId() const;
 
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
 
   bool operator==(ProjectileType const &other) const;
  private:
+  std::string id_;
   float radius_;
   cinder::ColorT<float> color_;
   int cooldown_;

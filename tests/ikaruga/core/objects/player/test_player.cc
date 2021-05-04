@@ -8,9 +8,12 @@
 #include <ikaruga/core/objects/player/player_input_component.h>
 
 namespace ikaruga::objects::player {
-std::vector<projectile::ProjectileType> test_projectile_types = {
-    projectile::ProjectileType(5.0, cinder::Color("red"), 10),
-    projectile::ProjectileType(10.0, cinder::Color("green"), 10)
+std::vector<projectile::ProjectileType *> test_projectile_types = {
+    new projectile::ProjectileType("type1", 5.0, cinder::Color("red"), 10),
+    new projectile::ProjectileType("type2",
+                                   10.0,
+                                   cinder::Color("green"),
+                                   10)
 };
 
 float CrossProduct(const glm::vec2 &v1, const glm::vec2 &v2) {

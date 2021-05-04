@@ -9,8 +9,8 @@
 namespace ikaruga::objects::enemy {
 TEST_CASE("Enemy type serialization", "[serialization]") {
   SECTION("Serialization") {
-    std::vector<projectile::ProjectileType> projectile_types = {
-        projectile::ProjectileType(5, ci::Color("blue"), 7)
+    std::vector<projectile::ProjectileType *> projectile_types = {
+        new projectile::ProjectileType("type1", 5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type
         ("id", 10,
@@ -23,14 +23,14 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
     REQUIRE(json["max_health"] == 10);
     REQUIRE(json["kill_score"] == 2);
     REQUIRE(json["pattern"] == movement::Pattern::kSineLine);
-    REQUIRE(json["projectile_types"] == projectile_types);
+    REQUIRE(json["projectile_types"] == std::vector<std::string>{"type1"});
     REQUIRE(json["color"] == ci::Color("red"));
     REQUIRE(json["shoot_offset"] == glm::vec2(1, 2));
   }
 
   SECTION("Deserialization") {
-    std::vector<projectile::ProjectileType> projectile_types = {
-        projectile::ProjectileType(5, ci::Color("blue"), 7)
+    std::vector<projectile::ProjectileType *> projectile_types = {
+        new projectile::ProjectileType("type1", 5, ci::Color("blue"), 7)
     };
     EnemyType enemy_type1
         ("id", 10,

@@ -32,7 +32,7 @@ void Enemy::Update(game_engine::GameWorld &game_world) {
   glm::vec2 aim = physics_component_->GetPosition() + projectile_spawn_offset_
       - (world->GetPlayerRef()->GetPhysicsComponent()->GetPosition());
   shoot_angle_radians_ = atan2(aim.x, -aim.y) + M_PI / 2;
-  if (!InCooldown()) {
+  if (projectile_types_.size() > 0 && !InCooldown()) {
     world->AddEnemyProjectile(Shoot());
   }
 }

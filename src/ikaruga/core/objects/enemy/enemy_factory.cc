@@ -52,6 +52,9 @@ EnemyType *EnemyFactory::GetTypeByName(const std::string &enemy_type_id) {
                     [&](const EnemyType *const &enemy_type) {
                       return enemy_type->GetId() == enemy_type_id;
                     });
-  return *it;
+  if (it != enemy_types_.end()) {
+    return *it;
+  }
+  return nullptr;
 }
 }

@@ -106,15 +106,15 @@ objects::player::Player *World::GetPlayerRef() const {
 void World::Draw() {
   for (const std::unique_ptr<ikaruga::objects::projectile::Projectile>
         &projectile: player_projectiles_) {
-    ci::gl::color(projectile->GetType().GetColor());
+    ci::gl::color(projectile->GetType()->GetColor());
     ci::gl::drawSolidCircle(projectile->GetPhysicsComponent()->GetPosition(),
-                            projectile->GetType().GetRadius());
+                            projectile->GetType()->GetRadius());
   }
   for (const std::unique_ptr<ikaruga::objects::projectile::Projectile>
         &projectile: enemy_projectiles_) {
-    ci::gl::color(projectile->GetType().GetColor());
+    ci::gl::color(projectile->GetType()->GetColor());
     ci::gl::drawSolidCircle(projectile->GetPhysicsComponent()->GetPosition(),
-                            projectile->GetType().GetRadius());
+                            projectile->GetType()->GetRadius());
   }
   for (std::unique_ptr<Enemy> const &enemy: enemies_) {
     enemy->GetGraphicsComponent()->Draw();

@@ -15,7 +15,7 @@ class EnemyType : public game_engine::JsonSerializable {
             int max_health,
             int kill_score,
             ikaruga::objects::enemy::movement::Pattern pattern,
-            const std::vector<projectile::ProjectileType> &projectile_types,
+            const std::vector<projectile::ProjectileType *> &projectile_types,
             const ci::Color &color,
             const glm::vec2 &shoot_offset);
 
@@ -29,7 +29,7 @@ class EnemyType : public game_engine::JsonSerializable {
   int GetMaxHealth() const;
   int GetKillScore() const;
   movement::Pattern GetPattern() const;
-  const std::vector<projectile::ProjectileType> &GetProjectileTypes() const;
+  const std::vector<projectile::ProjectileType *> &GetProjectileTypes() const;
   const ci::ColorT<float> &GetColor() const;
   const glm::vec2 &GetShootOffset();
  private:
@@ -37,7 +37,7 @@ class EnemyType : public game_engine::JsonSerializable {
   int max_health_;
   int kill_score_;
   movement::Pattern pattern_;
-  std::vector<projectile::ProjectileType> projectile_types_;
+  std::vector<projectile::ProjectileType *> projectile_types_;
   ci::ColorT<float> color_;
   glm::vec2 shoot_offset_;
 };

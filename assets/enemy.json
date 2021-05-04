@@ -1,4 +1,26 @@
 {
+  "projectile_types": [
+    {
+      "id": "type1",
+      "radius": 5,
+      "color": {
+        "r": 0,
+        "g": 1,
+        "b": 0
+      },
+      "cooldown": 50
+    },
+    {
+      "id": "type2",
+      "radius": 5,
+      "color": {
+        "r": 1,
+        "g": 0,
+        "b": 0
+      },
+      "cooldown": 25
+    }
+  ],
   "enemy_types": [
     {
       "id": "type1",
@@ -6,29 +28,30 @@
       "kill_score": 10,
       "pattern": "sine-line",
       "projectile_types": [
-        {
-          "radius": 5,
-          "color": {
-            "r": 0,
-            "g": 1,
-            "b": 0
-          },
-          "cooldown": 50
-        },
-        {
-          "radius": 5,
-          "color": {
-            "r": 1,
-            "g": 0,
-            "b": 0
-          },
-          "cooldown": 25
-        }
+        "type1"
       ],
       "color": {
         "r": 0.5,
         "g": 0.5,
         "b": 0
+      },
+      "shoot_offset": {
+        "x": 38,
+        "y": 32
+      }
+    },
+    {
+      "id": "type2",
+      "max_health": 10,
+      "kill_score": 10,
+      "pattern": "sine-line",
+      "projectile_types": [
+        "type2"
+      ],
+      "color": {
+        "r": 0.5,
+        "g": 0,
+        "b": 0.5
       },
       "shoot_offset": {
         "x": 38,

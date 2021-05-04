@@ -7,6 +7,7 @@
 #include <ikaruga/core/objects/player/player_input_component.h>
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
+#include <ikaruga/core/objects/projectile/projectile_factory.h>
 #include <cinder/gl/gl.h>
 #include <cinder/app/AppBase.h>
 
@@ -36,13 +37,15 @@ void GameInstance::Update() {
 
 GameInstance::~GameInstance() {
   delete player_;
-
 }
 
 void GameInstance::SetupPlayer() {
-  std::vector<projectile::ProjectileType> player_projectile_types{
-      projectile::ProjectileType(5, ci::Color(0, 1, 0), 50),
-      projectile::ProjectileType(5, ci::Color(1, 0, 0), 25)
+  std::vector<projectile::ProjectileType *> player_projectile_types{
+      new projectile::ProjectileType("type1",
+                                     5,
+                                     ci::Color(0, 1, 0),
+                                     50),
+      new projectile::ProjectileType("type2", 5, ci::Color(1, 0, 0), 25)
   };
   player_ = new player::Player(
       new player::PlayerPhysicsComponent(glm::vec2(300, 450), glm::vec2(0, 0)),
@@ -56,6 +59,10 @@ void GameInstance::SetupEnemies() {
   std::ifstream ifstream(ci::app::loadAsset("enemy.json")->getFilePath());
   nlohmann::json json;
   ifstream >> json;
+  for (const nlohmann::json &projectile_type_json: json["projectile_types"]) {
+    projectile::ProjectileFactory::AddProjectileType(new projectile::ProjectileType(
+        projectile_type_json));
+  }
   for (const nlohmann::json &enemy_type_json: json["enemy_types"]) {
     enemy::EnemyFactory::AddEnemyType(new enemy::EnemyType(enemy_type_json));
   }
