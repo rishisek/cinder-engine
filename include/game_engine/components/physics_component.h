@@ -31,9 +31,9 @@ class PhysicsComponent : public Component, public JsonSerializable {
   PhysicsComponent(const glm::vec2 &position = glm::vec2(),
                    const glm::vec2 &velocity = glm::vec2());
 
-  ColliderMesh collider_mesh_;
   glm::vec2 position_;
   glm::vec2 velocity_;
+  ColliderMesh collider_mesh_;
 
   void UpdatePosition();
   virtual void UpdateColliderMesh();
