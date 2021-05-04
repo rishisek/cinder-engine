@@ -41,6 +41,7 @@ class World : public game_engine::GameWorld {
   void UpdateProjectiles();
   void UpdateEnemies();
   void ResolveProjectileEnemyCollisions();
+  void ResolvePlayerEnemyCollisions();
 };
 } // namespace world
 } // namespace ikaruga

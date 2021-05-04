@@ -35,6 +35,7 @@ void World::Update() {
   UpdateProjectiles();
   UpdateEnemies();
   ResolveProjectileEnemyCollisions();
+  ResolvePlayerEnemyCollisions();
 }
 
 void World::AddPlayerProjectile(std::unique_ptr<Projectile> &&projectile) {
@@ -95,6 +96,19 @@ void World::ResolveProjectileEnemyCollisions() {
   }
 }
 
+void World::ResolvePlayerEnemyCollisions() {
+  for (auto itr = enemy_projectiles_.begin(); itr != enemy_projectiles_.end();
+       ++itr) {
+    if (player_ref_->Collides((*itr).get())) {
+      player_ref_->TakeDamage();
+      itr = enemy_projectiles_.erase(itr);
+      if (itr == enemy_projectiles_.end()) {
+        break;
+      }
+    }
+  }
+}
+
 void World::Setup(ikaruga::objects::player::Player *player) {
   player_ref_ = player;
 }
@@ -118,7 +132,7 @@ void World::Draw() {
   }
   for (std::unique_ptr<Enemy> const &enemy: enemies_) {
     enemy->GetGraphicsComponent()->Draw();
-    enemy->GetPhysicsComponent()->GetColliderMesh().Draw();
+//    enemy->GetPhysicsComponent()->GetColliderMesh().Draw();
   }
 }
 }
