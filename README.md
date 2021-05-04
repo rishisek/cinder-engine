@@ -2,7 +2,7 @@
 
 ##### A light-weight clone of the bullet hell shooter game.
 
-![](https://i.imgur.com/pSzG1XM.png)
+<img src="https://i.imgur.com/pSzG1XM.png" alt="screenshot of game" width="400"/>
 
 ### Dependencies
 
