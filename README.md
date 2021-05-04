@@ -33,9 +33,7 @@ $ brew install gcc cmake
 
 - [Visual Studio 2015+](https://visualstudio.microsoft.com/)
 
-## Quick Start
-
-### CMake
+## Project Setup
 
 #### Linux
 
@@ -61,7 +59,7 @@ $ ./ikaruga
 
 ## Controls
 
-### Player movement
+### Player Movement
 
 | Key | Action |
 |-----|--------|
@@ -70,7 +68,7 @@ $ ./ikaruga
 | `S` | Down |
 | `D` | Right |
 
-### Bullet action
+### Bullet Action
 
 | Key | Action |
 |-----|--------|
