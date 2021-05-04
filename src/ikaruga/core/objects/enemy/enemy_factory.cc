@@ -57,4 +57,10 @@ EnemyType *EnemyFactory::GetTypeByName(const std::string &enemy_type_id) {
   }
   return nullptr;
 }
+
+EnemyFactory::~EnemyFactory() {
+  for (EnemyType *enemy_type: enemy_types_) {
+    delete enemy_type;
+  }
+}
 }

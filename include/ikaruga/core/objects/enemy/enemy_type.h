@@ -18,6 +18,7 @@ class EnemyType : public game_engine::JsonSerializable {
             const std::vector<projectile::ProjectileType *> &projectile_types,
             const ci::Color &color,
             const glm::vec2 &shoot_offset);
+  virtual ~EnemyType();
 
   bool operator==(const EnemyType &rhs) const;
   bool operator!=(const EnemyType &rhs) const;

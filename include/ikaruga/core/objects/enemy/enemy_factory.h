@@ -15,6 +15,7 @@ class EnemyFactory {
   static game_engine::GraphicsComponent *MakeEnemyGraphicsComponent(const nlohmann::json &json);
   static void AddEnemyType(EnemyType *enemy_type);
   static EnemyType *GetTypeByName(const std::string &enemy_type);
+  virtual ~EnemyFactory();
  private:
   static std::vector<EnemyType *> enemy_types_;
 };

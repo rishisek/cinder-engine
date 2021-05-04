@@ -81,6 +81,10 @@ movement::Pattern EnemyType::GetPattern() const {
 const glm::vec2 &EnemyType::GetShootOffset() {
   return shoot_offset_;
 }
+
+EnemyType::~EnemyType() {
+
+}
 }
 
 namespace nlohmann {
