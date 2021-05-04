@@ -7,8 +7,6 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
-#include <ikaruga/core/objects/player/player.h>
-#include <ikaruga/core/world/world.h>
 #include <ikaruga/game/game_instance.h>
 
 namespace sandbox {
