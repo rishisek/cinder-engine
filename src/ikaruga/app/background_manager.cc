@@ -3,6 +3,7 @@
 //
 #include "ikaruga/app/background_manager.h"
 #include <cinder/app/AppBase.h>
+#include <cinder/Rand.h>
 
 namespace ikaruga::app {
 const ci::gl::Texture2dRef &BackgroundManager::GetOddBackground() {
@@ -37,11 +38,36 @@ void BackgroundManager::Draw() {
 }
 
 void BackgroundManager::Update() {
+  UpdateVerticalScroll();
+  ShiftRandomHorizontal();
+}
+
+void BackgroundManager::UpdateVerticalScroll() {
   background_positions_[0].y--;
   background_positions_[1].y--;
   background_positions_[2].y--;
-  if (background_positions_[1].y <= -cinder::app::getWindowHeight()) {
+  if (background_positions_[1].y <= -GetEvenBackground()->getHeight()) {
     SetInitialState();
+  }
+}
+
+void BackgroundManager::ShiftRandomHorizontal() {
+  float min_bg_width = fmin(float(GetOddBackground()->getWidth()),
+                            float(GetEvenBackground()->getWidth()));
+  ci::Rand::randomize();
+  float dx_step = ci::Rand::randFloat(0.05f);
+
+  int a = abs(ci::Rand::randInt());
+  int b = ci::Rand::randInt(a);
+  int c = ci::Rand::randInt(b);
+  float dx = (a % b == c ? 1 : -1) * dx_step;
+
+  if (background_positions_[0].x + dx <= 0
+      && background_positions_[0].x + dx + min_bg_width
+          >= ci::app::getWindowWidth()) {
+    background_positions_[0].x += dx;
+    background_positions_[1].x += dx;
+    background_positions_[2].x += dx;
   }
 }
 }

@@ -12,6 +12,8 @@ class BackgroundManager {
   void Draw();
   void Update();
  private:
+  void UpdateVerticalScroll();
+  void ShiftRandomHorizontal();
   const ci::gl::Texture2dRef &GetOddBackground();
   const ci::gl::Texture2dRef &GetEvenBackground();
   std::vector<glm::vec2> background_positions_;
