@@ -4,6 +4,7 @@
 #pragma once
 
 namespace game_engine {
+// Base class for game worlds to allow component interaction
 class GameWorld {
  public:
   virtual ~GameWorld() = 0;

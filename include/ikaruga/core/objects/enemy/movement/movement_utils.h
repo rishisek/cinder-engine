@@ -4,6 +4,8 @@
 #pragma once
 
 namespace ikaruga::objects::enemy::movement {
+// Utility class for movement behaviors that can be paired 
+// to create a movement strategy
 class MovementUtils {
  public:
   static float ComputeNextSineVelocity(float &current_degree,
@@ -14,4 +16,4 @@ class MovementUtils {
       float current_line_point,
       float line_width);
 };
-}
+} // namespace ikaruga::objects::enemy::movement

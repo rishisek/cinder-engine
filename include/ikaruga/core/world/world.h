@@ -15,8 +15,8 @@ namespace world {
 class World : public game_engine::GameWorld {
  public:
   World();
-  const std::vector<std::unique_ptr<objects::projectile::Projectile>> &GetPlayerProjectiles() const;
-  const std::vector<std::unique_ptr<ikaruga::objects::enemy::Enemy>> &GetEnemies() const;
+  virtual ~World();
+
   void Setup(ikaruga::objects::player::Player *player);
   void Draw() override;
   void Update() override;
@@ -28,14 +28,23 @@ class World : public game_engine::GameWorld {
   void AddEnemyProjectile(std::unique_ptr<objects::projectile::Projectile> &&projectile);
 
   void AddEnemy(std::unique_ptr<ikaruga::objects::enemy::Enemy> &&enemy);
+
+  const std::vector<std::unique_ptr<objects::projectile::Projectile>> &GetPlayerProjectiles() const;
+  const std::vector<std::unique_ptr<ikaruga::objects::enemy::Enemy>> &GetEnemies() const;
   objects::player::Player *GetPlayerRef() const;
-  virtual ~World();
  private:
+  // Holds a reference to a player object for collision functionality
   ikaruga::objects::player::Player *player_ref_;
+
+  // Projectiles shot by the player
   std::vector<std::unique_ptr<objects::projectile::Projectile>>
       player_projectiles_;
+
+  // Projectiles shot by the enemy
   std::vector<std::unique_ptr<objects::projectile::Projectile>>
       enemy_projectiles_;
+
+  // All enemies in the world
   std::vector<std::unique_ptr<ikaruga::objects::enemy::Enemy>> enemies_;
 
   void UpdateProjectiles();

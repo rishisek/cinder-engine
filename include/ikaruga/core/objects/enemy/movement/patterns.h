@@ -11,9 +11,11 @@ enum Pattern {
   kInvalid
 };
 
+// Macro from the nlohmann-json library defining serialization 
+// behavior for Pattern enum
 NLOHMANN_JSON_SERIALIZE_ENUM(Pattern, {
   { kInvalid, "invalid" },
   { kSineLine, "sine-line" },
   { kSineLoop, "sine-loop" }
 })
-}
+} // namespace ikaruga::objects::enemy::movement 

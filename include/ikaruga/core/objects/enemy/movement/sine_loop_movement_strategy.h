@@ -15,4 +15,4 @@ class SineLoopMovementStrategy : public MovementStrategy {
   float current_sine_x_degree_ = 90.0f;
   float current_line_point_ = 0.0f;
 };
-}
+} // namespace ikaruga::objects::enemy::movement

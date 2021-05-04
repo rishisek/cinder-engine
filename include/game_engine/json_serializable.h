@@ -5,6 +5,7 @@
 #include <nlohmann/json.hpp>
 
 namespace game_engine {
+// Abstract class to hold defined serialization behaviour
 class JsonSerializable {
  public:
   virtual void Serialize(nlohmann::json &json) const = 0;

@@ -10,6 +10,7 @@
 namespace game_engine {
 class PhysicsComponent;
 
+// Base game object template
 class GameObject : public JsonSerializable {
  public:
   virtual ~GameObject() = 0;

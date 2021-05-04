@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 
 namespace game_engine {
+// Base collider template
 class Collider : public JsonSerializable {
  public:
   virtual ~Collider() = 0;
@@ -15,6 +16,8 @@ class Collider : public JsonSerializable {
 
   virtual void Draw() const = 0;
   virtual bool IsCollision(Collider const &other) const = 0;
+  
+  // Shifts stored position by given velocity.
   void UpdatePosition(const glm::vec2 &velocity);
 
   virtual void Serialize(nlohmann::json &json) const override;

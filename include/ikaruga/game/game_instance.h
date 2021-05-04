@@ -11,10 +11,12 @@ namespace ikaruga::game {
 class GameInstance {
  public:
   GameInstance();
+  virtual ~GameInstance();
+  
   void Setup();
   void Draw();
   void Update();
-  virtual ~GameInstance();
+  
   double GetWidth() const;
   double GetHeight() const;
   objects::player::Player *GetPlayer() const;

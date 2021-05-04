@@ -9,6 +9,9 @@ namespace ikaruga::objects::enemy {
 class Enemy;
 class EnemyType;
 
+// Factory class tracking all enemy types present in a game.
+// Allows for pointer referenced type handling of enemy types
+// for efficiency.
 class EnemyFactory {
  public:
   static game_engine::PhysicsComponent *MakeEnemyPhysicsComponent(const nlohmann::json &json);

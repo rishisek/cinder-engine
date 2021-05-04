@@ -23,4 +23,4 @@ EnemyGraphicsComponent::EnemyGraphicsComponent(const glm::vec2 &position,
                                                const ci::ColorT<float> &enemy_color)
     : GraphicsComponent(position),
       color_(enemy_color) {}
-}
+} // namespace ikaruga::objects::enemy 

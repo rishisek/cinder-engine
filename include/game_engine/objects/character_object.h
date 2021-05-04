@@ -5,6 +5,7 @@
 #include <game_engine/objects/game_object.h>
 
 namespace game_engine {
+// Extends GameObject with character-related properties
 class CharacterObject : public GameObject {
  public:
   virtual ~CharacterObject() = 0;

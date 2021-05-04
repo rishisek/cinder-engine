@@ -7,6 +7,7 @@
 #include <game_engine/collision/collider.h>
 
 namespace game_engine {
+// Wrapper class for a collection of colliders describing an object
 class ColliderMesh : public JsonSerializable {
  public:
   ColliderMesh() = default;

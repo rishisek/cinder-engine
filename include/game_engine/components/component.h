@@ -4,6 +4,7 @@
 #pragma once
 
 namespace game_engine {
+// Base component template 
 class Component {
  public:
   virtual ~Component() = 0;

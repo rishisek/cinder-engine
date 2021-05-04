@@ -6,6 +6,7 @@
 #include "box_collider.h"
 
 namespace game_engine {
+// Utility class to prevent code replication in Collider classes.
 class CollisionUtils {
  public:
   static bool IsCollision(CircleCollider const *circle, BoxCollider const *box);

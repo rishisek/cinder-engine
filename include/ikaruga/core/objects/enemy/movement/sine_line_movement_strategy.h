@@ -17,4 +17,4 @@ class SineLineMovementStrategy : public MovementStrategy {
   float current_sine_y_degree_ = 90.0f;
   float current_line_point_ = period_ * period_count_ / 2;
 };
-}
+} // namespace ikaruga::objects::enemy::movement

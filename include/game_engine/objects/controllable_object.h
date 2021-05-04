@@ -6,6 +6,7 @@
 #include <game_engine/components/input_component.h>
 
 namespace game_engine {
+// Templated class that adds an input component to any game object class.
 template<typename T>
 class ControllableObject : public T {
  public:
