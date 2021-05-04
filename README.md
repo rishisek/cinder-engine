@@ -4,7 +4,15 @@
 
 <img src="https://i.imgur.com/pSzG1XM.png" alt="screenshot of game" width="400"/>
 
-### Dependencies
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [Dependencies](#dependencies)
+- [Quick Start](#quick-start)
+- [Controls](#controls)
+
+## Dependencies
 
 - [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/ ) or [MSVC 2015+]("https://www.visualstudio.com/")
 - [cmake](https://cmake.org/)
