@@ -38,8 +38,7 @@ void Player::TiltAimRight() {
 }
 
 bool Player::InCooldown() {
-  return projectile_types_[current_projectile_type_index_].GetCurrentCooldown()
-      != 0;
+  return cooldowns_[current_projectile_type_index_] != 0;
 }
 
 void Player::Update(game_engine::GameWorld &world) {

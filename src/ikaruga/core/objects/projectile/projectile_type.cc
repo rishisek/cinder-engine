@@ -20,21 +20,6 @@ const cinder::ColorT<float> &ProjectileType::GetColor() const {
   return color_;
 }
 
-int ProjectileType::GetCurrentCooldown() const {
-  return current_cooldown_;
-}
-
-void ProjectileType::DecrementCurrentCooldown() {
-  current_cooldown_--;
-  if (current_cooldown_ <= 0) {
-    current_cooldown_ = 0;
-  }
-}
-
-void ProjectileType::StartCooldown() {
-  current_cooldown_ = cooldown_;
-}
-
 bool ProjectileType::operator==(const ProjectileType &other) const {
   return radius_ == other.radius_ && color_ == other.color_
       && cooldown_ == other.cooldown_;
@@ -50,6 +35,10 @@ void ProjectileType::Deserialize(const nlohmann::json &json) {
   radius_ = json["radius"];
   color_ = json["color"];
   cooldown_ = json["cooldown"];
+}
+
+int ProjectileType::GetCooldown() const {
+  return cooldown_;
 }
 }
 

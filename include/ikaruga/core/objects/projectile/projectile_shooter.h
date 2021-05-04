@@ -27,6 +27,7 @@ class ProjectileShooter : public game_engine::CharacterObject {
   const double kNormalAngle = -M_PI / 2.0;
 
   std::vector<ProjectileType> projectile_types_;
+  std::vector<int> cooldowns_;
   double shoot_angle_radians_ = kNormalAngle;
   glm::vec2 projectile_spawn_offset_;
   size_t current_projectile_type_index_ = 0;

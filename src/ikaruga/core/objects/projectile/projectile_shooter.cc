@@ -7,13 +7,17 @@
 
 namespace ikaruga::objects::projectile {
 void ProjectileShooter::UpdateCooldowns() {
-  for (ProjectileType &projectile_type: projectile_types_) {
-    projectile_type.DecrementCurrentCooldown();
+  for (int &cooldown:cooldowns_) {
+    cooldown--;
+    if (cooldown < 0) {
+      cooldown = 0;
+    }
   }
 }
 
 Projectile *ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
-  projectile_types_[current_projectile_type_index_].StartCooldown();
+  cooldowns_[current_projectile_type_index_] =
+      projectile_types_[current_projectile_type_index_].GetCooldown();
   game_engine::PhysicsComponent *projectile_physics_component =
       new ProjectilePhysicsComponent(
           physics_component_->GetPosition() + projectile_spawn_offset_,
@@ -35,5 +39,10 @@ ProjectileShooter::ProjectileShooter(game_engine::PhysicsComponent *physics_comp
                                      const glm::vec2 &projectile_spawn_offset)
     : CharacterObject(physics_component),
       projectile_types_(projectile_types),
-      projectile_spawn_offset_(projectile_spawn_offset) {}
+      projectile_spawn_offset_(projectile_spawn_offset) {
+  cooldowns_.resize(projectile_types_.size());
+  for (ProjectileType const &projectile_type:projectile_types_) {
+    cooldowns_.push_back(projectile_type.GetCooldown());
+  }
+}
 }

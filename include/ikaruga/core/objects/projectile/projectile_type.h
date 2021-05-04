@@ -16,11 +16,7 @@ class ProjectileType : public game_engine::JsonSerializable {
 
   float GetRadius() const;
   const cinder::ColorT<float> &GetColor() const;
-  int GetCurrentCooldown() const;
-
-  void DecrementCurrentCooldown();
-  // Starts/restarts cooldown
-  void StartCooldown();
+  int GetCooldown() const;
 
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
@@ -30,7 +26,6 @@ class ProjectileType : public game_engine::JsonSerializable {
   float radius_;
   cinder::ColorT<float> color_;
   int cooldown_;
-  int current_cooldown_ = 0;
 };
 }
 
