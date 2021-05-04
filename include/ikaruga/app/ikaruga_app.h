@@ -8,6 +8,7 @@
 #include <cinder/app/RendererGl.h>
 #include <cinder/gl/gl.h>
 #include <ikaruga/app/background_manager.h>
+#include <ikaruga/game/game_instance.h>
 
 namespace ikaruga::app {
 class IkarugaApp : public ci::app::App {
@@ -23,7 +24,8 @@ class IkarugaApp : public ci::app::App {
   void keyUp(ci::app::KeyEvent event) override;
 
  private:
-  const double kWindowSize = 875;
+  const int kLeftMargin = 100;
   BackgroundManager background_manager_;
+  ikaruga::game::GameInstance game_instance_;
 };
 }
