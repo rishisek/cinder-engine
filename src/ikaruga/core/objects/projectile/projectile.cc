@@ -9,8 +9,8 @@ Projectile::Projectile(ProjectileType type,
                        game_engine::PhysicsComponent *physics_component)
     : GameObject(physics_component), type_(type) {}
 
-void Projectile::Update(game_engine::GameWorld &world) {
-  GameObject::Update(world);
+void Projectile::Update(game_engine::GameWorld &game_world) {
+  GameObject::Update(game_world);
 }
 
 const ProjectileType &Projectile::GetType() const {

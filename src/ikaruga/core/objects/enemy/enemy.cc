@@ -6,6 +6,8 @@
 #include <ikaruga/core/objects/enemy/enemy_factory.h>
 #include <game_engine/components/physics_component.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
+#include <ikaruga/core/world/world.h>
+#include <ikaruga/core/objects/player/player.h>
 
 namespace ikaruga::objects::enemy {
 using projectile::ProjectileShooter;
@@ -20,10 +22,19 @@ Enemy::Enemy(game_engine::PhysicsComponent *physics_component,
       graphics_component_(graphics_component),
       type_(EnemyFactory::GetTypeByName(type_id)) {}
 
-void Enemy::Update(game_engine::GameWorld &world) {
+void Enemy::Update(game_engine::GameWorld &game_world) {
   physics_component_->Update();
   graphics_component_->Update(
       graphics_component_->GetPosition() + physics_component_->GetVelocity());
+  UpdateCooldowns();
+
+  world::World *world = dynamic_cast<world::World *>(&game_world);
+  glm::vec2 aim = physics_component_->GetPosition() + projectile_spawn_offset_
+      - (world->GetPlayerRef()->GetPhysicsComponent()->GetPosition());
+  shoot_angle_radians_ = atan2(aim.x, -aim.y) + M_PI / 2;
+  if (!InCooldown()) {
+    world->AddEnemyProjectile(Shoot());
+  }
 }
 
 void Enemy::Serialize(nlohmann::json &json) const {

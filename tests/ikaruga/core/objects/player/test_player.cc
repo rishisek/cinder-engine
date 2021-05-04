@@ -34,33 +34,33 @@ TEST_CASE("Player shooting mechanics") {
                  test_projectile_types, 0);
 
   SECTION("Basic shooting") {
-    projectile::Projectile *projectile = player->Shoot(*player);
+    projectile::Projectile *projectile = player->Shoot();
     REQUIRE(projectile->GetType() == test_projectile_types[0]);
     delete projectile;
   }
 
   SECTION("Checking if current projectile type is in cooldown") {
-    projectile::Projectile *projectile = player->Shoot(*player);
+    projectile::Projectile *projectile = player->Shoot();
     REQUIRE(player->InCooldown());
     delete projectile;
   }
 
   SECTION("Type toggling") {
     player->ToggleProjectileType();
-    projectile::Projectile *projectile = player->Shoot(*player);
+    projectile::Projectile *projectile = player->Shoot();
     REQUIRE(projectile->GetType() == test_projectile_types[1]);
     player->ToggleProjectileType();
     delete projectile;
 
     // TODO: debug variable reuse breakage
-    projectile::Projectile *projectile2 = player->Shoot(*player);
+    projectile::Projectile *projectile2 = player->Shoot();
     REQUIRE(projectile2->GetType() == test_projectile_types[0]);
     delete projectile2;
   }
 
   SECTION("Aim tilting") {
     SECTION("No tilting i.e. along normal") {
-      projectile::Projectile *projectile = player->Shoot(*player);
+      projectile::Projectile *projectile = player->Shoot();
       REQUIRE(CrossProduct(projectile->GetPhysicsComponent()->GetVelocity(),
                            glm::vec2(0, -M_PI)) == Approx(0).scale(1));
       delete projectile;
@@ -68,7 +68,7 @@ TEST_CASE("Player shooting mechanics") {
 
     SECTION("Left tilting") {
       player->TiltAimLeft();
-      projectile::Projectile *projectile = player->Shoot(*player);
+      projectile::Projectile *projectile = player->Shoot();
       REQUIRE(CrossProduct(projectile->GetPhysicsComponent()->GetVelocity(),
                            glm::vec2(0, -M_PI)) > 0);
       delete projectile;
@@ -76,7 +76,7 @@ TEST_CASE("Player shooting mechanics") {
 
     SECTION("Right tilting") {
       player->TiltAimRight();
-      projectile::Projectile *projectile = player->Shoot(*player);
+      projectile::Projectile *projectile = player->Shoot();
       REQUIRE(CrossProduct(projectile->GetPhysicsComponent()->GetVelocity(),
                            glm::vec2(0, -M_PI)) < 0);
       delete projectile;

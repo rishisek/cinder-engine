@@ -15,7 +15,7 @@ void ProjectileShooter::UpdateCooldowns() {
   }
 }
 
-Projectile *ProjectileShooter::Shoot(game_engine::GameObject const &game_object) {
+Projectile *ProjectileShooter::Shoot() {
   cooldowns_[current_projectile_type_index_] =
       projectile_types_[current_projectile_type_index_].GetCooldown();
   game_engine::PhysicsComponent *projectile_physics_component =
@@ -44,5 +44,9 @@ ProjectileShooter::ProjectileShooter(game_engine::PhysicsComponent *physics_comp
   for (ProjectileType const &projectile_type:projectile_types_) {
     cooldowns_.push_back(projectile_type.GetCooldown());
   }
+}
+
+bool ProjectileShooter::InCooldown() {
+  return cooldowns_[current_projectile_type_index_] != 0;
 }
 }

@@ -24,19 +24,9 @@ void GameInstance::Draw() {
   ci::gl::color(0, 0, 0);
   ci::gl::drawString(std::to_string(player_->GetScore()), glm::vec2(200, 200));
   ci::gl::color(0, 0, 1);
-//  ci::gl::drawSolidCircle(player_->GetPhysicsComponent()->GetPosition(), 10);
   player_->GetGraphicsComponent()->Draw();
   player_->GetPhysicsComponent()->GetColliderMesh().Draw();
-  for (const std::unique_ptr<ikaruga::objects::projectile::Projectile>
-        &projectile: world_.GetProjectiles()) {
-    ci::gl::color(projectile->GetType().GetColor());
-    ci::gl::drawSolidCircle(projectile->GetPhysicsComponent()->GetPosition(),
-                            projectile->GetType().GetRadius());
-  }
-  for (std::unique_ptr<enemy::Enemy> const &enemy: world_.GetEnemies()) {
-    enemy->GetGraphicsComponent()->Draw();
-    enemy->GetPhysicsComponent()->GetColliderMesh().Draw();
-  }
+  world_.Draw();
 }
 
 void GameInstance::Update() {

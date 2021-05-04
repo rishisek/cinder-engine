@@ -19,7 +19,6 @@ class Player
   void Update(game_engine::GameWorld &world) override;
   void TiltAimLeft();
   void TiltAimRight();
-  bool InCooldown();
   void IncrementScore(int score_increment);
 
   int GetScore() const;
@@ -30,6 +29,7 @@ class Player
   friend class PlayerGraphicsComponent;
  private:
   game_engine::GraphicsComponent *graphics_component_;
+  const double kNormalAngle = -M_PI / 2.0;
   const double kAimStep = 0.01;
   double view_angle_radians_;
   int score_ = 0;

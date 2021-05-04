@@ -16,7 +16,7 @@ class Enemy
   Enemy(game_engine::PhysicsComponent *physics_component,
         game_engine::GraphicsComponent *graphics_component,
         const std::string &type_id);
-  void Update(game_engine::GameWorld &world) override;
+  void Update(game_engine::GameWorld &game_world) override;
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
   EnemyType *GetType() const;

@@ -8,5 +8,6 @@ class GameWorld {
  public:
   virtual ~GameWorld() = 0;
   virtual void Update() = 0;
+  virtual void Draw() = 0;
 };
 }

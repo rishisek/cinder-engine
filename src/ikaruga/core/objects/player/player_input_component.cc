@@ -24,7 +24,7 @@ void PlayerInputComponent::Update(game_engine::GameObject &game_object,
         }
         case ci::app::KeyEvent::KEY_RETURN: {
           if (!player->InCooldown()) {
-            world->AddProjectile(player->Shoot(*player));
+            world->AddPlayerProjectile(player->Shoot());
           }
           break;
         }

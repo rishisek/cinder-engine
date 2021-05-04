@@ -13,7 +13,7 @@ class Projectile : public game_engine::GameObject {
   Projectile(ProjectileType type,
              game_engine::PhysicsComponent *physics_component);
 
-  void Update(game_engine::GameWorld &world) override;
+  void Update(game_engine::GameWorld &game_world) override;
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
 

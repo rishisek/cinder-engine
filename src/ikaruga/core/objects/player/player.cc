@@ -21,7 +21,9 @@ Player::Player(game_engine::PhysicsComponent *physics_component,
                                     glm::vec2(38, 0))),
     input_component),
       graphics_component_(graphics_component),
-      view_angle_radians_(view_angle_radians) {}
+      view_angle_radians_(view_angle_radians) {
+  shoot_angle_radians_ = kNormalAngle;
+}
 
 void Player::TiltAimLeft() {
   shoot_angle_radians_ -= kAimStep;
@@ -35,10 +37,6 @@ void Player::TiltAimRight() {
   if (shoot_angle_radians_ >= kNormalAngle + view_angle_radians_ / 2) {
     shoot_angle_radians_ = kNormalAngle + view_angle_radians_ / 2;
   }
-}
-
-bool Player::InCooldown() {
-  return cooldowns_[current_projectile_type_index_] != 0;
 }
 
 void Player::Update(game_engine::GameWorld &world) {

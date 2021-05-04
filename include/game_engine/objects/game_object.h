@@ -14,7 +14,7 @@ class GameObject : public JsonSerializable {
  public:
   virtual ~GameObject() = 0;
 
-  virtual void Update(game_engine::GameWorld &world);
+  virtual void Update(game_engine::GameWorld &game_world);
   bool Collides(GameObject *const other) const;
 
   void Serialize(nlohmann::json &json) const override = 0;

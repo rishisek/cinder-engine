@@ -16,19 +16,18 @@ class ProjectileShooter : public game_engine::CharacterObject {
 
   // Update all projectile type cooldowns
   void UpdateCooldowns();
+  bool InCooldown();
 
   // TODO: Figure out unique_ptr logic for return
   // Returns pointer to a new Projectile of the active type
-  Projectile *Shoot(game_engine::GameObject const &game_object);
+  Projectile *Shoot();
 
   // Shifts to next projectile type, looping around to start.
   void ToggleProjectileType();
  protected:
-  const double kNormalAngle = -M_PI / 2.0;
-
   std::vector<ProjectileType> projectile_types_;
   std::vector<int> cooldowns_;
-  double shoot_angle_radians_ = kNormalAngle;
+  double shoot_angle_radians_;
   glm::vec2 projectile_spawn_offset_;
   size_t current_projectile_type_index_ = 0;
 };
