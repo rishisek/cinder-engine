@@ -19,21 +19,22 @@ class Player
   void Update(game_engine::GameWorld &world) override;
   void TiltAimLeft();
   void TiltAimRight();
-  void IncrementScore(int score_increment);
 
+  void IncrementScore(int score_increment);
   int GetScore() const;
+  void TakeDamage();
+
   game_engine::GraphicsComponent *const &GetGraphicsComponent() const;
 
   friend class PlayerInputComponent;
   friend class PlayerPhysicsComponent;
   friend class PlayerGraphicsComponent;
-  void TakeDamage();
  private:
   static constexpr int kMaxHealth = 25;
-
-  game_engine::GraphicsComponent *graphics_component_;
   const double kNormalAngle = -M_PI / 2.0;
   const double kAimStep = 0.01;
+
+  game_engine::GraphicsComponent *graphics_component_;
   double view_angle_radians_;
   int score_ = 0;
 
