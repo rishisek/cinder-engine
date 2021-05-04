@@ -15,16 +15,16 @@ void PlayerPhysicsComponent::Update() {
 void PlayerPhysicsComponent::receive(int message) {
   switch (message) {
     case 1:
-      velocity_.y = -1;
+      velocity_.y = -speed_;
       break;
     case 2:
-      velocity_.x = -1;
+      velocity_.x = -speed_;
       break;
     case 3:
-      velocity_.y = 1;
+      velocity_.y = speed_;
       break;
     case 4:
-      velocity_.x = 1;
+      velocity_.x = speed_;
       break;
   }
 }

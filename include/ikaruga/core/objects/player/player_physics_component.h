@@ -12,5 +12,7 @@ class PlayerPhysicsComponent : public game_engine::PhysicsComponent {
                          const glm::vec2 &velocity);
   void Update() override;
   void receive(int message) override;
+ private:
+  float speed_ = 2.0f;
 };
 }
