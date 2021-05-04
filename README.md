@@ -1,5 +1,70 @@
-Fill this in before the final project deadline. Someone who has _no familiarity_ with your project should be able to
-read this and understand:
+# Ikaruga
 
-* what your project does
-* how to set it up and run it
+##### A light-weight clone of the bullet hell shooter game.
+
+### Dependencies
+
+- [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/ ) or [MSVC 2015+]("https://www.visualstudio.com/")
+- [cmake](https://cmake.org/)
+
+### Ubuntu
+
+```
+ $ sudo apt-get install gcc cmake
+```
+
+### MacOS
+
+```
+$ brew install gcc cmake
+```
+
+### Windows
+
+- [Visual Studio 2015+](https://visualstudio.microsoft.com/)
+
+## Quick Start
+
+### CMake
+
+#### Linux
+
+```
+$ git clone https://github.com/uiuc-sp21-cs126/final-project-rishisek-illinois.git
+$ mkdir build
+$ cd build/
+$ cmake ..
+$ make
+$ ./ikaruga
+```
+
+#### Windows
+
+```
+> git clone https://github.com/uiuc-sp21-cs126/final-project-rishisek-illinois.git
+> mkdir build
+> cd build
+> cmake ..
+> cmake --build .
+> .\ikaruga
+```
+
+## Controls
+
+### Player movement
+
+| Key | Action |
+|-----|--------|
+| `W` | Up |
+| `A` | Left |
+| `S` | Down |
+| `D` | Right |
+
+### Bullet action
+
+| Key | Action |
+|-----|--------|
+| `ENTER` `RETURN` | Fire a bullet |
+| `RSHIFT` | Switch bullet type |
+| `LEFT` | Tilt aim left |
+| `RIGHT` | Tilt aim right |
