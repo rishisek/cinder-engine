@@ -9,7 +9,7 @@
 ## Table of Contents
 
 - [Dependencies](#dependencies)
-- [Quick Start](#quick-start)
+- [Project Setup](#quick-start)
 - [Controls](#controls)
 
 ## Dependencies
