@@ -8,11 +8,13 @@ namespace ikaruga::objects::projectile {
 ProjectileType::ProjectileType(std::string const &id,
                                float radius,
                                const cinder::ColorT<float> &color,
-                               int cooldown)
+                               int cooldown,
+                               float speed)
     : id_(id),
       radius_(radius),
       color_(color),
-      cooldown_(cooldown) {}
+      cooldown_(cooldown),
+      speed_(speed) {}
 
 float ProjectileType::GetRadius() const {
   return radius_;
@@ -47,12 +49,21 @@ int ProjectileType::GetCooldown() const {
 const std::string &ProjectileType::GetId() const {
   return id_;
 }
+
+ProjectileType::~ProjectileType() {
+
+}
+
+float ProjectileType::GetSpeed() const {
+  return speed_;
+}
 }
 
 namespace nlohmann {
 ikaruga::objects::projectile::ProjectileType adl_serializer<ikaruga::objects::projectile::ProjectileType>::from_json(
     const json &j) {
-  return {j.at("id"), j.at("radius"), j.at("color"), j.at("cooldown")};
+  return {j.at("id"), j.at("radius"), j.at("color"), j.at("cooldown"),
+          j.at("speed")};
 }
 
 void adl_serializer<ikaruga::objects::projectile::ProjectileType>::to_json(json &j,

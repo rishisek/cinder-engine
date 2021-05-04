@@ -13,12 +13,15 @@ class ProjectileType : public game_engine::JsonSerializable {
   ProjectileType(std::string const &id,
                  float radius,
                  const cinder::ColorT<float> &color,
-                 int cooldown = 1);
+                 int cooldown,
+                 float speed);
+  virtual ~ProjectileType();
 
+  const std::string &GetId() const;
   float GetRadius() const;
   const cinder::ColorT<float> &GetColor() const;
   int GetCooldown() const;
-  const std::string &GetId() const;
+  float GetSpeed() const;
 
   void Serialize(nlohmann::json &json) const override;
   void Deserialize(const nlohmann::json &json) override;
@@ -29,6 +32,7 @@ class ProjectileType : public game_engine::JsonSerializable {
   float radius_;
   cinder::ColorT<float> color_;
   int cooldown_;
+  float speed_;
 };
 }
 

@@ -12,6 +12,7 @@ class ProjectileFactory {
  public:
   static void AddProjectileType(ProjectileType *projectile_type);
   static std::vector<ProjectileType *> GetTypesById(const std::vector<std::string> &projectile_type_ids);
+  virtual ~ProjectileFactory();
  private:
   static std::vector<ProjectileType *> projectile_types_;
 };

@@ -5,12 +5,13 @@
 #include <serialization_utils/vec2_json.h>
 #include <ikaruga/core/objects/enemy/enemy_type.h>
 #include <ikaruga/core/objects/enemy/movement/patterns.h>
+#include <ikaruga/core/objects/projectile/projectile_factory.h>
 
 namespace ikaruga::objects::enemy {
 TEST_CASE("Enemy type serialization", "[serialization]") {
   SECTION("Serialization") {
     std::vector<projectile::ProjectileType *> projectile_types = {
-        new projectile::ProjectileType("type1", 5, ci::Color("blue"), 7)
+        new projectile::ProjectileType("type1", 5, ci::Color("blue"), 7, 1)
     };
     EnemyType enemy_type
         ("id", 10,
@@ -29,9 +30,14 @@ TEST_CASE("Enemy type serialization", "[serialization]") {
   }
 
   SECTION("Deserialization") {
-    std::vector<projectile::ProjectileType *> projectile_types = {
-        new projectile::ProjectileType("type1", 5, ci::Color("blue"), 7)
-    };
+    projectile::ProjectileFactory::AddProjectileType(new projectile::ProjectileType(
+        "type1",
+        5,
+        ci::Color("blue"),
+        7,
+        1));
+    std::vector<projectile::ProjectileType *> projectile_types =
+        projectile::ProjectileFactory::GetTypesById({"type1"});
     EnemyType enemy_type1
         ("id", 10,
          2,

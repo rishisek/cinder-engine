@@ -26,4 +26,10 @@ std::vector<ProjectileType *> ProjectileFactory::GetTypesById(const std::vector<
   }
   return list;
 }
+
+ProjectileFactory::~ProjectileFactory() {
+  for (ProjectileType *projectile_type: projectile_types_) {
+    delete projectile_type;
+  }
+}
 }
