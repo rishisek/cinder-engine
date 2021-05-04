@@ -2,6 +2,8 @@
 
 ##### A light-weight clone of the bullet hell shooter game.
 
+![](https://i.imgur.com/pSzG1XM.png)
+
 ### Dependencies
 
 - [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/ ) or [MSVC 2015+]("https://www.visualstudio.com/")
