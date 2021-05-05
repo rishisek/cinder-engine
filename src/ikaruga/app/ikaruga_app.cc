@@ -11,19 +11,40 @@ namespace ikaruga::app {
 IkarugaApp::IkarugaApp() {}
 
 void IkarugaApp::draw() {
+  static ci::Font font("Impact", 30);
   ci::gl::clear(ci::Color("black"));
   background_manager_.Draw();
 
-  ci::gl::pushModelMatrix();
-  ci::gl::translate(glm::vec2(kLeftMargin, 0));
-  game_instance_.Draw();
-  ci::gl::popModelMatrix();
+  if (!game_instance_.IsEnded()) {
+    ci::gl::pushModelMatrix();
+    ci::gl::translate(glm::vec2(kLeftMargin, 0));
+    game_instance_.Draw();
+    ci::gl::popModelMatrix();
 
-  ci::gl::pushModelMatrix();
-  ci::gl::translate(glm::vec2(0, 0));
-  HealthBar::Draw(game_instance_.GetPlayer()->GetMaxHealth(),
-                  game_instance_.GetPlayer()->GetHealth());
-  ci::gl::popModelMatrix();
+    ci::gl::pushModelMatrix();
+    ci::gl::translate(glm::vec2(0, getWindowHeight() - 300));
+    HealthBar::Draw(game_instance_.GetPlayer()->GetMaxHealth(),
+                    game_instance_.GetPlayer()->GetHealth());
+    ci::gl::popModelMatrix();
+
+    ci::gl::drawString(std::to_string(game_instance_.GetPlayer()->GetScore()),
+                       glm::vec2(10, 200),
+                       ci::Color("white"),
+                       font);
+  } else {
+    if (game_instance_.IsPlayerWin()) {
+      ci::gl::drawStringCentered("You Win!",
+                                 getWindowCenter(),
+                                 ci::Color("white"),
+                                 font);
+    }
+    if (game_instance_.IsPlayerLoss()) {
+      ci::gl::drawStringCentered("You Lose.",
+                                 getWindowCenter(),
+                                 ci::Color("white"),
+                                 font);
+    }
+  }
 }
 
 void IkarugaApp::mouseDown(ci::app::MouseEvent event) {
@@ -49,7 +70,10 @@ void IkarugaApp::setup() {
 
 void IkarugaApp::update() {
   background_manager_.Update();
-  game_instance_.Update();
-  interface::Keyboard::ReleaseAllToggles();
+  if (!game_instance_.IsEnded()) {
+    game_instance_.Update();
+    interface::Keyboard::ReleaseAllToggles();
+  }
+
 }
 }

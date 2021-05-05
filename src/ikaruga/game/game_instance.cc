@@ -22,8 +22,6 @@ void GameInstance::Setup() {
 }
 
 void GameInstance::Draw() {
-  ci::gl::color(0, 0, 0);
-  ci::gl::drawString(std::to_string(player_->GetScore()), glm::vec2(200, 200));
   player_->GetGraphicsComponent()->Draw();
 //  player_->GetPhysicsComponent()->GetColliderMesh().Draw();
   world_.Draw();
@@ -33,7 +31,12 @@ void GameInstance::Update() {
   player_->Update(world_);
   world_.Update();
   if (player_->GetHealth() == 0) {
-    exit(0);
+    player_loss_ = true;
+    ended_ = true;
+  }
+  if (world_.GetEnemies().size() == 0) {
+    player_win_ = true;
+    ended_ = true;
   }
 }
 
@@ -50,7 +53,8 @@ void GameInstance::SetupPlayer() {
       new player::PlayerPhysicsComponent(glm::vec2(300, 450), glm::vec2(0, 0)),
       new player::PlayerInputComponent(),
       new player::PlayerGraphicsComponent(glm::vec2(300, 450)),
-      player_projectile_types, 0);
+      player_projectile_types,
+      0);
   world_.Setup(player_);
 }
 
@@ -80,6 +84,18 @@ double GameInstance::GetHeight() const {
 
 player::Player *GameInstance::GetPlayer() const {
   return player_;
+}
+
+bool GameInstance::IsPlayerLoss() const {
+  return player_loss_;
+}
+
+bool GameInstance::IsPlayerWin() const {
+  return player_win_;
+}
+
+bool GameInstance::IsEnded() const {
+  return ended_;
 }
 
 }
